@@ -2,7 +2,7 @@
 
 Route::impersonate();
 
-Route::get('/', '\Wave\Http\Controllers\HomeController@index')->name('wave.home');
+Route::get('/', '\Wave\Http\Controllers\ProductController@index')->name('wave.home');
 Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile');
 
 // Documentation routes
@@ -68,3 +68,4 @@ Route::group(['middleware' => 'auth'], function(){
 Route::group(['middleware' => 'admin.user'], function(){
     Route::view('admin/do', 'wave::do');
 });
+
