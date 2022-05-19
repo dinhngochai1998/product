@@ -1018,11 +1018,11 @@ ul.tab-nav li a i {
 	border-top: 1px solid #eee;
 	background-color: #fff;
 }
-.index_col_group {
-	overflow:hidden;
-	margin-top: 50px;
-	background: #ddf2ff;
-}
+/*.index_col_group {*/
+/*	overflow:hidden;*/
+/*	margin-top: 50px;*/
+/*	background: #ddf2ff;*/
+/*}*/
 .index_col_group h3{
 	margin-bottom: 0;
 	text-align: center;

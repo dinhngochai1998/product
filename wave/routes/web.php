@@ -3,6 +3,8 @@
 Route::impersonate();
 
 Route::get('/', '\Wave\Http\Controllers\ProductController@index')->name('wave.home');
+Route::get('/category/{slug}', '\Wave\Http\Controllers\CategoryController@index')->name('wave.category');
+Route::get('/detail/{slug}', '\Wave\Http\Controllers\CategoryController@detailProduct')->name('wave.detail.product');
 Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile');
 
 // Documentation routes
