@@ -7,6 +7,8 @@
 namespace Wave\Http\Controllers;
 
 use App\Category;
+
+use App\Helper\RateConstant;
 use App\Product;
 
 class CategoryController extends \App\Http\Controllers\Controller
@@ -19,7 +21,10 @@ class CategoryController extends \App\Http\Controllers\Controller
     }
 
     public function detailProduct($slug) {
-        $product = Product::query()->where('slug', $slug)->first();
-        return view('product.detail', compact('product'));
+        $product = Product::query()->with('productImages')->where('slug', $slug)->first();
+        $promotionalProducts = Product::query()->where('rate', RateConstant::PROMOTIONAL_PRODUCTS)->get();
+        $featuredProducts = Product::query()->where('rate', RateConstant::FEATURED_PRODUCTS)->get();
+        $latestProducts = Product::query()->where('rate', RateConstant::LATEST_PRODUCTS)->get();
+        return view('product.detail', compact(['product', 'latestProducts', 'featuredProducts', 'promotionalProducts']));
     }
 }

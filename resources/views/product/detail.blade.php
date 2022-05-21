@@ -87,6 +87,7 @@
                 </div>
             </div>
         </header>
+    @include('product.header')
         <!-- #header end -->
         <!-- Content
            ============================================= -->
@@ -188,13 +189,23 @@
                                                         <img class="product-image-feature bk-product-image" src="{{asset('storage/' . $product->image)}}" alt="Tủ lạnh Hitachi R-WX74J 735L">
                                                         <a data-fancybox="gallery" class="gallery_show" href="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_68c34684246947f8b390dca531651c9a_master.jpg"><img src="//theme.hstatic.net/1000227124/1000685523/14/zoom-directions.png?v=21" class="img-responsive"/></a>
                                                         <div id="sliderproduct" class="">
+
                                                             <ul class="slides" class="owl-carousel owl-theme">
+                                                                @foreach($product->productImages as $image)
+
+                                                                    @php
+                                                                        $images = json_decode($image->image) ?? [];
+                                                                    @endphp
+                                                                    @foreach($images as $value)
                                                                 <li class="product-thumb">
-                                                                    <a href="javascript:" data-image="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_68c34684246947f8b390dca531651c9a_master.jpg" data-zoom-image="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_68c34684246947f8b390dca531651c9a_master.jpg">
-                                                                        <img alt="Tủ lạnh Hitachi R-WX74J 735L" data-image="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_68c34684246947f8b390dca531651c9a_master.jpg" src="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_68c34684246947f8b390dca531651c9a_small.jpg" >
+                                                                    <a href="javascript:" data-image="{{asset('storage/' . $value)}}" data-zoom-image="{{asset('storage/' . $value)}}">
+                                                                        <img alt="Tủ lạnh Hitachi R-WX74J 735L"  src="{{asset('storage/' . $value)}}" style="max-width: 100px; max-height: 100px">
                                                                     </a>
                                                                 </li>
+                                                                    @endforeach
+                                                                @endforeach
                                                             </ul>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -217,7 +228,7 @@
                                                 <!-- Product Single - Price
                                                    ============================================= -->
                                                 <div class="product-price col-sm-12 col-md-12 noleftpadding">
-                                                    <ins class="bk-product-price"> {{$product->price . 'đ'}}</ins>
+                                                    <ins class="bk-product-price"> {{ number_format($product->price) . 'đ'}}</ins>
                                                 </div>
                                                 <!-- Product Single - Price End -->
                                                 <div class="product-gift col-md-12 col-xs-12" style="background-color: #f2dede">
@@ -231,7 +242,8 @@
                                                 </div>
                                                 <div class="col-md-12 col-sm-12 col-xs-12 short-desc">
 
-                                                    <p>{{$product->sub_discription}}</p>
+                                                    <p>{{ $product->sub_discription . 'đ'}}</p>
+
 
                                                 </div>
                                                 <div class="clear"></div>
@@ -427,13 +439,13 @@
                                         <div class="tab-container">
                                             <div class="tab-content clearfix " id="tabs-1">
                                                 </p>
-                                                <p><strong>Tính năng nổi bật:</strong><br><img class="lazyloading" src="https://congnghenhat.com/wp-content/uploads/2017/10/tick.png">&nbsp;Công nghệ làm lạnh Frost Recycling<br><img class="lazyloading" src="https://congnghenhat.com/wp-content/uploads/2017/10/tick.png">&nbsp;Hút chân không công nghệ Photocatalyst<br><img class="lazyloading" src="https://congnghenhat.com/wp-content/uploads/2017/10/tick.png">&nbsp;Công nghệ kháng khuẩn – khử mùi<br><img class="lazyloading" src="https://congnghenhat.com/wp-content/uploads/2017/10/tick.png">&nbsp;Cửa điện trợ lực<br><strong>Bảo hành: 24 tháng</strong><br><strong>Chế độ sau bảo hành:&nbsp;</strong>Trong trường hợp sản phẩm bị trục trặc kỹ thuật khi hết thời gian bảo hành – nhận bảo trì cũng như sửa chữa dài hạn<br><strong>Hỗ trợ:</strong><br><img class="lazyloading" src="https://congnghenhat.com/wp-content/uploads/2017/10/tick.png">&nbsp;Vệ sinh, bảo dưỡng tủ lạnh định kỳ miễn phí 1 năm / 1 lần, trọn đời sản phẩm</p>
+                                                <p>{{$product->discription}}</p>
                                                 <p>
                                             </div>
                                             <div class="tab-content clearfix image_gallery_tab" id="tabs-2">
                                                 <div class="row">
                                                     <div class="col-md-4 col-sm-4 col-xs-6">
-                                                        <a data-fancybox="gallery" href="Dung tích: 735LXuất xứ: Nhật BảnTình trạng: Hàng mới 100%Màu sắc: Xám pha lê / Gương pha lêCông nghệ: Inverter tiết kiệm điệnĐiện áp: 100V" ><img src="Dung tích: 735LXuất xứ: Nhật BảnTình trạng: Hàng mới 100%Màu sắc: Xám pha lê / Gương pha lêCông nghệ: Inverter tiết kiệm điệnĐiện áp: 100V" class="img-responsive"/></a>
+                                                        <a data-fancybox="gallery" href="{{route('wave.detail.product', $product->slug)}}" ><img src="{{asset('storage/' .$product->image)}}" class="img-responsive"/></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -510,10 +522,11 @@
                                         <div class="row">
                                             <div class='col-lg-12 col-sm-12'>
                                                 <div id="pr_col" class="owl-carousel owl-theme">
+                                                    @foreach($featuredProducts as $featuredProduct)
                                                     <div class="item ">
                                                         <div class="product pr-item clearfix  product_single">
                                                             <div class="product-image">
-                                                                <a href="/products/ghe-massage-nhat-noi-dia-taijutsu-as-2020-phien-ban-tri-lieu-date-2021-new-nguyen-hop"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/as_2020_1_0dddca64458b4132b133da61598c146a_medium.jpg"src="//product.hstatic.net/1000227124/product/as_2020_1_0dddca64458b4132b133da61598c146a_medium.jpg" alt="1 GHẾ MASSAGE NHẬT TAIJUTSU AS 2020 PHIÊN BẢN TRỊ LIỆU DATE 2021 NEW NGUYÊN HỘP" class="img-responsive"></a>
+                                                                <a href="{{route('wave.detail.product', $featuredProduct->slug)}}"><img  class="lazyload" data-src="{{asset('storage/' . $featuredProduct->image)}}"src="{{asset('storage/' . $featuredProduct->image)}}" alt="" class="img-responsive"></a>
                                                                 <div class="product-overlay">
                                                                     <a class="add-to-cart disabled" data-toggle='tooltip' title='Hết hàng'><i class="icon-shopping-cart"></i><span class='hidden-lg hidden-md'> Hết hàng</span></a>
                                                                     <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-nhat-noi-dia-taijutsu-as-2020-phien-ban-tri-lieu-date-2021-new-nguyen-hop" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
@@ -521,689 +534,18 @@
                                                             </div>
                                                             <div class="product-desc">
                                                                 <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-nhat-noi-dia-taijutsu-as-2020-phien-ban-tri-lieu-date-2021-new-nguyen-hop">1 GHẾ MASSAGE NHẬT TAIJUTSU AS 2020 PHIÊN BẢN TRỊ LIỆU DATE 2021 NEW NGUYÊN HỘP</a></h4>
+                                                                    <h4><a href="/products/ghe-massage-nhat-noi-dia-taijutsu-as-2020-phien-ban-tri-lieu-date-2021-new-nguyen-hop">{{$featuredProduct->name}}</a></h4>
                                                                 </div>
                                                             </div>
                                                             <div class="product-desc">
                                                                 <div class="product-price">
-                                                                    <ins> 50,000,000₫ </ins>
+                                                                    <ins>{{ number_format($featuredProduct->price) . 'đ'}}</ins>
                                                                 </div>
                                                                 <div class="haravan-product-reviews-badge" data-id="1036056943">  </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-nhat-noi-dia-taijutsuas-3310-phien-ban-tri-lieu-date-2021-new-nguyen-hop"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/3310_trang_6a471f77681346fa9e5839cebdb6fc53_medium.jpg"src="//product.hstatic.net/1000227124/product/3310_trang_6a471f77681346fa9e5839cebdb6fc53_medium.jpg" alt="1 GHẾ MASSAGE NHẬT TAIJUTSU AS 3310 PHIÊN BẢN TRỊ LIỆU DATE 2022 NEW NGUYÊN HỘP" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a class="add-to-cart disabled" data-toggle='tooltip' title='Hết hàng'><i class="icon-shopping-cart"></i><span class='hidden-lg hidden-md'> Hết hàng</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-nhat-noi-dia-taijutsuas-3310-phien-ban-tri-lieu-date-2021-new-nguyen-hop" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-nhat-noi-dia-taijutsuas-3310-phien-ban-tri-lieu-date-2021-new-nguyen-hop">1 GHẾ MASSAGE NHẬT TAIJUTSU AS 3310 PHIÊN BẢN TRỊ LIỆU DATE 2022 NEW NGUYÊN HỘP</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 50,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1036056857">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-taijutsu-kc-8600-phien-ban-tri-lieu-date-2021"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/as_8600_71516fb33a2c4639be1d81dc1d86c7cc_medium.jpg"src="//product.hstatic.net/1000227124/product/as_8600_71516fb33a2c4639be1d81dc1d86c7cc_medium.jpg" alt="1 GHẾ MASSAGE NHẬT TAIJUTSU KC - 8600 PHIÊN BẢN TRỊ LIỆU DATE 2022 NEW NGUYÊN HỘP" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a class="add-to-cart disabled" data-toggle='tooltip' title='Hết hàng'><i class="icon-shopping-cart"></i><span class='hidden-lg hidden-md'> Hết hàng</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-taijutsu-kc-8600-phien-ban-tri-lieu-date-2021" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-taijutsu-kc-8600-phien-ban-tri-lieu-date-2021">1 GHẾ MASSAGE NHẬT TAIJUTSU KC - 8600 PHIÊN BẢN TRỊ LIỆU DATE 2022 NEW NGUYÊN HỘP</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 72,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1034915724">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-s333e8-keo-be-date-2017"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/5abe931f0db8e9e6b0a9_8590b966d6544964a63fa75831962032_medium.png"src="//product.hstatic.net/1000227124/product/5abe931f0db8e9e6b0a9_8590b966d6544964a63fa75831962032_medium.png" alt="GHẾ MASSAGE FAMILY INADA  FMC S333E8  DATE  2018 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-family-inada-s333e8-keo-be-date-2017" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-s333e8-keo-be-date-2017" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-s333e8-keo-be-date-2017">GHẾ MASSAGE FAMILY INADA  FMC S333E8  DATE  2018 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 32,000,000₫ </ins>
-                                                                    <del>70,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030575003">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-family-inada-fmc-s8100-date-2019"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/a1__1__fcf05a0173954d65965ba8715bbc5f83_medium.jpg"src="//product.hstatic.net/1000227124/product/a1__1__fcf05a0173954d65965ba8715bbc5f83_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA  FMC S8100 Date 2019 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href='/products/ghe-family-inada-fmc-s8100-date-2019' class='add-to-cart' data-toggle='tooltip' title='Lựa chọn'><i class='icon-shopping-cart'></i><span class='hidden-md hidden-lg'> Lựa chọn</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-family-inada-fmc-s8100-date-2019" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-family-inada-fmc-s8100-date-2019">GHẾ MASSAGE FAMILY INADA  FMC S8100 Date 2019 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 45,000,000₫ </ins>
-                                                                    <del>90,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030575237">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-fdx-s9000-date-2019"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/bk01_5fad9bcf6aa845f5af9f4df27cce26aa_large__1__785f4d9e582346e7aa3acb9120f683f5_medium.jpg"src="//product.hstatic.net/1000227124/product/bk01_5fad9bcf6aa845f5af9f4df27cce26aa_large__1__785f4d9e582346e7aa3acb9120f683f5_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FDX S9000 DATE 2019 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-family-inada-fdx-s9000-date-2019" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-fdx-s9000-date-2019" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-fdx-s9000-date-2019">GHẾ MASSAGE FAMILY INADA FDX S9000 DATE 2019 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 47,000,000₫ </ins>
-                                                                    <del>100,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030620593">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-gs100"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1_cd83eb1773ba4fd6a102a8bb54958720_medium.jpg"src="//product.hstatic.net/1000227124/product/1_cd83eb1773ba4fd6a102a8bb54958720_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FMC GS100 DATE 2019 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-family-inada-gs100" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-gs100" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-gs100">GHẾ MASSAGE FAMILY INADA FMC GS100 DATE 2019 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 30,000,000₫ </ins>
-                                                                    <del>65,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030618198">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-ks70-date-2019"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/a1_510c4a0f88d44d52b650634e9c42663d_medium.jpg"src="//product.hstatic.net/1000227124/product/a1_510c4a0f88d44d52b650634e9c42663d_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FMC KS70 DATE 2019 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-family-inada-ks70-date-2019" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-ks70-date-2019" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-ks70-date-2019">GHẾ MASSAGE FAMILY INADA FMC KS70 DATE 2019 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 34,000,000₫ </ins>
-                                                                    <del>68,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030620282">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-fmc-lpn10000-date-2020"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/a2_63f88ace30c344f7b4a4103d51800ec5_medium.jpg"src="//product.hstatic.net/1000227124/product/a2_63f88ace30c344f7b4a4103d51800ec5_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FMC LPN10000 Date 2020 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href='/products/ghe-massage-family-inada-fmc-lpn10000-date-2020' class='add-to-cart' data-toggle='tooltip' title='Lựa chọn'><i class='icon-shopping-cart'></i><span class='hidden-md hidden-lg'> Lựa chọn</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-fmc-lpn10000-date-2020" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-fmc-lpn10000-date-2020">GHẾ MASSAGE FAMILY INADA FMC LPN10000 Date 2020 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 65,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030575013">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-toan-than-family-inada-lpn30000d-date-2020"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/a22_cfe02d4314f94d4d9dea188cfc0d3788_medium.jpg"src="//product.hstatic.net/1000227124/product/a22_cfe02d4314f94d4d9dea188cfc0d3788_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FMC LPN30000 DATE 2020 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-toan-than-family-inada-lpn30000d-date-2020" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-toan-than-family-inada-lpn30000d-date-2020" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-toan-than-family-inada-lpn30000d-date-2020">GHẾ MASSAGE FAMILY INADA FMC LPN30000 DATE 2020 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 93,000,000₫ </ins>
-                                                                    <del>145,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030617937">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-fmc-lpn5500-date-2020"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/ghe-massage-noi-dia-nhat-fmc-lpn5500-4-min__1___1__96e398983b3146ac9d345779ed311f8d_medium.jpg"src="//product.hstatic.net/1000227124/product/ghe-massage-noi-dia-nhat-fmc-lpn5500-4-min__1___1__96e398983b3146ac9d345779ed311f8d_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FMC LPN5500 Date 2020 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-family-inada-fmc-lpn5500-date-2020" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-fmc-lpn5500-date-2020" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-fmc-lpn5500-date-2020">GHẾ MASSAGE FAMILY INADA FMC LPN5500 Date 2020 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 55,000,000₫ </ins>
-                                                                    <del>115,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030574465">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-fmc-lpn9000-date-2019"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/a1_2658a1485ecf43338aa5c71c955a4920_medium.jpg"src="//product.hstatic.net/1000227124/product/a1_2658a1485ecf43338aa5c71c955a4920_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FMC LPN9000 Date 2020 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href='/products/ghe-massage-family-inada-fmc-lpn9000-date-2019' class='add-to-cart' data-toggle='tooltip' title='Lựa chọn'><i class='icon-shopping-cart'></i><span class='hidden-md hidden-lg'> Lựa chọn</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-fmc-lpn9000-date-2019" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-fmc-lpn9000-date-2019">GHẾ MASSAGE FAMILY INADA FMC LPN9000 Date 2020 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 47,000,000₫ </ins>
-                                                                    <del>95,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030574680">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-fmc-wg2200-date-2018"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/a1_cda34059adb14695bbe9dd7033c152e3_medium.jpg"src="//product.hstatic.net/1000227124/product/a1_cda34059adb14695bbe9dd7033c152e3_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FMC WG2200 Date 2018 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href='/products/ghe-massage-family-inada-fmc-wg2200-date-2018' class='add-to-cart' data-toggle='tooltip' title='Lựa chọn'><i class='icon-shopping-cart'></i><span class='hidden-md hidden-lg'> Lựa chọn</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-fmc-wg2200-date-2018" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-fmc-wg2200-date-2018">GHẾ MASSAGE FAMILY INADA FMC WG2200 Date 2018 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 35,000,000₫ </ins>
-                                                                    <del>75,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030574812">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-wu110-date-2017"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/91981106_2712871868812206_2279909910781100032_n_39b4eeb75a264a8b87374719abee7e6e_medium.jpg"src="//product.hstatic.net/1000227124/product/91981106_2712871868812206_2279909910781100032_n_39b4eeb75a264a8b87374719abee7e6e_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FMC WU110 DATE 2018 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-family-inada-wu110-date-2017" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-wu110-date-2017" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-wu110-date-2017">GHẾ MASSAGE FAMILY INADA FMC WU110 DATE 2018 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 30,000,000₫ </ins>
-                                                                    <del>65,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030619713">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-family-inada-x507-date-2019"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/fmc-x507-b__1__a040de58fbeb461582326bcba77a0e66_medium.jpg"src="//product.hstatic.net/1000227124/product/fmc-x507-b__1__a040de58fbeb461582326bcba77a0e66_medium.jpg" alt="GHẾ MASSAGE FAMILY INADA FMC X507 DATE 2019 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-family-inada-x507-date-2019" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-family-inada-x507-date-2019" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-family-inada-x507-date-2019">GHẾ MASSAGE FAMILY INADA FMC X507 DATE 2019 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 30,000,000₫ </ins>
-                                                                    <del>65,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030620408">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonicep-ma50"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428108582781_890bf858fa7b45bdb686891b4dce97ec_medium.jpg"src="//product.hstatic.net/1000227124/product/1428108582781_890bf858fa7b45bdb686891b4dce97ec_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA50" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonicep-ma50" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonicep-ma50" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonicep-ma50">GHẾ MASSAGE PANASONIC REAL PRO EP-MA50</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 25,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030627580">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma51"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428108505590_113830cdf76645349df0122a9e92e66d_medium.jpg"src="//product.hstatic.net/1000227124/product/1428108505590_113830cdf76645349df0122a9e92e66d_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA51" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma51" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma51" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma51">GHẾ MASSAGE PANASONIC REAL PRO EP-MA51</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 27,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030627268">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma73"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428110033465_fb95d1daf2ef4625bba18e1ed198969f_medium.jpg"src="//product.hstatic.net/1000227124/product/1428110033465_fb95d1daf2ef4625bba18e1ed198969f_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA73" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma73" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma73" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma73">GHẾ MASSAGE PANASONIC REAL PRO EP-MA73</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 48,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030626061">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma74"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428110033465_66df8f9dd1a44e65990b2a61b12b9c9a_medium.jpg"src="//product.hstatic.net/1000227124/product/1428110033465_66df8f9dd1a44e65990b2a61b12b9c9a_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA74" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma74" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma74" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma74">GHẾ MASSAGE PANASONIC REAL PRO EP-MA74</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 50,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030625933">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma75m"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428110227295_f761ba83d7c74297a1691be48fe9816a_medium.jpg"src="//product.hstatic.net/1000227124/product/1428110227295_f761ba83d7c74297a1691be48fe9816a_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA75M" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma75m" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma75m" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma75m">GHẾ MASSAGE PANASONIC REAL PRO EP-MA75M</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 52,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030625859">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma76m"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/41rwarpu2nl._ac_sx425__a67254dcca654e8b81a1bafaca170b72_medium.jpg"src="//product.hstatic.net/1000227124/product/41rwarpu2nl._ac_sx425__a67254dcca654e8b81a1bafaca170b72_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA76M" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma76m" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma76m" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma76m">GHẾ MASSAGE PANASONIC REAL PRO EP-MA76M</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 54,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030625723">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma85m"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428110227165_2b64b0c8f02641b795a7473ecaf720ee_medium.jpg"src="//product.hstatic.net/1000227124/product/1428110227165_2b64b0c8f02641b795a7473ecaf720ee_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA85M" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma85m" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma85m" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma85m">GHẾ MASSAGE PANASONIC REAL PRO EP-MA85M</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 54,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030625881">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma86m"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428149729986_9d412d0d16ec4bf89eeb2f5aea09d44a_medium.jpg"src="//product.hstatic.net/1000227124/product/1428149729986_9d412d0d16ec4bf89eeb2f5aea09d44a_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA86M" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma86m" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma86m" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma86m">GHẾ MASSAGE PANASONIC REAL PRO EP-MA86M</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 56,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030625795">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-ep-ma87m"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/2ef96cd04c04f8646f35_7cd2da60d82f4202b26df43972ec3489_medium.jpg"src="//product.hstatic.net/1000227124/product/2ef96cd04c04f8646f35_7cd2da60d82f4202b26df43972ec3489_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA87M" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-ep-ma87m" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-ep-ma87m" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-ep-ma87m">GHẾ MASSAGE PANASONIC REAL PRO EP-MA87M</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 58,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030625594">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma88m"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428316956079_3a470f202d594727a97600c4be7d9bf8_medium.jpg"src="//product.hstatic.net/1000227124/product/1428316956079_3a470f202d594727a97600c4be7d9bf8_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA88M" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma88m" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma88m" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma88m">GHẾ MASSAGE PANASONIC REAL PRO EP-MA88M</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 65,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030626442">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-ep-ma97m"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428260028014_23d225906aa74ab9817a12a842b9257e_medium.jpg"src="//product.hstatic.net/1000227124/product/1428260028014_23d225906aa74ab9817a12a842b9257e_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA97M" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-ep-ma97m" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-ep-ma97m" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-ep-ma97m">GHẾ MASSAGE PANASONIC REAL PRO EP-MA97M</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 73,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030625655">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma98m"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/ghe-massage-panasonic-ep-ma98m_f86a42e64ae94f0d9e13314968385053_medium.jpg"src="//product.hstatic.net/1000227124/product/ghe-massage-panasonic-ep-ma98m_f86a42e64ae94f0d9e13314968385053_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP-MA98M" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma98m" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma98m" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma98m">GHẾ MASSAGE PANASONIC REAL PRO EP-MA98M</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 80,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030625430">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep-ma99m"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428366965305_b51eb24d24ad4eb1bee8901400da1fdc_medium.jpg"src="//product.hstatic.net/1000227124/product/1428366965305_b51eb24d24ad4eb1bee8901400da1fdc_medium.jpg" alt="GHẾ MASSAGE PANASONIC Real Pro EP-MA99M" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep-ma99m" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep-ma99m" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep-ma99m">GHẾ MASSAGE PANASONIC Real Pro EP-MA99M</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 75,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030626349">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/ghe-massage-panasonic-real-pro-ep7000"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/1428108436586_7046ed4fd5f84d8087fd9eab11c90805_medium.jpg"src="//product.hstatic.net/1000227124/product/1428108436586_7046ed4fd5f84d8087fd9eab11c90805_medium.jpg" alt="GHẾ MASSAGE PANASONIC REAL PRO EP7000" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/ghe-massage-panasonic-real-pro-ep7000" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/ghe-massage-panasonic-real-pro-ep7000" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/ghe-massage-panasonic-real-pro-ep7000">GHẾ MASSAGE PANASONIC REAL PRO EP7000</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 40,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030626734">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/mien-phi-van-chuyen-ban-kinh-100km-mien-phi-cong-lap-dat-be-vac-nhan-cong-bao-hanh-18-thang-tang-doi-nguon-wax-ve-sinh-da-bat-phu-ghe-chong-bui-website-https-giadungnhat-vn-youtube-huong-dan-s"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/ep-ma70-product_imageglobal-1_sg_en1_b6a24782673f42ac9467e98f8de7528e_medium.png"src="//product.hstatic.net/1000227124/product/ep-ma70-product_imageglobal-1_sg_en1_b6a24782673f42ac9467e98f8de7528e_medium.png" alt="GHẾ MASSAGE PANASONIC REAL PRO-MA70" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/mien-phi-van-chuyen-ban-kinh-100km-mien-phi-cong-lap-dat-be-vac-nhan-cong-bao-hanh-18-thang-tang-doi-nguon-wax-ve-sinh-da-bat-phu-ghe-chong-bui-website-https-giadungnhat-vn-youtube-huong-dan-s" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/mien-phi-van-chuyen-ban-kinh-100km-mien-phi-cong-lap-dat-be-vac-nhan-cong-bao-hanh-18-thang-tang-doi-nguon-wax-ve-sinh-da-bat-phu-ghe-chong-bui-website-https-giadungnhat-vn-youtube-huong-dan-s" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/mien-phi-van-chuyen-ban-kinh-100km-mien-phi-cong-lap-dat-be-vac-nhan-cong-bao-hanh-18-thang-tang-doi-nguon-wax-ve-sinh-da-bat-phu-ghe-chong-bui-website-https-giadungnhat-vn-youtube-huong-dan-s">GHẾ MASSAGE PANASONIC REAL PRO-MA70</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 44,000,000₫ </ins>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1030626089">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item ">
-                                                        <div class="product pr-item clearfix  product_single">
-                                                            <div class="product-image">
-                                                                <a href="/products/nhan-ban-tu-ghe-massage-family-inada-fmc-s333e8-date-2018-made-in-japan"><img  class="lazyload" data-src="//hstatic.net/0/0/global/noDefaultImage6_medium.gif"src="//hstatic.net/0/0/global/noDefaultImage6_medium.gif" alt="Nhân bản từ GHẾ MASSAGE FAMILY INADA  FMC S333E8  DATE  2018 Made in Japan" class="img-responsive"></a>
-                                                                <div class="product-overlay">
-                                                                    <a href="/products/nhan-ban-tu-ghe-massage-family-inada-fmc-s333e8-date-2018-made-in-japan" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                                    <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/nhan-ban-tu-ghe-massage-family-inada-fmc-s333e8-date-2018-made-in-japan" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-title">
-                                                                    <h4><a href="/products/nhan-ban-tu-ghe-massage-family-inada-fmc-s333e8-date-2018-made-in-japan">Nhân bản từ GHẾ MASSAGE FAMILY INADA  FMC S333E8  DATE  2018 Made in Japan</a></h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-desc">
-                                                                <div class="product-price">
-                                                                    <ins> 32,000,000₫ </ins>
-                                                                    <del>70,000,000₫</del>
-                                                                </div>
-                                                                <div class="haravan-product-reviews-badge" data-id="1038128098">  </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -1352,73 +694,31 @@
                                 <div class="widget clearfix">
                                     <h4><a href='/collections/may-giat-nhat-noi-dia-nhat-bai'>Sản phẩm khuyến mãi</a></h4>
                                     <div id="post-list-footer" class='sidebar_menu'>
+                                        @foreach($promotionalProducts as $value)
                                         <div class="item ">
                                             <div class="product pr-item clearfix  product_single">
                                                 <div class="product-image">
-                                                    <a href="/products/may-giat-toshiba-tw-g500l"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/4416_p_1490409213220-removebg-preview1__1__de8c9858b9464186aaf34f082069d4f6_medium.jpg"src="//product.hstatic.net/1000227124/product/4416_p_1490409213220-removebg-preview1__1__de8c9858b9464186aaf34f082069d4f6_medium.jpg" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G500" class="img-responsive"></a>
+                                                    <a href="{{route('wave.detail.product', $value->slug)}}"><img  class="lazyload" data-src="{{asset('storage/' . $value->image)}}"src="{{asset('storage/' . $value->image)}}" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G500" class="img-responsive"></a>
                                                     <div class="product-overlay">
                                                         <a href="/products/may-giat-toshiba-tw-g500l" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                        <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-toshiba-tw-g500l" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
+                                                        <a href="{{route('wave.detail.product', $value->slug)}}" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-toshiba-tw-g500l" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
                                                     </div>
                                                 </div>
                                                 <div class="product-desc">
                                                     <div class="product-title">
-                                                        <h4><a href="/products/may-giat-toshiba-tw-g500l">MÁY GIẶT SẤY NHIỆT TOSHIBA TW G500</a></h4>
+                                                        <h4><a href="/products/may-giat-toshiba-tw-g500l">{{$value->name}}</a></h4>
                                                     </div>
                                                 </div>
                                                 <div class="product-desc">
                                                     <div class="product-price">
-                                                        <ins> 10,000,000₫ </ins>
-                                                        <del>12,000,000₫</del>
+                                                        <ins> {{number_format($value->sub_price) . 'đ'}} </ins>
+                                                        <del>{{number_format($value->price) . 'đ'}} </del>
                                                     </div>
                                                     <div class="haravan-product-reviews-badge" data-id="1020742272">  </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="item ">
-                                            <div class="product pr-item clearfix  product_single">
-                                                <div class="product-image">
-                                                    <a href="/products/may-giat-say-block-toshiba-tw-g510"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/giat-toshiba-twg510l-inverter-giat-9kg-say-6kg-moi-95-removebg-preview_dc1a29f94c7543799a19e2eb33d5ea55_medium.jpg"src="//product.hstatic.net/1000227124/product/giat-toshiba-twg510l-inverter-giat-9kg-say-6kg-moi-95-removebg-preview_dc1a29f94c7543799a19e2eb33d5ea55_medium.jpg" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G510" class="img-responsive"></a>
-                                                    <div class="product-overlay">
-                                                        <a href="/products/may-giat-say-block-toshiba-tw-g510" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                        <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-say-block-toshiba-tw-g510" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-title">
-                                                        <h4><a href="/products/may-giat-say-block-toshiba-tw-g510">MÁY GIẶT SẤY NHIỆT TOSHIBA TW G510</a></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-price">
-                                                        <ins> 10,500,000₫ </ins>
-                                                    </div>
-                                                    <div class="haravan-product-reviews-badge" data-id="1030609602">  </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item ">
-                                            <div class="product pr-item clearfix  product_single">
-                                                <div class="product-image">
-                                                    <a href="/products/may-giat-say-block-toshiba-g520"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/ay-6kg-inverter-chuyen-dong-truc-tiep-86-750x500-removebg-preview1__1__f7efca8f1c32422a97059f9a5cea3167_medium.jpg"src="//product.hstatic.net/1000227124/product/ay-6kg-inverter-chuyen-dong-truc-tiep-86-750x500-removebg-preview1__1__f7efca8f1c32422a97059f9a5cea3167_medium.jpg" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G520" class="img-responsive"></a>
-                                                    <div class="product-overlay">
-                                                        <a href="/products/may-giat-say-block-toshiba-g520" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                        <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-say-block-toshiba-g520" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-title">
-                                                        <h4><a href="/products/may-giat-say-block-toshiba-g520">MÁY GIẶT SẤY NHIỆT TOSHIBA TW G520</a></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-price">
-                                                        <ins> 11,000,000₫ </ins>
-                                                    </div>
-                                                    <div class="haravan-product-reviews-badge" data-id="1030609644">  </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <!-- end recent product -->
@@ -1463,54 +763,24 @@
                                 <div class="widget clearfix">
                                     <h4><a href='/collections/may-loc-khong-khi-nhat-bai'>Sản phẩm nổi bật</a></h4>
                                     <div id="Popular-item" class='sidebar_menu'>
+                                        @foreach($featuredProducts as $featuredProduct)
                                         <div class="spost clearfix">
                                             <div class="entry-image">
-                                                <a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-daikin-mck70p-nhat-noi-dia"><img src="//product.hstatic.net/1000227124/product/unnamed_63596c0ef4ed407baca6389c73be625c_medium.jpg" alt="MÁY LỌC KHÍ DAIKIN MCK70P NHẬT NỘI ĐỊA"></a>
+                                                <a href="{{route('wave.detail.product', $featuredProduct->slug)}}"><img src="{{asset('storage/' . $featuredProduct->image)}}" alt=""></a>
                                             </div>
                                             <div class="entry-c">
                                                 <div class="entry-title">
-                                                    <h4><a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-daikin-mck70p-nhat-noi-dia">MÁY LỌC KHÍ DAIKIN MCK70P NHẬT NỘI ĐỊA</a></h4>
+                                                    <h4><a href="{{route('wave.detail.product',$featuredProduct->slug)}}">{{ $featuredProduct->name }}</a></h4>
                                                 </div>
                                                 <ul class="entry-meta">
                                                     <li class="color">
-                                                        <ins>3,500,000₫</ins>
+                                                        <ins>{{ number_format($featuredProduct->price) . 'đ'}}</ins>
                                                     </li>
                                                     <!--<li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i></li>-->
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-sharp-kc-f70"><img src="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_53981a257c654e8485a1242446938542_medium.jpg" alt="MÁY LỌC KHÍ SHARP KC F70"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-sharp-kc-f70">MÁY LỌC KHÍ SHARP KC F70</a></h4>
-                                                </div>
-                                                <ul class="entry-meta">
-                                                    <li class="color">
-                                                        <ins>3,200,000₫</ins>
-                                                    </li>
-                                                    <!--<li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i></li>-->
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-sharp-kc-d70"><img src="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_19715d5df853473290d65e9974453c86_medium.jpg" alt="MÁY LỌC KHÍ SHARP KC D70"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-sharp-kc-d70">MÁY LỌC KHÍ SHARP KC D70</a></h4>
-                                                </div>
-                                                <ul class="entry-meta">
-                                                    <li class="color">
-                                                        <ins>3,200,000₫</ins>
-                                                    </li>
-                                                    <!--<li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i></li>-->
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <!-- end most popular -->

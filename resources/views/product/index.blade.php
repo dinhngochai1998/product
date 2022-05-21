@@ -86,6 +86,7 @@
 				</div>
 			</div>
 		</header>
+	@include('product.header')
 		<!-- #header end -->
 {{--		<div class='container slide_wrapper'>--}}
 {{--			<div class="hidden-lg hidden-md fanpape_mobile">--}}
@@ -357,7 +358,7 @@
 							</div>
 						</div>
 					</div>
-					@foreach($products as $product)
+					@foreach($products as $key => $product)
 					<div class='index_col_group' id='index_col_group_8'>
 						<div class="col-md-12 col-xs-12 nopad">
 							<div class='col-md-20 nopadding col-sm-3 index_col_group_left'>
@@ -374,7 +375,7 @@
 										@foreach($product['subCategory'] as $subCategory)
 										<li><a href="/collections/may-loc-nuoc-toshiba">{{strtoupper($subCategory->name)}}</a></li>
 										@endforeach
-										<li class="more"><a href="may-loc-nuoc-nhat-bai">Xem tất cả</a></li>
+										<li class="more"><a href="{{route('wave.category', $product['category']->slug)}}">Xem tất cả</a></li>
 									</ul>
 								</div>
 							</div>
