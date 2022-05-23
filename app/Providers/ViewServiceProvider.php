@@ -26,8 +26,8 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            ['product.header'],
-            'App\Http\View\Composers\MenuComposer'
+            ['product.header', 'product.all-product'],
+            'App\Http\View\Composers\CategoryAndSubCategory'
         );
     }
 }

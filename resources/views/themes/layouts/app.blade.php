@@ -151,8 +151,8 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="YYuOM2mE"></script>
 </head>
-{{--    @include('product.header')--}}
+
 @include('product.menu')
     @yield('content')
-
+@include('product.footer')
 </html>

@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,16 @@ class AppServiceProvider extends ServiceProvider
             $this->app['request']->server->set('HTTPS', true);
         }
         $this->setSchemaDefaultLength();
+
+        Paginator::useBootstrap();
+    }
+
+    private function setSchemaDefaultLength(): void
+    {
+        try {
+            Schema::defaultStringLength(191);
+        } catch (\Exception $exception) {
+        }
     }
 
     /**
@@ -28,13 +39,5 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
 
-    }
-
-    private function setSchemaDefaultLength(): void
-    {
-        try {
-            Schema::defaultStringLength(191);
-        }
-        catch (\Exception $exception){}
     }
 }

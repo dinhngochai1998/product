@@ -42,7 +42,7 @@
                             <button class='button'>Tìm kiếm</button>
                         </form>
                         <div id="top-cart" class='top-cart-block col-md-1 nopadding'>
-                            <a href="/cart" id="top-cart-trigger"><img src='//theme.hstatic.net/1000227124/1000685523/14/cart_bg.png?v=21' ><span class='top_cart_qty'>1</span>
+                            <a href="/cart" id="top-cart-trigger"><img src='{{ asset('images/icons/cart_bg.png')}}' ><span class='top_cart_qty'>0</span>
                             </a>
                             <div class="top-cart-content">
                                 <div class="top-cart-title">
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class='top_hotline col-sm-3 hidden-sm hidden-xs nopadding' href='tel:098 888 8642'><img src='//theme.hstatic.net/1000227124/1000685523/14/top_hotline.png?v=21' /></a>
+                        <a class='top_hotline col-sm-3 hidden-sm hidden-xs nopadding' href='tel:098 888 8642'><img src='{{asset('images/icons/top_hotline.png')}}' /></a>
                     </div>
                     <!-- #top-search end -->
                     <!-- top link trigger --->
