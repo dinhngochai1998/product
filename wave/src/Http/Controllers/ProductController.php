@@ -9,6 +9,7 @@ namespace Wave\Http\Controllers;
 use App\Category;
 use App\Helper\RateConstant;
 use App\Product;
+use Illuminate\Http\Request;
 use Wave\Post;
 
 class ProductController extends \App\Http\Controllers\Controller
@@ -40,17 +41,36 @@ class ProductController extends \App\Http\Controllers\Controller
 
     public function news()
     {
-        $news = Category::query()->with('posts')->where('name', 'Tin tức')->first();
+        $news       = Category::query()->with('posts')->where('name', 'Tin tức')->first();
         $userManual = Category::query()->with('posts')->where('name', 'Hướng dẫn sử dụng')->first();
-        return view('product.news', compact('news','userManual'));
+
+        return view('product.news', compact('news', 'userManual'));
     }
 
     public function newsDetail($slug)
     {
-        $newsDetail = Post::query()
-                          ->where('slug', $slug)
-                          ->first();
+        $newsDetail          = Post::query()
+                                   ->where('slug', $slug)
+                                   ->first();
+        $promotionalProducts = Product::query()->where('rate', RateConstant::PROMOTIONAL_PRODUCTS)->get();
+        $featuredProducts    = Product::query()->where('rate', RateConstant::FEATURED_PRODUCTS)->get();
         $userManual = Category::query()->with('posts')->where('name', 'Hướng dẫn sử dụng')->first();
-        return view('product.news-detail', compact('newsDetail', 'userManual'));
+        return view('product.news-detail', compact('newsDetail', 'featuredProducts', 'promotionalProducts', 'userManual'));
+    }
+
+    public function search(Request $request)
+    {
+        $searchProduct       = Product::query()
+                                      ->where('name', 'like', '%' . $request->search . '%')
+                                      ->get();
+        $promotionalProducts = Product::query()->where('rate', RateConstant::PROMOTIONAL_PRODUCTS)->limit(4)->get();
+        $userManual          = Category::query()->with('posts')
+                                       ->where('name', 'Hướng dẫn sử dụng')
+                                       ->limit(4)
+                                       ->first();
+        $featuredProducts    = Product::query()->where('rate', RateConstant::FEATURED_PRODUCTS)->limit(4)->get();
+
+        return view('product.search',
+                    compact('searchProduct', 'promotionalProducts', 'userManual', 'featuredProducts'));
     }
 }

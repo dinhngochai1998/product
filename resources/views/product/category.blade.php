@@ -37,8 +37,8 @@
                   ============================================= -->
                     <div class='top_search col-md-9 col-xs-12'>
                         <form action="/search"class='col-sm-8 form-inline nopadding nomargin'>
-                            <input type="hidden" name="type" value="product" />
-                            <input type="text" name="q"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
+                            <input type="hidden" name="search" value="product" />
+                            <input type="text" name="name"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
                             <button class='button'>Tìm kiếm</button>
                         </form>
                         <div id="top-cart" class='top-cart-block col-md-1 nopadding'>
@@ -88,6 +88,7 @@
                 </div>
             </div>
         </header>
+        @include('product.categories')
         <!-- #header end -->
         <!-- Content
          ============================================= -->
@@ -510,112 +511,57 @@
                                 <!-- end categories -->
                                 <!-- recent product -->
                                 <div class="widget clearfix">
-                                    <h4><a href='/collections/may-giat-nhat-noi-dia-nhat-bai'>Sản phẩm khuyến mãi</a></h4>
+                                    <h4><a href='#'>Sản phẩm khuyến mãi</a></h4>
                                     <div id="post-list-footer" class='sidebar_menu'>
-                                        <div class="item ">
-                                            <div class="product pr-item clearfix  product_single">
-                                                <div class="product-image">
-                                                    <a href="/products/may-giat-toshiba-tw-g500l"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/4416_p_1490409213220-removebg-preview1__1__de8c9858b9464186aaf34f082069d4f6_medium.jpg"src="//product.hstatic.net/1000227124/product/4416_p_1490409213220-removebg-preview1__1__de8c9858b9464186aaf34f082069d4f6_medium.jpg" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G500" class="img-responsive"></a>
-                                                    <div class="product-overlay">
-                                                        <a href="/products/may-giat-toshiba-tw-g500l" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                        <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-toshiba-tw-g500l" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
+
+                                        @foreach($promotionalProducts as $value)
+                                            <div class="item ">
+                                                <div class="product pr-item clearfix  product_single">
+                                                    <div class="product-image">
+                                                        <a href="{{route('wave.detail.product', $value->slug)}}"><img  class="lazyload" data-src="{{asset('storage/' . $value->image)}}"src="{{asset('storage/' . $value->image)}}" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G500" class="img-responsive"></a>
+                                                        <div class="product-overlay">
+                                                            {{--                                                        <a href="/products/may-giat-toshiba-tw-g500l" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>--}}
+                                                            {{--                                                        <a href="{{route('wave.detail.product', $value->slug)}}" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-toshiba-tw-g500l" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>--}}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-title">
-                                                        <h4><a href="/products/may-giat-toshiba-tw-g500l">MÁY GIẶT SẤY NHIỆT TOSHIBA TW G500</a></h4>
+                                                    <div class="product-desc">
+                                                        <div class="product-title">
+                                                            <h4><a href="/products/may-giat-toshiba-tw-g500l">{{$value->name}}</a></h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-price">
-                                                        <ins> 10,000,000₫ </ins>
-                                                        <del>12,000,000₫</del>
+                                                    <div class="product-desc">
+                                                        <div class="product-price">
+                                                            <ins> {{number_format($value->sub_price) . 'đ'}} </ins>
+                                                            <del>{{number_format($value->price) . 'đ'}} </del>
+                                                        </div>
+                                                        <div class="haravan-product-reviews-badge" data-id="1020742272">  </div>
                                                     </div>
-                                                    <div class="haravan-product-reviews-badge" data-id="1020742272">  </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="item ">
-                                            <div class="product pr-item clearfix  product_single">
-                                                <div class="product-image">
-                                                    <a href="/products/may-giat-say-block-toshiba-tw-g510"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/giat-toshiba-twg510l-inverter-giat-9kg-say-6kg-moi-95-removebg-preview_dc1a29f94c7543799a19e2eb33d5ea55_medium.jpg"src="//product.hstatic.net/1000227124/product/giat-toshiba-twg510l-inverter-giat-9kg-say-6kg-moi-95-removebg-preview_dc1a29f94c7543799a19e2eb33d5ea55_medium.jpg" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G510" class="img-responsive"></a>
-                                                    <div class="product-overlay">
-                                                        <a href="/products/may-giat-say-block-toshiba-tw-g510" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                        <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-say-block-toshiba-tw-g510" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-title">
-                                                        <h4><a href="/products/may-giat-say-block-toshiba-tw-g510">MÁY GIẶT SẤY NHIỆT TOSHIBA TW G510</a></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-price">
-                                                        <ins> 10,500,000₫ </ins>
-                                                    </div>
-                                                    <div class="haravan-product-reviews-badge" data-id="1030609602">  </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item ">
-                                            <div class="product pr-item clearfix  product_single">
-                                                <div class="product-image">
-                                                    <a href="/products/may-giat-say-block-toshiba-g520"><img  class="lazyload" data-src="//product.hstatic.net/1000227124/product/ay-6kg-inverter-chuyen-dong-truc-tiep-86-750x500-removebg-preview1__1__f7efca8f1c32422a97059f9a5cea3167_medium.jpg"src="//product.hstatic.net/1000227124/product/ay-6kg-inverter-chuyen-dong-truc-tiep-86-750x500-removebg-preview1__1__f7efca8f1c32422a97059f9a5cea3167_medium.jpg" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G520" class="img-responsive"></a>
-                                                    <div class="product-overlay">
-                                                        <a href="/products/may-giat-say-block-toshiba-g520" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                        <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-say-block-toshiba-g520" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-title">
-                                                        <h4><a href="/products/may-giat-say-block-toshiba-g520">MÁY GIẶT SẤY NHIỆT TOSHIBA TW G520</a></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="product-desc">
-                                                    <div class="product-price">
-                                                        <ins> 11,000,000₫ </ins>
-                                                    </div>
-                                                    <div class="haravan-product-reviews-badge" data-id="1030609644">  </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+
                                     </div>
                                 </div>
                                 <!-- end recent product -->
                                 <!-- recent product -->
                                 <div class="widget clearfix">
-                                    <h4><a href='/blogs/news'>hướng dẫn sử dụng sản phẩm</a></h4>
+                                    <h4><a href='#'>hướng dẫn sử dụng sản phẩm</a></h4>
                                     <div id="post-list-footer" class='sidebar_menu'>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/blogs/news/lieu-co-an-toan-khi-uong-nuoc-truc-tiep-tu-may-loc-nuoc-hay-khong"><img src="//file.hstatic.net/1000227124/article/may-loc-nuoc-nhat-ban-phong-vu-1-1024x773_bde3b26f6080429592eb029729fe9f8e_medium.png" alt="Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/blogs/news/lieu-co-an-toan-khi-uong-nuoc-truc-tiep-tu-may-loc-nuoc-hay-khong">Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?</a></h4>
+                                        @foreach($userManual->posts as $value)
+                                            <div id="post-list-footer" class='sidebar_menu'>
+
+                                                <div class="spost clearfix">
+                                                    <div class="entry-image">
+                                                        <a href="{{route('wave.news.detail', $value->slug)}}"><img src="{{asset('storage/' .$value->image)}}" alt="Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?"></a>
+                                                    </div>
+                                                    <div class="entry-c">
+                                                        <div class="entry-title">
+                                                            <h4><a href="{{route('wave.news.detail', $value->slug)}}">{{$value->title}}</a></h4>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/blogs/news/dung-may-khong-khi-ca-ngay-co-tot-khong"><img src="//file.hstatic.net/1000227124/article/may-loc-khong-khi-sharp-kc-h50-2_2ec1b3b2d28045659f894669d08f1119_medium.png" alt="Dùng máy không khí cả ngày có tốt không?"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/blogs/news/dung-may-khong-khi-ca-ngay-co-tot-khong">Dùng máy không khí cả ngày có tốt không?</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/blogs/news/su-dung-may-loc-khong-khi-nhu-the-nao-cho-dung"><img src="//file.hstatic.net/1000227124/article/269833353177938_7706911392074301440_n_02ec41d7567547f2a325a264350d747e_043d0780047c4088a8fe77a0bb2ef5e6_medium.jpg" alt="Sử dụng máy lọc không khí như thế nào cho đúng?"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/blogs/news/su-dung-may-loc-khong-khi-nhu-the-nao-cho-dung">Sử dụng máy lọc không khí như thế nào cho đúng?</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <!-- end recent product -->
@@ -623,54 +569,24 @@
                                 <div class="widget clearfix">
                                     <h4><a href='/collections/may-loc-khong-khi-nhat-bai'>Sản phẩm nổi bật</a></h4>
                                     <div id="Popular-item" class='sidebar_menu'>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-daikin-mck70p-nhat-noi-dia"><img src="//product.hstatic.net/1000227124/product/unnamed_63596c0ef4ed407baca6389c73be625c_medium.jpg" alt="MÁY LỌC KHÍ DAIKIN MCK70P NHẬT NỘI ĐỊA"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-daikin-mck70p-nhat-noi-dia">MÁY LỌC KHÍ DAIKIN MCK70P NHẬT NỘI ĐỊA</a></h4>
+                                        @foreach($featuredProducts as $featuredProduct)
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="{{route('wave.detail.product', $featuredProduct->slug)}}"><img src="{{asset('storage/' . $featuredProduct->image)}}" alt=""></a>
                                                 </div>
-                                                <ul class="entry-meta">
-                                                    <li class="color">
-                                                        <ins>3,500,000₫</ins>
-                                                    </li>
-                                                    <!--<li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i></li>-->
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-sharp-kc-f70"><img src="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_53981a257c654e8485a1242446938542_medium.jpg" alt="MÁY LỌC KHÍ SHARP KC F70"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-sharp-kc-f70">MÁY LỌC KHÍ SHARP KC F70</a></h4>
+                                                <div class="entry-c">
+                                                    <div class="entry-title">
+                                                        <h4><a href="{{route('wave.detail.product',$featuredProduct->slug)}}">{{ $featuredProduct->name }}</a></h4>
+                                                    </div>
+                                                    <ul class="entry-meta">
+                                                        <li class="color">
+                                                            <ins>{{ number_format($featuredProduct->price) . 'đ'}}</ins>
+                                                        </li>
+                                                        <!--<li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i></li>-->
+                                                    </ul>
                                                 </div>
-                                                <ul class="entry-meta">
-                                                    <li class="color">
-                                                        <ins>3,200,000₫</ins>
-                                                    </li>
-                                                    <!--<li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i></li>-->
-                                                </ul>
                                             </div>
-                                        </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-sharp-kc-d70"><img src="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_19715d5df853473290d65e9974453c86_medium.jpg" alt="MÁY LỌC KHÍ SHARP KC D70"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/collections/may-loc-khong-khi-nhat-bai/products/may-loc-khi-sharp-kc-d70">MÁY LỌC KHÍ SHARP KC D70</a></h4>
-                                                </div>
-                                                <ul class="entry-meta">
-                                                    <li class="color">
-                                                        <ins>3,200,000₫</ins>
-                                                    </li>
-                                                    <!--<li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i></li>-->
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <!-- end most popular -->
@@ -1705,6 +1621,5 @@
             </div>
         </div>
     </div>
-    <link rel='stylesheet' media="screen" href='{{asset('css/box-style.css')}}'/>
     </body>
 @endsection

@@ -87,7 +87,7 @@
                 </div>
             </div>
         </header>
-    @include('product.header')
+    @include('product.categories')
         <!-- #header end -->
         <!-- Content
            ============================================= -->
@@ -284,14 +284,23 @@
                                                     <button type="submit" id='' class="add-to-cart icon-cart button nomargin col-xs-12 col-md-6 nopadding">Đặt hàng</button>
                                                 </div>
                                                 <!-- BK BUTTON -->
-                                                <div class='bk-btn'></div>
+                                                <div class="bk-btn"><button class="bk-btn-paynow" style="display: inline-block;background-color: #e00 !important;color: #fff !important" type="button" onclick=""><strong>Mua ngay</strong><span>Giao tận nơi hoặc nhận tại cửa hàng</span></button><button class="bk-btn-installment" style="display: inline-block;background-color: #288ad6 !important;color: #fff !important" type="button"><strong>Trả góp qua thẻ</strong><span>Visa, Master, JCB</span></button></div>
                                                 <!-- END BK BUTTON -->
+                                                <script>
+                                                    $('.bk-btn').click(function() {
+                                                        $('.bk-modal').css({
+                                                            'display': 'block'
+                                                        });
+                                                    });
+                                                </script>
                                                 <script>
                                                     var quantity = parseInt($('#ProductDetailsForm .product-quantity input.qty').val());
 
                                                     $('#ProductDetailsForm .minus').click(function() {
                                                         if (quantity > 0) {
                                                             if (quantity == 1) {
+
+
                                                                 $('#addtocart').attr('disabled','disabled');
                                                             }
                                                             quantity -= 1;
@@ -700,8 +709,8 @@
                                                 <div class="product-image">
                                                     <a href="{{route('wave.detail.product', $value->slug)}}"><img  class="lazyload" data-src="{{asset('storage/' . $value->image)}}"src="{{asset('storage/' . $value->image)}}" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G500" class="img-responsive"></a>
                                                     <div class="product-overlay">
-                                                        <a href="/products/may-giat-toshiba-tw-g500l" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                        <a href="{{route('wave.detail.product', $value->slug)}}" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-toshiba-tw-g500l" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
+{{--                                                        <a href="/products/may-giat-toshiba-tw-g500l" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>--}}
+{{--                                                        <a href="{{route('wave.detail.product', $value->slug)}}" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/may-giat-toshiba-tw-g500l" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>--}}
                                                     </div>
                                                 </div>
                                                 <div class="product-desc">
@@ -725,38 +734,21 @@
                                 <!-- recent product -->
                                 <div class="widget clearfix">
                                     <h4><a href='/blogs/news'>hướng dẫn sử dụng sản phẩm</a></h4>
+                                    @foreach($userManual->posts as $value)
                                     <div id="post-list-footer" class='sidebar_menu'>
+
                                         <div class="spost clearfix">
                                             <div class="entry-image">
-                                                <a href="/blogs/news/lieu-co-an-toan-khi-uong-nuoc-truc-tiep-tu-may-loc-nuoc-hay-khong"><img src="//file.hstatic.net/1000227124/article/may-loc-nuoc-nhat-ban-phong-vu-1-1024x773_bde3b26f6080429592eb029729fe9f8e_medium.png" alt="Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?"></a>
+                                                <a href="{{route('wave.news.detail', $value->slug)}}"><img src="{{asset('storage/' .$value->image)}}" alt="Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?"></a>
                                             </div>
                                             <div class="entry-c">
                                                 <div class="entry-title">
-                                                    <h4><a href="/blogs/news/lieu-co-an-toan-khi-uong-nuoc-truc-tiep-tu-may-loc-nuoc-hay-khong">Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/blogs/news/dung-may-khong-khi-ca-ngay-co-tot-khong"><img src="//file.hstatic.net/1000227124/article/may-loc-khong-khi-sharp-kc-h50-2_2ec1b3b2d28045659f894669d08f1119_medium.png" alt="Dùng máy không khí cả ngày có tốt không?"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/blogs/news/dung-may-khong-khi-ca-ngay-co-tot-khong">Dùng máy không khí cả ngày có tốt không?</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/blogs/news/su-dung-may-loc-khong-khi-nhu-the-nao-cho-dung"><img src="//file.hstatic.net/1000227124/article/269833353177938_7706911392074301440_n_02ec41d7567547f2a325a264350d747e_043d0780047c4088a8fe77a0bb2ef5e6_medium.jpg" alt="Sử dụng máy lọc không khí như thế nào cho đúng?"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/blogs/news/su-dung-may-loc-khong-khi-nhu-the-nao-cho-dung">Sử dụng máy lọc không khí như thế nào cho đúng?</a></h4>
+                                                    <h4><a href="{{route('wave.news.detail', $value->slug)}}">{{$value->title}}</a></h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                                 <!-- end recent product -->
                                 <!-- most popular -->
@@ -1676,7 +1668,10 @@
             Layout.initNavScrolling();
         });
     </script>
+
+    <div id="bk-modal"><div id="bk-modal-payment" class="bk-modal" style="display: none;"><div class="bk-modal-content" id="bk-modal-content-style"><div id="bk-modal-pop" class="bk-modal-header"><div class="bk-container-fluid" style="box-sizing: border-box"><div class="bk-row bk-popup-header"><div class="bk-col-5 bk-col-lg-3" style="box-sizing: border-box" id="bk-logo"></div><div class="bk-col-3 bk-col-lg-6" style="box-sizing: border-box"></div><div class="bk-col-4 bk-col-lg-3 bk-text-right" style="box-sizing: border-box"><button type="button" id="bk-modal-close">×</button></div></div></div></div><div class="bk-modal-body"><iframe width="100%" height="100%" id="iframe" src="https://pg.baokim.vn/?token=nNOgQdnheNnboI2L8hQkwmTX7IHag4_1653484840"></iframe></div></div></div><div id="bk-modal-notify" class="bk-modal"><div class="bk-modal-content" id="bk-modal-content-notify"><div class="bk-modal-header"><div class="bk-container-fluid"><div class="bk-row bk-popup-header"><div class="bk-col-3" id="bk-logo"></div><div class="bk-col-6"></div><div class="bk-col-3 bk-text-right"><button type="button" id="bk-modal-close">×</button></div></div></div></div><div class="bk-modal-body"><p class="text-center">Sản phẩm đã hết hàng, không thể thanh toán</p><button type="button" class="bk-modal-notify-close bk-btn-notify-close">Đóng</button></div></div></div></div>
     <script src='{{asset('js/footer_scripts.js')}}' type='text/javascript'></script>
+
     <div id="facebook-inbox" hiden="true">
         <button class="facebook-inbox-tab" style="display: block; ">
       <span class="facebook-inbox-tab-icon">
@@ -1695,6 +1690,5 @@
             </div>
         </div>
     </div>
-    <link rel='stylesheet' media="screen" href='{{asset('css/box-style.css')}}'/>
     </body>
 @endsection

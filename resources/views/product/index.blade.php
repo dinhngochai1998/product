@@ -28,6 +28,7 @@
 		<!-- #top-bar end -->
 		<!-- Header
          ============================================= -->
+
 		<header id="header">
 			<div id="header-wrap">
 				<div class="container clearfix">
@@ -47,9 +48,9 @@
 					<!-- Top Search
                   ============================================= -->
 					<div class='top_search col-md-9 col-xs-12'>
-						<form action="/search"class='col-sm-8 form-inline nopadding nomargin'>
-							<input type="hidden" name="type" value="product" />
-							<input type="text" name="q"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
+						<form action="{{route('wave.search.product')}}"class='col-sm-8 form-inline nopadding nomargin'>
+							<input type="hidden" name="1"  />
+							<input type="text" name="2"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
 							<button class='button'>Tìm kiếm</button>
 						</form>
 						<div id="top-cart" class='top-cart-block col-md-1 nopadding'>
@@ -1069,6 +1070,5 @@
 			</div>
 		</div>
 	</div>
-	<link rel='stylesheet' media="screen" href='{{asset('css/box-style.css')}}'/>
 	</body>
 @endsection

@@ -385,6 +385,7 @@ h2.banner-title {
 	transition: all 0.4s;
 	padding: 10px 0;
 	width:75%;
+	/*margin-top: -30px;*/
 }
 .top_search form, 
 .top_search .form-group, 

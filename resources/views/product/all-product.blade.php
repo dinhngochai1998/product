@@ -133,15 +133,15 @@
                                         <div class='col-sm-3 col-xs-6 nopadding product_single'>
                                             <div class="product pr-item clearfix">
                                                 <div class="product-image">
-                                                    <a href=""><img src="{{asset('storage/' . $product->image)}}"  alt="Nhân bản từ GHẾ MASSAGE FAMILY INADA  FMC S333E8  DATE  2018 Made in Japan" class="img-responsive"></a>
+                                                    <a href="{{route('wave.detail.product', $product->slug)}}"><img src="{{asset('storage/' . $product->image)}}"  alt="Nhân bản từ GHẾ MASSAGE FAMILY INADA  FMC S333E8  DATE  2018 Made in Japan" class="img-responsive"></a>
                                                     <div class="product-overlay">
-                                                        <a href="/products/nhan-ban-tu-ghe-massage-family-inada-fmc-s333e8-date-2018-made-in-japan" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>
-                                                        <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/nhan-ban-tu-ghe-massage-family-inada-fmc-s333e8-date-2018-made-in-japan" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>
+{{--                                                        <a href="/products/nhan-ban-tu-ghe-massage-family-inada-fmc-s333e8-date-2018-made-in-japan" class="add-to-cart product_quick_add" data-toggle='tooltip' title='Thêm vào giỏ'><i class="icon-shopping-cart"></i><span class='hidden-md hidden-lg'> Thêm vào giỏ</span></a>--}}
+{{--                                                        <a href="#product-pop-up" class="item-quick-view fancybox-fast-view hidden-sm hidden-xs" product_url="/products/nhan-ban-tu-ghe-massage-family-inada-fmc-s333e8-date-2018-made-in-japan" data-toggle='tooltip' title='Xem nhanh'><i class="icon-zoom-in2"></i><span class='hidden-md hidden-lg'> Xem nhanh</span></a>--}}
                                                     </div>
                                                 </div>
                                                 <div class="product-desc">
                                                     <div class="product-title">
-                                                        <h4><a href="/products/nhan-ban-tu-ghe-massage-family-inada-fmc-s333e8-date-2018-made-in-japan">{{$product->name}}</a></h4>
+                                                        <h4><a href="{{route('wave.category', $product->slug)}}">{{$product->name}}</a></h4>
                                                     </div>
                                                 </div>
                                                 <div class="product-desc">
@@ -164,199 +164,6 @@
                                     </script>
                                 </div>
                                 {!! $products->links() !!}
-{{--                                <div class='pagination_wrapper'>--}}
-{{--                                    <ul class="pagination ajax-pagination">--}}
-{{--                                        <li class='disabled'><a>&laquo;</a></li>--}}
-{{--                                        <li class='active'><a>1</a></li>--}}
-{{--                                        <li><a href="#" pagefilter="/collections/all?page=2" pageid="2">2</a></li>--}}
-{{--                                        <li><a href="#" pagefilter="/collections/all?page=3" pageid="3">3</a></li>--}}
-{{--                                        <li class='active'><a>&hellip;</a></li>--}}
-{{--                                        <li><a href="#" pagefilter="/collections/all?page=7" pageid="7">7</a></li>--}}
-{{--                                        <li><a href="#" pagefilter="/collections/all?page=2" pageid="2">&raquo;</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                    <!-- BEGIN: AJAX-FILTER -->--}}
-{{--                                    <script>--}}
-{{--                                        $(".resetButton").click(function(e){--}}
-{{--                                            e.preventDefault();	// không tự nhảy lên đầu trang--}}
-{{--                                            $(':input[filtertype=search]:checked').each(function(){--}}
-{{--                                                this.checked = false;--}}
-{{--                                                var searchString=getStringFilter($(this));--}}
-{{--                                                var url_final = '/'+searchString+'&view=grid_and_control';--}}
-{{--                                                //loadResultBy(url_final,$("#results"));--}}
-{{--                                            });--}}
-{{--                                        });--}}
-
-{{--                                        function getStringFilter(currentSelected){--}}
-{{--                                            var vendor="",product_type="",price="",color='',tag_custom_1="",tag_custom_2="",tag_custom_3="";--}}
-{{--                                            var tag_prefix_1 = 'xuatxu',--}}
-{{--                                                tag_prefix_2 = 'manhinh',--}}
-{{--                                                tag_prefix_3 = 'dungtich';--}}
-{{--                                            var searchString = "search?q=";--}}
-{{--                                            // if current page is search--}}
-{{--                                            if ($("#collection_id").val() == ">=0") {--}}
-{{--                                                searchString += $("#search_term").val() + "&";--}}
-{{--                                            }--}}
-{{--                                            searchString += "filter=(";--}}
-{{--                                            // BEGIN: Filter--}}
-{{--                                            var collectionFilter = "";--}}
-{{--                                            if ($("#collection_id").val() != ">=0") {--}}
-{{--                                                if($("#collection_id").val() != "=0") {--}}
-{{--                                                    collectionFilter += "(collectionid:product"+$("#collection_id").val()+")";--}}
-{{--                                                }--}}
-{{--                                                else {--}}
-{{--                                                    collectionFilter = "(collectionid:product>=0)";--}}
-{{--                                                }--}}
-{{--                                            }--}}
-{{--                                            else {--}}
-{{--                                                collectionFilter = "(collectionid:product>=0)";--}}
-{{--                                            }--}}
-
-{{--                                            // BEGIN: GET All checked filter string--}}
-{{--                                            // standard filter--}}
-{{--                                            vendor = getCheckedBy("vendor",vendor);--}}
-{{--                                            product_type = getCheckedBy("product_type",product_type);--}}
-{{--                                            price = getCheckedBy("price",price);--}}
-{{--                                            // custom filer--}}
-
-{{--                                            color = getCheckedBy("mausac",color);--}}
-
-{{--                                            tag_custom_1 = (tag_prefix_1 != '') ? getCheckedBy(tag_prefix_1,tag_custom_1) : getCheckedBy('a',tag_custom_1);--}}
-{{--                                            tag_custom_2 = (tag_prefix_2 != '') ? getCheckedBy(tag_prefix_2,tag_custom_2) : getCheckedBy('a',tag_custom_2);--}}
-{{--                                            tag_custom_3 = (tag_prefix_3 != '') ? getCheckedBy(tag_prefix_3,tag_custom_3) : getCheckedBy('a',tag_custom_3);--}}
-{{--                                            // END: GET FILTER--}}
-
-{{--                                            //console.log(vendor);--}}
-{{--                                            //console.log(color);--}}
-{{--                                            // BEGIN: MERGE all filter string--}}
-{{--                                            collectionFilter = mergeFilterWith(vendor,collectionFilter);--}}
-{{--                                            collectionFilter = mergeFilterWith(product_type,collectionFilter);--}}
-{{--                                            collectionFilter = mergeFilterWith(price,collectionFilter);--}}
-
-{{--                                            collectionFilter = mergeFilterWith(color ,collectionFilter);--}}
-{{--                                            collectionFilter = mergeFilterWith(tag_custom_1,collectionFilter);--}}
-{{--                                            collectionFilter = mergeFilterWith(tag_custom_2,collectionFilter);--}}
-{{--                                            collectionFilter = mergeFilterWith(tag_custom_3,collectionFilter);--}}
-
-{{--                                            searchString+=collectionFilter;--}}
-{{--                                            searchString+=')';--}}
-{{--                                            // END: MERGE--}}
-
-{{--                                            // BEGIN: Sorting--}}
-{{--                                            if ($( "#sortControl option:selected" ).val() != "") {--}}
-{{--                                                searchString += "&sortby="+$( "#sortControl option:selected" ).val();--}}
-{{--                                            }--}}
-{{--                                            else{--}}
-{{--                                                //searchString+='&sortby=(updated_at:product=desc)';--}}
-{{--                                            }--}}
-{{--                                            // END: Sorting--}}
-{{--                                            return searchString;--}}
-{{--                                        }--}}
-
-{{--                                        function getCheckedBy(filterKey, filterOption){--}}
-{{--                                            $(':input[class^='+filterKey+']:checked').each(function(){--}}
-{{--                                                if (filterOption==""){--}}
-{{--                                                    filterOption=$(this).val();--}}
-{{--                                                }--}}
-{{--                                                else{--}}
-{{--                                                    filterOption=filterOption+'||'+$(this).val();--}}
-{{--                                                }--}}
-{{--                                            });--}}
-{{--                                            return filterOption;--}}
-{{--                                        }--}}
-
-{{--                                        function mergeFilterWith(filterCondition, currCollectionFilter){--}}
-{{--                                            if(filterCondition != ""){--}}
-{{--                                                filterCondition='('+filterCondition+')';--}}
-{{--                                                currCollectionFilter+='&&'+filterCondition;--}}
-{{--                                            }--}}
-{{--                                            return currCollectionFilter;--}}
-{{--                                        }--}}
-{{--                                        function sorting(){--}}
-{{--                                            var searchString = getStringFilter();--}}
-{{--                                            var url_final = '/'+searchString+'&view=grid_pagination';--}}
-{{--                                            var shop_url = '//giadungnhat.vn';--}}
-{{--                                            console.log(shop_url);--}}
-{{--                                            var urlState = shop_url + '/' + searchString;--}}
-{{--                                            window.history.pushState(null,null,urlState);--}}
-{{--                                            loadResultBy(url_final,$("#grid_pagination"));--}}
-{{--                                        }--}}
-
-{{--                                        function loadResultBy(url_building, position_load) {--}}
-{{--                                            $.ajax({--}}
-{{--                                                'url': url_building,--}}
-{{--                                                'type':'POST',--}}
-{{--                                                'success':function(data){--}}
-{{--                                                    position_load.html(data);--}}
-{{--                                                    align_single_element();--}}
-{{--                                                    //$('#shop .product').last().addClass('product-last');--}}
-{{--                                                }--}}
-{{--                                            });--}}
-{{--                                        }--}}
-
-{{--                                        $('.ajax-pagination li a').click(function(e) {--}}
-{{--                                            e.preventDefault();--}}
-{{--                                            if($(this).parent().hasClass('disabled') || $(this).parent().hasClass('active')) {--}}
-{{--                                                return;--}}
-{{--                                            }--}}
-{{--                                            var searchString = getStringFilter();--}}
-{{--                                            var page = $(this).attr('pageid');--}}
-{{--                                            var url_final = '/'+searchString+'&view=grid_pagination&page='+page;--}}
-
-{{--                                            var shop_url = '//giadungnhat.vn';--}}
-{{--                                            var urlState = shop_url + '/' + searchString + '&page=' + page;--}}
-{{--                                            window.history.pushState(null,null,urlState);--}}
-
-{{--                                            loadResultBy(url_final,$("#grid_pagination"));--}}
-
-{{--                                            scrollToShop(0);--}}
-
-{{--                                            //http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link--}}
-{{--                                        });--}}
-
-
-{{--                                        /**--}}
-{{--                                         * Update filter to url--}}
-{{--                                         * Tu.Nguyen 2016.04.11--}}
-{{--                                         *--}}
-{{--                                         **/--}}
-{{--                                        function updateFilterToUrl(prefix,load_result_id) {--}}
-{{--                                            var searchString = getStringFilter();--}}
-{{--                                            var url_final = '/'+searchString+'&view=grid_pagination&page='+page;--}}
-{{--                                            var shop_url = '//giadungnhat.vn';--}}
-{{--                                            var urlState = shop_url + '/' + searchString + prefix;--}}
-{{--                                            window.history.pushState(null,null,urlState);--}}
-{{--                                            loadResultBy(url_final,$(load_result_id));--}}
-{{--                                        }--}}
-
-{{--                                        function scrollToShop(margin) {--}}
-{{--                                            var locate = parseInt($('#content').offset().top) + margin;--}}
-{{--                                            $('html, body').animate({--}}
-{{--                                                scrollTop: locate--}}
-{{--                                            },1000);--}}
-{{--                                            return false;--}}
-{{--                                        }--}}
-{{--                                        // end scroll--}}
-
-{{--                                        //$('.pagination li a').click(function() {scrollToShop(0)});--}}
-
-
-{{--                                        /** align single element ***/--}}
-{{--                                        $( document ).ready(function() {--}}
-{{--                                            align_single_element();--}}
-{{--                                        });--}}
-{{--                                        var align_single_element = function() {--}}
-{{--                                            var num_pro = $('#shop .product').length;--}}
-{{--                                            if(num_pro % 2 == 1) {--}}
-{{--                                                $('#shop .product').last().addClass('product-last');--}}
-{{--                                            }--}}
-{{--                                        }--}}
-{{--                                        if(typeof Layout != 'undefined') {--}}
-{{--                                            Layout.init();--}}
-{{--                                        }--}}
-
-{{--                                    </script>--}}
-{{--                                    <!-- END: AJAX-FILTER -->--}}
-{{--                                </div>--}}
                             </div>
                         </div>
                         <!-- #shop end -->
@@ -375,12 +182,12 @@
                                     <ul class='sidebar_menu'>
 
                                         <li>
-                                            <a href="/collections/may-giat-nhat-noi-dia-nhat-bai">{{$value->name}}</a>
+                                            <a href="{{route('wave.category', $value->slug)}}">{{$value->name}}</a>
                                             <i class='icon-angle-down'></i>
                                             <ul class='sidebar_submenu'>
                                                 @foreach($subCategories as $subCategory)
                                                     @if($value->id == $subCategory->parent_id)
-                                                        <li class=''><a class='sub-menu' href="#"><div>
+                                                        <li class=''><a class='sub-menu' href="{{route('wave.category', $subCategory->slug)}}"><div>
                                                                     {{strtoupper($subCategory->name)}}</div></a></li>
                                                     @endif
                                                 @endforeach
@@ -427,38 +234,21 @@
                                 <!-- recent product -->
                                 <div class="widget clearfix">
                                     <h4><a href='/blogs/news'>hướng dẫn sử dụng sản phẩm</a></h4>
-                                    <div id="post-list-footer" class='sidebar_menu'>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/blogs/news/lieu-co-an-toan-khi-uong-nuoc-truc-tiep-tu-may-loc-nuoc-hay-khong"><img src="//file.hstatic.net/1000227124/article/may-loc-nuoc-nhat-ban-phong-vu-1-1024x773_bde3b26f6080429592eb029729fe9f8e_medium.png" alt="Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/blogs/news/lieu-co-an-toan-khi-uong-nuoc-truc-tiep-tu-may-loc-nuoc-hay-khong">Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?</a></h4>
+                                    @foreach($userManual->posts as $value)
+                                        <div id="post-list-footer" class='sidebar_menu'>
+
+                                            <div class="spost clearfix">
+                                                <div class="entry-image">
+                                                    <a href="{{route('wave.news.detail', $value->slug)}}"><img src="{{asset('storage/' .$value->image)}}" alt="Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?"></a>
+                                                </div>
+                                                <div class="entry-c">
+                                                    <div class="entry-title">
+                                                        <h4><a href="{{route('wave.news.detail', $value->slug)}}">{{$value->title}}</a></h4>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/blogs/news/dung-may-khong-khi-ca-ngay-co-tot-khong"><img src="//file.hstatic.net/1000227124/article/may-loc-khong-khi-sharp-kc-h50-2_2ec1b3b2d28045659f894669d08f1119_medium.png" alt="Dùng máy không khí cả ngày có tốt không?"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/blogs/news/dung-may-khong-khi-ca-ngay-co-tot-khong">Dùng máy không khí cả ngày có tốt không?</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="spost clearfix">
-                                            <div class="entry-image">
-                                                <a href="/blogs/news/su-dung-may-loc-khong-khi-nhu-the-nao-cho-dung"><img src="//file.hstatic.net/1000227124/article/269833353177938_7706911392074301440_n_02ec41d7567547f2a325a264350d747e_043d0780047c4088a8fe77a0bb2ef5e6_medium.jpg" alt="Sử dụng máy lọc không khí như thế nào cho đúng?"></a>
-                                            </div>
-                                            <div class="entry-c">
-                                                <div class="entry-title">
-                                                    <h4><a href="/blogs/news/su-dung-may-loc-khong-khi-nhu-the-nao-cho-dung">Sử dụng máy lọc không khí như thế nào cho đúng?</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <!-- end recent product -->
                                 <!-- most popular -->
@@ -523,7 +313,6 @@
         </script>
         <!-- #content end -->
         <!-- Footer
-           ============================================= -->
-    @include('product.header')
+           ============================================= --
     </body>
 @endsection
