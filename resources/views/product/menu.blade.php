@@ -4,7 +4,7 @@
         <div class="col_half nobottommargin hidden-xs hidden-sm">
             <ul class="list-inline">
                 <li><a href="{{route('wave.home')}}">QUAY LẠI TRANG CHÍNH</a></li>
-                <li><a href="">HƯỚNG DẪN SỬ DỤNG SẢN PHẨM</a></li>
+                <li><a href="{{route('wave.news.product')}}">HƯỚNG DẪN SỬ DỤNG SẢN PHẨM</a></li>
                 <li><a href="{{route('wave.all.product')}}">TẤT CẢ SẢN PHẨM</a></li>
                 <li><a href="{{route('wave.home')}}">FANPAGE BÁN HÀNG CHÍNH</a></li>
             </ul>
@@ -20,10 +20,9 @@
                         </ul>
                     </li>
                     <li><a href="/pages/gioi-thieu-mua-hang">Giới thiệu</a></li>
-                    <li><a href="/blogs/news">Tin tức</a></li>
+                    <li><a href="{{route('wave.news.product')}}">Tin tức</a></li>
                     <li><a href="/blogs/news">Khuyến mại</a></li>
-                    <li><a href="/pages/thanh-toan">Thanh toán</a></li>
-                    <li><a href="/pages/lien-he-mua-hang">Liên hệ</a></li>
+                    <li><a href="{{route('wave.contact')}}">Liên hệ</a></li>
                 </ul>
             </div>
             <!-- .top-links end -->

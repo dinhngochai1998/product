@@ -17,7 +17,11 @@ class ProductController extends \App\Http\Controllers\Controller
     public function index()
     {
         $products   = [];
-        $categories = Category::query()->whereNull('parent_id')->get();
+        $categories = Category::query()
+                              ->whereNull('parent_id')
+                              ->where('name', '<>', 'Hướng dẫn sử dụng')
+                              ->where('name', '<>', 'Tin tức')
+                              ->get();
         foreach ($categories as $category) {
             $products [] = [
                 'category'    => $category,
@@ -25,9 +29,10 @@ class ProductController extends \App\Http\Controllers\Controller
                 'product'     => Product::query()->where('id_category', $category->id)->get(),
             ];
         }
+        $news          = Category::query()->with('posts')->where('name', 'Tin tức')->first();
         $subCategories = Category::where('parent_id', '<>', null)->get();
 
-        return view('product.index', compact('categories', 'subCategories', 'products'));
+        return view('product.index', compact('categories', 'subCategories', 'products', 'news'));
     }
 
     public function allProduct()
@@ -54,15 +59,17 @@ class ProductController extends \App\Http\Controllers\Controller
                                    ->first();
         $promotionalProducts = Product::query()->where('rate', RateConstant::PROMOTIONAL_PRODUCTS)->get();
         $featuredProducts    = Product::query()->where('rate', RateConstant::FEATURED_PRODUCTS)->get();
-        $userManual = Category::query()->with('posts')->where('name', 'Hướng dẫn sử dụng')->first();
-        return view('product.news-detail', compact('newsDetail', 'featuredProducts', 'promotionalProducts', 'userManual'));
+        $userManual          = Category::query()->with('posts')->where('name', 'Hướng dẫn sử dụng')->first();
+
+        return view('product.news-detail',
+                    compact('newsDetail', 'featuredProducts', 'promotionalProducts', 'userManual'));
     }
 
     public function search(Request $request)
     {
         $searchProduct       = Product::query()
                                       ->where('name', 'like', '%' . $request->search . '%')
-                                      ->get();
+                                      ->paginate(30);
         $promotionalProducts = Product::query()->where('rate', RateConstant::PROMOTIONAL_PRODUCTS)->limit(4)->get();
         $userManual          = Category::query()->with('posts')
                                        ->where('name', 'Hướng dẫn sử dụng')
@@ -73,4 +80,13 @@ class ProductController extends \App\Http\Controllers\Controller
         return view('product.search',
                     compact('searchProduct', 'promotionalProducts', 'userManual', 'featuredProducts'));
     }
+
+    public function contact() {
+        return view('product.contact');
+    }
+
+    public function createContact(Request $request) {
+        dd($request->all());
+    }
+    
 }

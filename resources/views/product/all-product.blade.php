@@ -74,7 +74,7 @@
             </div>
         </header>
     <!-- #header end -->
-
+        @include('product.categories')
         <!-- Content
            ============================================= -->
         <!-- Page Title

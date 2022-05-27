@@ -17,7 +17,7 @@ class CategoryController extends \App\Http\Controllers\Controller
         $category = Category::query()->where('slug', $slug)->first();
         $products = Product::query()->where('id_category', $category->id)->get();
 
-        return view('product.category', compact('products'));
+        return view('product.category', compact('products', 'category'));
     }
 
     public function detailProduct($slug) {

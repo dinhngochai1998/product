@@ -1,3 +1,102 @@
+<header id="header">
+    <div id="header-wrap">
+        <div class="container clearfix">
+            <!--<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>-->
+            <!-- Logo
+               ============================================= -->
+            <!-- Top Search
+               ============================================= -->
+            <a href="#menu-toggle" class="btn btn-default hidden-lg hidden-md" id="menu-toggle">
+                <i class='icon-reorder'></i>
+                <span>MENU</span>
+            </a>
+            <div class="hidden-xs fanepage_pc">
+                <span>Truy cập fanpage:</span>
+                <a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">HÀNG NHẬT TUẤN HÀ</a>
+            </div>
+            <!-- Top Search
+               ============================================= -->
+            <div class='top_search col-md-9 col-xs-12'>
+                <form action="/search"class='col-sm-8 form-inline nopadding nomargin'>
+                    <input type="hidden" name="type" value="product" />
+                    <input type="text" name="q"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
+                    <button class='button'>Tìm kiếm</button>
+                </form>
+                <div id="top-cart" class='top-cart-block col-md-1 nopadding'>
+                    <a href="/cart" id="top-cart-trigger"><img src='//theme.hstatic.net/1000227124/1000685523/14/cart_bg.png?v=21' ><span class='top_cart_qty'>3</span>
+                    </a>
+                    <div class="top-cart-content">
+                        <div class="top-cart-title">
+                            <h4>Giỏ hàng</h4>
+                        </div>
+                        <div class="top-cart-items">
+                            <div class="top-cart-item clearfix">
+                                <input type="hidden" class="item_id" value="1067018197"/>
+                                <input type="hidden" class="item_qty" value="1"/>
+                                <input type="hidden" class="item_unit_price_not_formated" value="1100000000"/>
+                                <div class="top-cart-item-image">
+                                    <a href="/products/may-giat-say-block-toshiba-g520"><img src="//product.hstatic.net/1000227124/product/ay-6kg-inverter-chuyen-dong-truc-tiep-86-750x500-removebg-preview1__1__f7efca8f1c32422a97059f9a5cea3167_small.jpg" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G520" /></a>
+                                </div>
+                                <div class="top-cart-item-desc">
+                                    <a href="/products/may-giat-say-block-toshiba-g520">MÁY GIẶT SẤY NHIỆT TOSHIBA TW G520</a>
+                                    <span class="top-cart-item-price">11,000,000₫</span>
+                                    <span class="top-cart-item-quantity">x 1</span>
+                                    <a class='top_cart_item_remove' onclick = 'deleteCart(1067018197);'><i class='icon-remove-sign'></i></a>
+                                </div>
+                            </div>
+                            <div class="top-cart-item clearfix">
+                                <input type="hidden" class="item_id" value="1034599412"/>
+                                <input type="hidden" class="item_qty" value="1"/>
+                                <input type="hidden" class="item_unit_price_not_formated" value="7850000000"/>
+                                <div class="top-cart-item-image">
+                                    <a href="/products/tu-lanh-hitachi-r-wx74j-735l"><img src="//product.hstatic.net/1000227124/product/thiet_ke_khong_ten_68c34684246947f8b390dca531651c9a_small.jpg" alt="Tủ lạnh Hitachi R-WX74J 735L" /></a>
+                                </div>
+                                <div class="top-cart-item-desc">
+                                    <a href="/products/tu-lanh-hitachi-r-wx74j-735l">Tủ lạnh Hitachi R-WX74J 735L</a>
+                                    <span class="top-cart-item-price">78,500,000₫</span>
+                                    <span class="top-cart-item-quantity">x 1</span>
+                                    <a class='top_cart_item_remove' onclick = 'deleteCart(1034599412);'><i class='icon-remove-sign'></i></a>
+                                </div>
+                            </div>
+                            <div class="top-cart-item clearfix">
+                                <input type="hidden" class="item_id" value="1067018082"/>
+                                <input type="hidden" class="item_qty" value="1"/>
+                                <input type="hidden" class="item_unit_price_not_formated" value="1050000000"/>
+                                <div class="top-cart-item-image">
+                                    <a href="/products/may-giat-say-block-toshiba-tw-g510"><img src="//product.hstatic.net/1000227124/product/giat-toshiba-twg510l-inverter-giat-9kg-say-6kg-moi-95-removebg-preview_dc1a29f94c7543799a19e2eb33d5ea55_small.jpg" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G510" /></a>
+                                </div>
+                                <div class="top-cart-item-desc">
+                                    <a href="/products/may-giat-say-block-toshiba-tw-g510">MÁY GIẶT SẤY NHIỆT TOSHIBA TW G510</a>
+                                    <span class="top-cart-item-price">10,500,000₫</span>
+                                    <span class="top-cart-item-quantity">x 1</span>
+                                    <a class='top_cart_item_remove' onclick = 'deleteCart(1067018082);'><i class='icon-remove-sign'></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top-cart-action clearfix">
+                            <span class="fleft top-checkout-price">100,000,000₫</span>
+                            <input type="hidden" class="top_cart_total_price_not_format" value="10000000000" />
+                            <button onclick='window.location.href="/cart"' class="button button-small nomargin fright">Xem giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <a class='top_hotline col-sm-3 hidden-sm hidden-xs nopadding' href='tel:098 888 8642'><img src='//theme.hstatic.net/1000227124/1000685523/14/top_hotline.png?v=21' /></a>
+            </div>
+            <!-- #top-search end -->
+            <!-- top link trigger --->
+            <a href='#' id='top_link_trigger' class='hidden-lg hidden-md'><i class='icon-ellipsis-vertical'></i></a>
+            <!-- end top link trigger --->
+            <script>
+                $("#sidebar-wrapper ul li a span").click(function( event ) {
+                    event.preventDefault();
+                    var li = $(this).parents('li');
+                    li.children('ul').toggle('slow');
+                });
+            </script>
+            <!-- #primary-menu end -->
+        </div>
+    </div>
+</header>
 <div class='container slide_wrapper'>
     <div class="hidden-lg hidden-md fanpape_mobile">
         <h2>
@@ -16,62 +115,57 @@
         </div>
         <div id="collapse1" class="panel-collapse collapse">
             <div class="panel-body">
-                <ul class='nav nav-pills nav-stacked'>
-                    @foreach($categories as $value)
+                @foreach($categories as $category)
+                    <ul class='nav nav-pills nav-stacked'>
                         <li class=' menu'>
-                            <a class='menu' href="{{route('wave.category', $value->slug)}}">
-                                <img src='{{asset('images/icons/leftmenu_icon_1.png')}}' data-toggle="tooltip" data-placement="right" title="MÁY GIẶT"/>
-                                <span class="menu_title">{{strtoupper($value->name)}}</span>
+                            <a class='menu' href="{{route('wave.detail.product', $category->slug)}}">
+                                <img src='//theme.hstatic.net/1000227124/1000685523/14/leftmenu_icon_1.png?v=21' data-toggle="tooltip" data-placement="right" title="MÁY GIẶT"/>
+                                <span class="menu_title">{{strtoupper($category->name)}}</span>
                                 <i class='icon-angle-right arrow'></i>
                             </a>
-                            <ul class='submenu'>
-                                <div class='submenu_padding'>
-                                    @foreach($subCategories as $subCategory)
-                                        @if($value->id == $subCategory->parent_id)
-                                            <li class=''><a class='sub-menu' href="{{route('wave.category', $subCategory->slug)}}"><div>
-                                                        {{strtoupper($subCategory->name)}}</div></a></li>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </ul>
+                            @foreach($subCategories as $subCategory)
+                                @if($category->id == $subCategory->parent_id)
+                                    <ul class='submenu'>
+                                        <div class='submenu_padding'>
+                                            <li class=''>
+                                                <a class='sub-menu' href="{{route('wave.detail.product', $subCategory->slug)}}">
+                                                    <div>{{strtoupper($subCategory->name)}}</div>
+                                                </a>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                @endif
+                            @endforeach
                         </li>
-                    @endforeach
-                </ul>
+                    </ul>
+                @endforeach
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            if($(window).width() > 991) {
-                $('.left_menu #collapse1').addClass('in');
-            }
-        });
-
-    </script>
+    <script></script>
     <!-- end left menu -->
     <div class='slider_wrap'>
         <nav id="primary-menu" class='style-5'>
             <ul>
-            @foreach($categories as $value)
-                <!-- normal sub menu -->
+                @foreach($categories as $category)
                     <li class=''>
-                        <a class='menu' href="{{route('wave.category', $value->slug)}}">
+                        <a class='menu' href="{{route('wave.detail.product', $subCategory->slug)}}">
                             <div>
-                                {{strtoupper($value->name)}}
+                                {{strtoupper($category->name)}}
                             </div>
                         </a>
                         <i class='icon-angle-right hidden-lg hidden-md submenu_toggle' style='position:absolute; right: 0; font-size: 16px; width: 25px; margin:0;'></i>
-                        <ul>
-
-                            @foreach($subCategories as $subCategory)
-                                @if($value->id == $subCategory->parent_id)
-                                    <li class=''><a class='sub-menu' href="{{route('wave.category', $subCategory->slug)}}"><div>
-                                                {{strtoupper($subCategory->name)}}</div></a></li>
-                                @endif
-                            @endforeach
-
-
-                        </ul>
+                        @foreach($subCategories as $subCategory)
+                            @if($category->id == $subCategory->parent_id)
+                                <ul>
+                                    <li class=''>
+                                        <a class='sub-menu' href="{{route('wave.detail.product', $subCategory->slug)}}">
+                                            <div>{{strtoupper($subCategory->name)}}</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            @endif
+                        @endforeach
                     </li>
                 @endforeach
             </ul>
@@ -83,100 +177,6 @@
                 li.children('ul').toggle('slow');
             });
         </script>
-        <!-- Slider -->
-        <section id="slider" class="revslider-wrap nopadding ohidden clearfix ">
-            <!--
-          #################################
-          - THEMEPUNCH BANNER -
-          #################################
-          -->
-            <script type="text/javascript">
-                jQuery(document).ready(function() {
-
-                    jQuery('.tp-banner').show().revolution(
-                        {
-                            dottedOverlay:"none",
-                            delay:5000,
-                            startwidth:776,
-                            startheight:400,
-                            hideThumbs:200,
-
-                            thumbWidth:100,
-                            thumbHeight:50,
-                            thumbAmount:5,
-
-                            navigationType:"none",
-                            navigationArrows:"solo",
-                            //navigationStyle:"preview2",
-
-                            touchenabled:"on",
-                            onHoverStop:"on",
-
-                            swipe_velocity: 0.7,
-                            swipe_min_touches: 1,
-                            swipe_max_touches: 1,
-                            drag_block_vertical: false,
-
-                            parallax:"mouse",
-                            parallaxBgFreeze:"on",
-                            parallaxLevels:[7,4,3,2,5,4,3,2,1,0],
-
-                            keyboardNavigation:"off",
-
-                            navigationHAlign:"center",
-                            navigationVAlign:"bottom",
-                            navigationHOffset:0,
-                            navigationVOffset:20,
-
-                            soloArrowLeftHalign:"left",
-                            soloArrowLeftValign:"center",
-                            soloArrowLeftHOffset:20,
-                            soloArrowLeftVOffset:0,
-
-                            soloArrowRightHalign:"right",
-                            soloArrowRightValign:"center",
-                            soloArrowRightHOffset:20,
-                            soloArrowRightVOffset:0,
-
-                            shadow:0,
-                            fullWidth:"on",
-                            fullScreen:"off",
-
-                            spinner:"spinner4",
-
-                            stopLoop:"off",
-                            stopAfterLoops:-1,
-                            stopAtSlide:-1,
-
-                            shuffle:"off",
-
-                            autoHeight:"on",
-                            forceFullWidth:"off",
-
-
-
-                            hideThumbsOnMobile:"off",
-                            hideNavDelayOnMobile:1500,
-                            hideBulletsOnMobile:"off",
-                            hideArrowsOnMobile:"off",
-                            hideThumbsUnderResolution:0,
-
-                            hideSliderAtLimit:0,
-                            hideCaptionAtLimit:0,
-                            hideAllCaptionAtLilmit:0,
-                            startWithSlide:0,
-                            fullScreenOffsetContainer: ".header"
-                        });
-
-
-
-
-                }); //ready
-
-            </script>
-            <!-- END REVOLUTION SLIDER -->
-        </section>
-        <!-- end slider -->
     </div>
     <div class='clear'></div>
 </div>
