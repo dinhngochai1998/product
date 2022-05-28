@@ -3,6 +3,7 @@
 namespace App\Http\View\Composers;
 
 use App\Category;
+use App\Helper\CategoriesConstant;
 use App\Product;
 use Illuminate\View\View;
 
@@ -18,12 +19,12 @@ class CategoryAndSubCategory
     public function compose(View $view)
     {
         $categories = Category::query()->whereNull('parent_id')
-                                       ->where('name', '<>', 'tin tức')
-                                       ->where('name', '<>', 'Hướng dẫn sử dụng')
+                                       ->where('name', '<>', CategoriesConstant::NEWS)
+                                       ->where('name', '<>', CategoriesConstant::USER_MANUAL)
                                        ->get();
         $subCategories = Category::where('parent_id', '<>', null)
-                                 ->where('name', '<>', 'tin tức')
-                                 ->where('name', '<>', 'Hướng dẫn sử dụng')
+                                 ->where('name', '<>', CategoriesConstant::NEWS)
+                                 ->where('name', '<>', CategoriesConstant::USER_MANUAL)
                                  ->get();
         $view->with(compact(
                         'categories',

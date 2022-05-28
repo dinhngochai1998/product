@@ -3,7 +3,9 @@
 namespace App\Http\View\Composers;
 
 use App\Category;
+use App\Helper\CategoriesConstant;
 use App\Helper\RateConstant;
+use App\Helper\StatusConstant;
 use App\Product;
 use Illuminate\View\View;
 
@@ -21,7 +23,7 @@ class CategoriesComposer
     {
         $promotionalProducts = Product::query()->where('rate', RateConstant::PROMOTIONAL_PRODUCTS)->limit(4)->get();
         $userManual          = Category::query()->with('posts')
-                                       ->where('name', 'Hướng dẫn sử dụng')
+                                       ->where('name', CategoriesConstant::USER_MANUAL)
                                        ->limit(4)
                                        ->first();
         $featuredProducts    = Product::query()->where('rate', RateConstant::FEATURED_PRODUCTS)->limit(4)->get();

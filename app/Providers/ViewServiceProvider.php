@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use App\Http\View\Composers as Composers;
+use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -27,16 +26,16 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer(
             [
-                'product.header', 'product.all-product', 'product.search', 'product.categories','product.detail',
-                'product.index','product.header','product.category','product.news'
-                ],
-                'App\Http\View\Composers\CategoryAndSubCategory',
+                'product.header', 'product.all-product', 'product.search', 'product.categories', 'product.detail',
+                'product.index', 'product.header', 'product.category', 'product.news'
+            ],
+            'App\Http\View\Composers\CategoryAndSubCategory',
         );
 
         View::composer(
             [
-                'product.header', 'product.all-product', 'product.search', 'product.categories','product.detail',
-                'product.index','product.header','product.category',
+                'product.header', 'product.all-product', 'product.search', 'product.categories', 'product.detail',
+                'product.index', 'product.header', 'product.category', 'product.news', 'product.news-detail'
             ],
             'App\Http\View\Composers\CategoriesComposer',
 

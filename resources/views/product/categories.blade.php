@@ -118,8 +118,8 @@
                 @foreach($categories as $category)
                     <ul class='nav nav-pills nav-stacked'>
                         <li class=' menu'>
-                            <a class='menu' href="{{route('wave.detail.product', $category->slug)}}">
-                                <img src='//theme.hstatic.net/1000227124/1000685523/14/leftmenu_icon_1.png?v=21' data-toggle="tooltip" data-placement="right" title="MÁY GIẶT"/>
+                            <a class='menu' href="{{route('wave.category', $category->slug)}}">
+                                <img src='' data-toggle="tooltip" data-placement="right" title="MÁY GIẶT"/>
                                 <span class="menu_title">{{strtoupper($category->name)}}</span>
                                 <i class='icon-angle-right arrow'></i>
                             </a>
@@ -128,7 +128,7 @@
                                     <ul class='submenu'>
                                         <div class='submenu_padding'>
                                             <li class=''>
-                                                <a class='sub-menu' href="{{route('wave.detail.product', $subCategory->slug)}}">
+                                                <a class='sub-menu' href="{{route('wave.category', $subCategory->slug)}}">
                                                     <div>{{strtoupper($subCategory->name)}}</div>
                                                 </a>
                                             </li>
@@ -149,7 +149,7 @@
             <ul>
                 @foreach($categories as $category)
                     <li class=''>
-                        <a class='menu' href="{{route('wave.detail.product', $subCategory->slug)}}">
+                        <a class='menu' href="{{route('wave.category', $category->slug)}}">
                             <div>
                                 {{strtoupper($category->name)}}
                             </div>
@@ -159,7 +159,7 @@
                             @if($category->id == $subCategory->parent_id)
                                 <ul>
                                     <li class=''>
-                                        <a class='sub-menu' href="{{route('wave.detail.product', $subCategory->slug)}}">
+                                        <a class='sub-menu' href="{{route('wave.category', $subCategory->slug)}}">
                                             <div>{{strtoupper($subCategory->name)}}</div>
                                         </a>
                                     </li>

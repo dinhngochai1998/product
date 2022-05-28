@@ -7,24 +7,31 @@
 namespace Wave\Http\Controllers;
 
 use App\Category;
-
 use App\Helper\RateConstant;
+use App\Helper\StatusConstant;
 use App\Product;
 
 class CategoryController extends \App\Http\Controllers\Controller
 {
-    public function index($slug) {
+    public function index($slug)
+    {
         $category = Category::query()->where('slug', $slug)->first();
-        $products = Product::query()->where('id_category', $category->id)->get();
+        $products = Product::query()
+                           ->where('id_category', $category->id)
+                           ->where('status', StatusConstant::PUBLISHED)
+                           ->get();
 
         return view('product.category', compact('products', 'category'));
     }
 
-    public function detailProduct($slug) {
-        $product = Product::query()->with('productImages')->where('slug', $slug)->first();
+    public function detailProduct($slug)
+    {
+        $product             = Product::query()->with('productImages')->where('slug', $slug)->first();
         $promotionalProducts = Product::query()->where('rate', RateConstant::PROMOTIONAL_PRODUCTS)->get();
-        $featuredProducts = Product::query()->where('rate', RateConstant::FEATURED_PRODUCTS)->get();
-        $latestProducts = Product::query()->where('rate', RateConstant::LATEST_PRODUCTS)->get();
-        return view('product.detail', compact(['product', 'latestProducts', 'featuredProducts', 'promotionalProducts']));
+        $featuredProducts    = Product::query()->where('rate', RateConstant::FEATURED_PRODUCTS)->get();
+        $latestProducts      = Product::query()->where('rate', RateConstant::LATEST_PRODUCTS)->get();
+
+        return view('product.detail',
+                    compact(['product', 'latestProducts', 'featuredProducts', 'promotionalProducts']));
     }
 }
