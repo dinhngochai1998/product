@@ -10,7 +10,7 @@ Route::get('/news-detail/{slug}', '\Wave\Http\Controllers\ProductController@news
 Route::get('/search/', '\Wave\Http\Controllers\ProductController@search')->name('wave.search.product');
 Route::get('/news', '\Wave\Http\Controllers\ProductController@news')->name('wave.news.product');
 Route::get('/contact', '\Wave\Http\Controllers\ProductController@contact')->name('wave.contact');
-Route::post('/contact', '\Wave\Http\Controllers\ProductController@contact')->name('wave.create.contact');
+Route::post('/contact', '\Wave\Http\Controllers\ProductController@createContact')->name('wave.create.contact');
 Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile');
 
 // Documentation routes

@@ -15,64 +15,6 @@
         <!-- #top-bar end -->
         <!-- Header
            ============================================= -->
-
-        <header id="header">
-            <div id="header-wrap">
-                <div class="container clearfix">
-                    <!--<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>-->
-                    <!-- Logo
-                  ============================================= -->
-                    <!-- Top Search
-                  ============================================= -->
-                    <a href="#menu-toggle" class="btn btn-default hidden-lg hidden-md" id="menu-toggle">
-                        <i class='icon-reorder'></i>
-                        <span>MENU</span>
-                    </a>
-                    <div class="hidden-xs fanepage_pc">
-                        <span>Truy cập fanpage:</span>
-                        <a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">HÀNG NHẬT TUẤN HÀ</a>
-                    </div>
-                    <!-- Top Search
-                  ============================================= -->
-                    <div class='top_search col-md-9 col-xs-12'>
-                        <form action="/search"class='col-sm-8 form-inline nopadding nomargin'>
-                            <input type="hidden" name="type" value="product" />
-                            <input type="text" name="q"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
-                            <button class='button'>Tìm kiếm</button>
-                        </form>
-                        <div id="top-cart" class='top-cart-block col-md-1 nopadding'>
-                            <a href="/cart" id="top-cart-trigger"><img src='{{ asset('images/icons/cart_bg.png')}}' ><span class='top_cart_qty'>0</span>
-                            </a>
-                            <div class="top-cart-content">
-                                <div class="top-cart-title">
-                                    <h4>Giỏ hàng</h4>
-                                </div>
-                                <div class="top-cart-items">
-                                </div>
-                                <div class="top-cart-action clearfix">
-                                    <span class="fleft top-checkout-price">0₫</span>
-                                    <input type="hidden" class="top_cart_total_price_not_format" value="0" />
-                                    <button onclick='window.location.href="/cart"' class="button button-small nomargin fright">Xem giỏ hàng</button>
-                                </div>
-                            </div>
-                        </div>
-                        <a class='top_hotline col-sm-3 hidden-sm hidden-xs nopadding' href='tel:098 888 8642'><img src='{{asset('images/icons/top_hotline.png')}}' /></a>
-                    </div>
-                    <!-- #top-search end -->
-                    <!-- top link trigger --->
-                    <a href='#' id='top_link_trigger' class='hidden-lg hidden-md'><i class='icon-ellipsis-vertical'></i></a>
-                    <!-- end top link trigger --->
-                    <script>
-                        $("#sidebar-wrapper ul li a span").click(function( event ) {
-                            event.preventDefault();
-                            var li = $(this).parents('li');
-                            li.children('ul').toggle('slow');
-                        });
-                    </script>
-                    <!-- #primary-menu end -->
-                </div>
-            </div>
-        </header>
     <!-- #header end -->
         @include('product.categories')
         <!-- Content

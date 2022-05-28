@@ -7,6 +7,7 @@
 namespace Wave\Http\Controllers;
 
 use App\Category;
+use App\Contact;
 use App\Helper\RateConstant;
 use App\Product;
 use Illuminate\Http\Request;
@@ -86,7 +87,8 @@ class ProductController extends \App\Http\Controllers\Controller
     }
 
     public function createContact(Request $request) {
-        dd($request->all());
+       Contact::query()->create($request->all());
+        return view('product.contact');
     }
     
 }

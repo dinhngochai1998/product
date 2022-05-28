@@ -16,77 +16,7 @@
         <!-- #top-bar end -->
         <!-- Header
            ============================================= -->
-        <header id="header">
-            <div id="header-wrap">
-                <div class="container clearfix">
-                    <!--<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>-->
-                    <!-- Logo
-                       ============================================= -->
-                    <!-- Top Search
-                       ============================================= -->
-                    <a href="#menu-toggle" class="btn btn-default hidden-lg hidden-md" id="menu-toggle">
-                        <i class='icon-reorder'></i>
-                        <span>MENU</span>
-                    </a>
-                    <div class="hidden-xs fanepage_pc">
-                        <span>Truy cập fanpage:</span>
-                        <a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">HÀNG NHẬT TUẤN HÀ</a>
-                    </div>
-                    <!-- Top Search
-                       ============================================= -->
-                    <div class='top_search col-md-9 col-xs-12'>
-                        <form action="/search"class='col-sm-8 form-inline nopadding nomargin'>
-                            <input type="hidden" name="type" value="product" />
-                            <input type="text" name="q"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
-                            <button class='button'>Tìm kiếm</button>
-                        </form>
-                        <div id="top-cart" class='top-cart-block col-md-1 nopadding'>
-                            <a href="/cart" id="top-cart-trigger"><img src='{{ asset('images/icons/cart_bg.png')}}' ><span class='top_cart_qty'>0</span>
-                            </a>
-                            <div class="top-cart-content">
-                                <div class="top-cart-title">
-                                    <h4>Giỏ hàng</h4>
-                                </div>
-                                <div class="top-cart-items">
-                                    <div class="top-cart-item clearfix">
-                                        <input type="hidden" class="item_id" value="1067018197"/>
-                                        <input type="hidden" class="item_qty" value="1"/>
-                                        <input type="hidden" class="item_unit_price_not_formated" value="1100000000"/>
-                                        <div class="top-cart-item-image">
-                                            <a href="/products/may-giat-say-block-toshiba-g520"><img src="//product.hstatic.net/1000227124/product/ay-6kg-inverter-chuyen-dong-truc-tiep-86-750x500-removebg-preview1__1__f7efca8f1c32422a97059f9a5cea3167_small.jpg" alt="MÁY GIẶT SẤY NHIỆT TOSHIBA TW G520" /></a>
-                                        </div>
-                                        <div class="top-cart-item-desc">
-                                            <a href="/products/may-giat-say-block-toshiba-g520">MÁY GIẶT SẤY NHIỆT TOSHIBA TW G520</a>
-                                            <span class="top-cart-item-price">11,000,000₫</span>
-                                            <span class="top-cart-item-quantity">x 1</span>
-                                            <a class='top_cart_item_remove' onclick = 'deleteCart(1067018197);'><i class='icon-remove-sign'></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="top-cart-action clearfix">
-                                    <span class="fleft top-checkout-price">11,000,000₫</span>
-                                    <input type="hidden" class="top_cart_total_price_not_format" value="1100000000" />
-                                    <button onclick='window.location.href="/cart"' class="button button-small nomargin fright">Xem giỏ hàng</button>
-                                </div>
-                            </div>
-                        </div>
-                        <a class='top_hotline col-sm-3 hidden-sm hidden-xs nopadding' href='tel:098 888 8642'><img src='{{asset('images/icons/top_hotline.png')}}' /></a>
-                    </div>
-                    <!-- #top-search end -->
-                    <!-- top link trigger --->
-                    <a href='#' id='top_link_trigger' class='hidden-lg hidden-md'><i class='icon-ellipsis-vertical'></i></a>
-                    <!-- end top link trigger --->
-                    <script>
-                        $("#sidebar-wrapper ul li a span").click(function( event ) {
-                            event.preventDefault();
-                            var li = $(this).parents('li');
-                            li.children('ul').toggle('slow');
-                        });
-                    </script>
-                    <!-- #primary-menu end -->
-                </div>
-            </div>
-        </header>
+
     @include('product.categories')
         <!-- #header end -->
         <!-- Content

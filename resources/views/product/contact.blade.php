@@ -71,7 +71,7 @@
                         <div class="clear"></div>
                         <div class="col_full">
                             <label for="template-contactform-message">Viết bình luận <small class='require_symbol'>*</small></label>
-                            <textarea required class="required sm-form-control" id="comment" name="contact[body]" rows="6" cols="30"></textarea>
+                            <textarea required class="required sm-form-control" id="comment" name="comment" rows="6" cols="30"></textarea>
                         </div>
                         <div class="col_full hidden">
                             <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
