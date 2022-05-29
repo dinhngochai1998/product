@@ -11,6 +11,7 @@ Route::get('/search/', '\Wave\Http\Controllers\ProductController@search')->name(
 Route::get('/news', '\Wave\Http\Controllers\ProductController@news')->name('wave.news.product');
 Route::get('/contact', '\Wave\Http\Controllers\ProductController@contact')->name('wave.contact');
 Route::post('/contact', '\Wave\Http\Controllers\ProductController@createContact')->name('wave.create.contact');
+Route::get('/order', '\Wave\Http\Controllers\OrderController@index')->name('wave.order.product');
 Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile');
 
 // Documentation routes

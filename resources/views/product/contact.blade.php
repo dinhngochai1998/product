@@ -89,11 +89,11 @@
                 <div class="sidebar col_last nobottommargin">
                     <h3>phục vụ bạn là niềm hành phúc</h3>
                     <address>
-                        <strong>shop GIADUNGNHAT.VN</strong><br>
-                        số 2 ngõ 603 Lạc Long Quân
+                        <strong>shop {{strtoupper($config->name) ?? null}}</strong><br>
+                        {{$config->address ?? null}}
                     </address>
-                    <abbr title="Phone Number"><strong>Số điện thoại:</strong></abbr>  098 888 8642 098 888 4642<br>
-                    <abbr title="Email Address"><strong>Email:</strong></abbr> phamtuandca@gmail.com
+                    <abbr title="Phone Number"><strong>Số điện thoại:</strong></abbr> {{$config->number_phone ?? null}}<br>
+                    <abbr title="Email Address"><strong>Email:</strong></abbr> {{$config->email ?? null}}
                 </div>
                 <!-- .sidebar end -->
             </div>

@@ -94,54 +94,30 @@
                 <div class="tp-banner" >
                     <ul>
                         <!-- SLIDE  -->
-                        <li data-transition="random" data-slotamount="7" data-link="/collections/all"  data-title="" >
-                            <img  src="{{asset('images/slides/slideshow_1.jpg')}}">
-                            <div class="tp-caption customin lfl ltr tp-resizeme revo-slider-caps-text uppercase"
-                                 data-x="center"
-                                 data-y="center"
-                                 data-customin="x:-300px;y:0px;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:0% 0%;"
-                                 data-speed="700"
-                                 data-start="1000"
-                                 data-easing="easeOutBack"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-elementdelay="0.01"
-                                 data-endelementdelay="0.1"
-                                 data-endspeed="1000"
-                                 data-endeasing="easeOutBack" style=" color: #fff; font-size: 50px"></div>
-                        </li>
-                        <li data-transition="random" data-slotamount="7" data-link=""  data-title="" >
-                            <img src="{{asset('images/slides/slideshow_2.jpg')}}" style='opacity: 0;'>
-                            <div class="tp-caption customin lfl ltr tp-resizeme revo-slider-caps-text uppercase"
-                                 data-x="center"
-                                 data-y="center"
-                                 data-customin="x:-300px;y:0px;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:0% 0%;"
-                                 data-speed="700"
-                                 data-start="1000"
-                                 data-easing="easeOutBack"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-elementdelay="0.01"
-                                 data-endelementdelay="0.1"
-                                 data-endspeed="1000"
-                                 data-endeasing="easeOutBack" style=" color: #fff; font-size: 50px"></div>
-                        </li>
-                        <li data-transition="random" data-slotamount="7" data-link="/collections/may-giat"  data-title="" >
-                            <img src="{{asset('images/slides/slideshow_3.jpg')}}" style='opacity: 0;'>
-                            <div class="tp-caption customin lfl ltr tp-resizeme revo-slider-caps-text uppercase"
-                                 data-x="center"
-                                 data-y="center"
-                                 data-customin="x:-300px;y:0px;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:0% 0%;"
-                                 data-speed="700"
-                                 data-start="1000"
-                                 data-easing="easeOutBack"
-                                 data-splitin="none"
-                                 data-splitout="none"
-                                 data-elementdelay="0.01"
-                                 data-endelementdelay="0.1"
-                                 data-endspeed="1000"
-                                 data-endeasing="easeOutBack" style=" color: #fff; font-size: 50px"></div>
-                        </li>
+                        @php
+                            $slides = json_decode($config->slides_image);
+
+                        @endphp
+
+                        @foreach($slides ?? [] as $key => $slide)
+                            <li data-transition="random" data-slotamount="7" data-link=""  data-title="" >
+
+                                <img  src="{{ asset('storage/'.$slide)}}">
+                                <div class="tp-caption customin lfl ltr tp-resizeme revo-slider-caps-text uppercase"
+                                     data-x="center"
+                                     data-y="center"
+                                     data-customin="x:-300px;y:0px;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:0% 0%;"
+                                     data-speed="700"
+                                     data-start="1000"
+                                     data-easing="easeOutBack"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-elementdelay="0.01"
+                                     data-endelementdelay="0.1"
+                                     data-endspeed="1000"
+                                     data-endeasing="easeOutBack" style=" color: #fff; font-size: 50px"></div>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

@@ -49,7 +49,8 @@ class ProductController extends \App\Http\Controllers\Controller
 
     public function news()
     {
-        $news = Category::query()->with('posts')->where('name', CategoriesConstant::NEWS)->first();
+        $categoryNews = Category::query()->where('name', CategoriesConstant::NEWS)->first();
+        $news = Post::query()->where('category_id', $categoryNews->id)->paginate(10);
 
         return view('product.news', compact('news'));
     }

@@ -5,7 +5,7 @@
 				<div class="footer-widgets-wrap clearfix footer_wrap_2">
 					<div class="prefooter_one col-sm-3 col-xs-6">
 						<div class="widget clearfix">
-							<a href='' class='footer_logo'><img class="lazyload" src="../assets/images/icons/lazyload.jpg" data-src='../assets/images/icons/footer_logo.png?v=21' /></a>
+							<a href='' class='footer_logo'><img class="lazyload" src="{{ (asset('storage/' .$config->image)) ?? null }}" data-src='' /></a>
 							<p>
 							<p>Chúng tôi tin chất lượng - uy tín với khách hàng là dịch vụ tốt nhất.</p>
 							</p>
@@ -15,10 +15,9 @@
 						<div class="widget widget_links clearfix">
 							<h4>LIÊN HỆ VỚI CHÚNG TÔI NHÉ</h4>
 							<ul>
-								<li><a href="/">QUAY LẠI TRANG CHÍNH</a></li>
-								<li><a href="/blogs/news">HƯỚNG DẪN SỬ DỤNG SẢN PHẨM</a></li>
-								<li><a href="/collections/all">TẤT CẢ SẢN PHẨM</a></li>
-								<li><a href="https://www.facebook.com/shophangnhatbainoidia">FANPAGE BÁN HÀNG CHÍNH</a></li>
+								<li><a href="{{route('wave.home')}}">QUAY LẠI TRANG CHÍNH</a></li>
+								<li><a href="{{route('wave.news.product')}}">HƯỚNG DẪN SỬ DỤNG SẢN PHẨM</a></li>
+								<li><a href="{{route('wave.all.product')}}">TẤT CẢ SẢN PHẨM</a></li>
 							</ul>
 						</div>
 						<div class='marginbottom hidden-lg hidden-md hidden-sm'>
@@ -34,21 +33,18 @@
 					</div>
 					<div class="prefooter_one col-sm-3 col-xs-6">
 						<div class="widget widget_links clearfix">
-							<h4>Liên hệ 098 888 8642 -098 888 4642</h4>
-							<p>giadungnhat.vn phân phối ghế massage , tủ lạnh, điều hòa , máy giặt , lọc không khí, máy hút ẩm Nhật nội địa chất lượng nhất</p>
+							<h4>{{$config->number_phone ?? null}}</h4>
+							<p>{{$config->description_footer ?? null}}</p>
 							<address>
-								<img src='../assets/images/icons/pre_footer_address_icon2.png' />
-								<span>Số 2 ngõ 603 Lạc Long Quân -Quận Tây Hồ , Hà Nội</span> <br>
-								<img src='../assets/images/icons/pre_footer_phone_icon2.png' />
-								<a href='tel:098 888 8642'>098 888 8642</a> <br>
-								<img src='../assets/images/icons/pre_footer_email_icon2.png' />
-								<a href='mailto:phamtuandca@gmail.com'>phamtuandca@gmail.com</a>
+								<img src='{{asset('images/icons/pre_footer_address_icon2.png')}}' />
+								<span>{{$config->address ?? null}}</span> <br>
+								<img src='{{asset('images/icons/pre_footer_phone_icon2.png')}}' />
+								<a href='tel:098 888 8642'>{{$config->number_phone ?? null}}</a> <br>
+								<img src='{{asset('images/icons/pre_footer_email_icon2.png')}}' />
+								<a href='#'>{{$config->email ?? null}}</a>
 							</address>
 							<div class="footer_more_info">
-								Hộ kinh doanh: Phạm Nguyễn Tuấn <br>
-								Đkkd: 01B8011516 do UBND Q.Tây Hồ cấp ngày: 04/11/2016 <br>
-								ĐC: Số 2 ngõ 603 Lạc Long Quân
-								, P.Xuân La, Q.Tây Hồ, Hà Nội
+								{{$config->more_info ?? null}}
 							</div>
 						</div>
 						<div class='marginbottom hidden-lg hidden-md hidden-sm'>
@@ -59,99 +55,22 @@
 				<div class="tag_content">
 					<div class="row" style="margin:0">
 						<div class="col-sm-9 col-xs-12">
+
+							@foreach($subCategories ?? [] as $key => $subcategory)
+								@if($key <= 5)
 							<div class="seo_keyword">
 								<ul class="content-seo list-inline">
 									<li><span class="title-seo">truy cập nhanh:</span></li>
 									<li class="seo-item">
-										<a href="/collections/dieu-hoa-nhat-bai-ban-chay-nhat" target="_self"> ĐIỀU HÒA BÁN CHẠY NHẤT </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/dieu-hoa-fujitsu-nhat-bai" target="_self"> ĐIỀU HÒA FUJITSU </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/dieu-hoa-panasonic-nhat-bai" target="_self"> ĐIỀU HÒA PANASONIC </a>
-									</li>
+										<a href="/collections/dieu-hoa-nhat-bai-ban-chay-nhat" target="_self">{{strtoupper($subcategory->name)}}</a>
 								</ul>
 							</div>
-							<div class="seo_keyword">
-								<ul class="content-seo list-inline">
-									<li><span class="title-seo">truy cập nhanh:</span></li>
-									<li class="seo-item">
-										<a href="/collections/may-giat-nhat-bai-ban-chay-nhat" target="_self"> MÁY GIẶT BÁN CHẠY NHẤT </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/may-giat-toshiba-nhat-bai" target="_self"> MÁY GIẶT TOSHIBA </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/may-giat-panasonic-nhat-bai" target="_self"> MÁY GIẶT PANASONIC </a>
-									</li>
-								</ul>
-							</div>
-							<div class="seo_keyword">
-								<ul class="content-seo list-inline">
-									<li><span class="title-seo">truy cập nhanh:</span></li>
-									<li class="seo-item">
-										<a href="/collections/tu-lanh-panasonic-noi-dia-nhat-bai" target="_self"> TỦ LẠNH PANASONIC </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/tu-lanh-hitachi-noi-dia-nhat-bai" target="_self"> TỦ LẠNH HITACHI </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/tu-lanh-toshiba-nhat-bai" target="_self"> TỦ LẠNH TOSHIBA </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/tu-lanh-mitsubishi-nhat-bai" target="_self"> TỦ LẠNH MITSUBISHI </a>
-									</li>
-								</ul>
-							</div>
-							<div class="seo_keyword">
-								<ul class="content-seo list-inline">
-									<li><span class="title-seo">truy cập nhanh:</span></li>
-									<li class="seo-item">
-										<a href="/collections/loc-khong-khi-hut-am-ban-chay-nhat" target="_self"> MÁY LỌC KHÔNG KHÍ BÁN CHẠY NHẤT </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/may-loc-khong-khi-moi-chinh-hang" target="_self"> MÁY LỌC KHÔNG KHÍ NEW 100% CHÍNH HÃNG </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/may-loc-khong-khi-nhat-bai" target="_self"> MÁY LỌC KHÔNG KHÍ NHẬT BÃI </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/mang-than-hepa-may-loc-khong-khi" target="_self"> MÀNG THAN-HEPA MÁY LỌC KHÍ </a>
-									</li>
-								</ul>
-							</div>
-							<div class="seo_keyword">
-								<ul class="content-seo list-inline">
-									<li><span class="title-seo">truy cập nhanh:</span></li>
-									<li class="seo-item">
-										<a href="/collections/ghe-massage-family-inada" target="_self"> GHẾ MASSAGE FAMILY INADA </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/ghe-massage-taijutsu-dong-tri-lieu" target="_self"> GHẾ MASSAGE TAIJUTSU </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/ghe-massage-panasonic-nhat-bai" target="_self"> GHẾ MASSAGE PANASONIC </a>
-									</li>
-									<li class="seo-item">
-										<a href="/collections/ghe-massage-fujikima" target="_self"> GHẾ MASSAGE FUJIKIMA </a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-sm-3 col-xs-12 prefooter_one">
-							<div class="widget widget_links clearfix">
-								<h4>máy rửa bát</h4>
-								<ul>
-								</ul>
-							</div>
+								@endif
+							@endforeach
 						</div>
 					</div>
 				</div>
-				<div class='payment_block'>
-					<h4>Hình thức thanh toán</h4>
-					<img class="lazyload" src="{{asset('images/icons/lazyload.jpg')}}" data-src='../assets/images/icons/payment_img.png' />
-				</div>
+
 			</div>
 			<div id="footer_tag">
 				<div class="container clearfix">
@@ -258,6 +177,8 @@
 	</div>
 	<!-- #wrapper end -->
 	<div class="phone-gif">
+
+
 		<div class="fancybox" onclick="window.location='tel:098 888 8642'">
 			<div class="coccoc-alo-phone coccoc-alo-green coccoc-alo-show" id="coccoc-alo-phoneIcon" style="right: 5%; top: 10%;">
 				<div class="coccoc-alo-ph-circle">&nbsp;</div>
@@ -599,29 +520,6 @@
 			return false;
 		}
 	</script>
-
-	<div id="product-quick-add" style="display: none; width: 700px;">
-		<div class="product-page ">
-			<div class="row">
-				<form id="ProductDetailsForm_QuickAdd">
-
-					<div class="hidden" style="">
-						<select id="product-select-qa" name="id" >
-						</select>
-
-						<input type="hidden" class="unit_price_not_formated"><!-- </input> -->
-						<input type="hidden" class="product_url" value=""> <!--</input>-->
-						<input type="hidden" class="product_title_hd" value=""> <!--</input>-->
-						<input type="hidden" class="product_img_small" value=""> <!--</input>-->
-					</div>
-
-					<input id="product-quantity" name="quantity" type="text" value="1" readonly class="form-control input-sm quantity">
-
-					<button id="addtocartQA" class="btn btn-primary" type="submit">Thêm vào giỏ</button>
-				</form>
-			</div>  <!-- END: row -->
-		</div>
-	</div>
 
 	<script>
 		var currentIMG = '';

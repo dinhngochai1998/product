@@ -43,14 +43,14 @@
 					</a>
 					<div class="hidden-xs fanepage_pc">
 						<span>Truy cập fanpage:</span>
-						<a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">HÀNG NHẬT TUẤN HÀ</a>
+						<a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">{{strtoupper($config->name) ?? null}}</a>
 					</div>
 					<!-- Top Search
                   ============================================= -->
 					<div class='top_search col-md-9 col-xs-12'>
-						<form action="{{route('wave.search.product')}}"class='col-sm-8 form-inline nopadding nomargin'>
-							<input type="hidden" name="1"  />
-							<input type="text" name="2"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
+						<form action="{{route('wave.search.product')}}"class='col-sm-8 form-inline nopadding nomargin' method="get">
+							<input type="hidden" name="search"  />
+							<input type="text" name="search"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
 							<button class='button'>Tìm kiếm</button>
 						</form>
 						<div id="top-cart" class='top-cart-block col-md-1 nopadding'>
@@ -100,14 +100,19 @@
 									<img alt="Giadungnhat.vn  luôn tận tâm" height="90" src="{{asset('images/icons/index_about_image.png')}}" width="150" />
 								</a>
 							</div>
-							<div class="w-author-name"><a href="#" title="Bùi Huy - Kho Hàng Nhật Bãi">Giadungnhat.vn  luôn tận tâm</a></div>
+							<div class="w-author-name"><a href="#" title="Bùi Huy - Kho Hàng Nhật Bãi">{{$config->title}}</a></div>
 							<div class="w-author-bio">
-								Chúng tôi là <span style="color: #ff0000;"><strong>Giadungnhat.vn </strong></span>, hiện là <strong>nơi phân phối các sản phẩm điện máy hàng Nhật chất lượng số 1 tại Việt Nam</strong>. Với phương châm bán hàng là mang đến cho khách hàng những sản phẩm tốt nhất với giá tốt nhất. Địa chỉ tại <strong> Số 2 ngõ 603 Lạc Long Quân, Tây Hồ, Hà Nội </strong>. Chúng tôi luôn lấy tiêu chí phục vụ khách hàng tận tâm – trung thực và rõ ràng.			<span style="color: #ff0000;"><strong> Giadungnhat.vn – luôn rẻ luôn chất lượng</strong></span>
+								Chúng tôi là <span style="color: #ff0000;"><strong>{{$config->author}}</strong> {{$config->description}}</span>
 							</div>
+							@php
+							$icons = json_decode($config->icons);
+							@endphp
 							<ul class="uu-the">
-								<li><span class="uu-the-icon"><img src="{{asset('images/icons/index_about_uuthe_icon_1.png')}}" /></span><span><strong>100% Sản phẩm xuất xứ<span style="color:#ff0000">Nhật Bản</span style="color: #ff0000;"></span></li>
-								<li><span class="uu-the-icon"><img src="{{asset('images/icons/index_about_uuthe_icon_2.png')}}" /></span><span>Chất lượng tốt - Giá thành hợp lý</span></li>
-								<li><span class="uu-the-icon"><img src="{{asset('images/icons/index_about_uuthe_icon_3.png')}}" /></span><span>Hỗ trợ khách hàng 24/7</span></li>
+
+								<li><span class="uu-the-icon"><img src="{{(asset('storage/' .$icons[0]))  ?? null}}" /></span><span><strong>100% Sản phẩm xuất xứ<span style="color:#ff0000">Nhật Bản</span style="color: #ff0000;"></span></li>
+								<li><span class="uu-the-icon"><img src="{{(asset('storage/' .$icons[1]))  ?? null}}" /></span><span>Chất lượng tốt - Giá thành hợp lý</span></li>
+								<li><span class="uu-the-icon"><img src="{{(asset('storage/' .$icons[2]))  ?? null}}" /></span><span>Hỗ trợ khách hàng 24/7</span></li>
+
 							</ul>
 						</div>
 					</div>
@@ -201,45 +206,38 @@
 					</div>
 				@endforeach
 					<!-- end collection group -->
+					<!-- end collection group --><span style="color: white">.</span>
 					<div id="blog_index" class="clearfix">
 						<h3 class="kuteshop-title"> <span class="title">Tin tức</span></h3>
 						<div class="row">
 							<div class='col-lg-12 nopadding col-sm-12'>
 								@foreach($news->posts as $value)
-								<div class="col-sm-3 col-xs-6 ">
-									<article class="blog-item left post type-post status-publish format-standard has-post-thumbnail hentry " >
-										<div class="blog-inner">
-											<div class="blog-thumb">
-												<a href="{{route('wave.news.detail', $value->slug)}}" tabindex="0">
+									<div class="col-sm-3 col-xs-6 ">
+										<article class="blog-item left post type-post status-publish format-standard has-post-thumbnail hentry " >
+											<div class="blog-inner">
+												<div class="blog-thumb">
+													<a href="{{route('wave.news.detail', $value->slug)}}" tabindex="0">
 
-													<figure><img class="img-responsive" src="{{asset('storage/'.$value->image)}}" alt="Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?"></figure>
-												</a>
-											</div>
-											<div class="blog-info equal-elem">
-												<h4 class="blog-title">
-													<a href="{{route('wave.news.detail', $value->slug)}}" >{{$value->title}}</a>
-												</h4>
-{{--												<ul class="blog-meta">--}}
-{{--													<li class="date">--}}
-{{--														<i class="fa fa-calendar" aria-hidden="true"></i> 26 Tháng 1 2021--}}
-{{--													</li>--}}
-{{--													<li class="comment">--}}
-{{--														<i class="fa fa-comment-o" aria-hidden="true"></i> 0  Bình luận--}}
-{{--													</li>--}}
-{{--												</ul>--}}
-												<div class="blog-readmore">
-													<a class=" read-more screen-reader-text" href="{{route('wave.news.product')}}"> Xem thêm <span class="icon-angle-right"></span>
+														<figure><img class="img-responsive" src="{{asset('storage/'.$value->image)}}" alt="Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?"></figure>
 													</a>
 												</div>
+												<div class="blog-info equal-elem">
+													<h4 class="blog-title">
+														<a href="{{route('wave.news.detail', $value->slug)}}" >{{$value->title}}</a>
+													</h4>
+
+													<div class="blog-readmore">
+														<a class=" read-more screen-reader-text" href="{{route('wave.news.product')}}"> Xem thêm <span class="icon-angle-right"></span>
+														</a>
+													</div>
+												</div>
 											</div>
-										</div>
-									</article>
-								</div>
+										</article>
+									</div>
 								@endforeach
 							</div>
 						</div>
 					</div>
-					<!-- end collection group -->
 				</div>
 			</div>
 		</section>

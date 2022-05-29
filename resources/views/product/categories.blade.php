@@ -12,14 +12,14 @@
             </a>
             <div class="hidden-xs fanepage_pc">
                 <span>Truy cập fanpage:</span>
-                <a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">HÀNG NHẬT TUẤN HÀ</a>
+                <a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">{{strtoupper($config->name) ?? null}}</a>
             </div>
             <!-- Top Search
                ============================================= -->
             <div class='top_search col-md-9 col-xs-12'>
-                <form action="/search"class='col-sm-8 form-inline nopadding nomargin'>
-                    <input type="hidden" name="type" value="product" />
-                    <input type="text" name="q"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
+                <form action="{{route('wave.search.product')}}"class='col-sm-8 form-inline nopadding nomargin' method="get">
+                    <input type="hidden" name="search" value="product" />
+                    <input type="text" name="search"  class="form-control col-md-8 search_input" placeholder="Tìm kiếm sản phẩm bạn muốn mua">
                     <button class='button'>Tìm kiếm</button>
                 </form>
                 <div id="top-cart" class='top-cart-block col-md-1 nopadding'>

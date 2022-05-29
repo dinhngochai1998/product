@@ -206,7 +206,7 @@
                                                 <!-- <form class="cart nobottommargin clearfix" method="post" enctype='multipart/form-data'>-->
                                                 <div class=" col-xs-12 product-quantity clearfix noleftpadding">
                                                     <div class="quantity">
-                                                        <label>Số lượng:</label>
+                                                        widget_links           <label>Số lượng:</label>
                                                         <input type="button" value="-" class="minus">
                                                         <input type="text" id='product_quantity' readonly step="1" min="1"  name="quantity" value="1" title="Qty" class="qty bk-product-qty" size="4" />
                                                         <input type="button" value="+" class="plus">
@@ -218,10 +218,11 @@
                                                 <!-- END BK BUTTON -->
                                                 <script>
                                                     $('.bk-btn').click(function() {
-                                                        $('.bk-modal').css({
+                                                        $('#bk-modal').css({
                                                             'display': 'block'
                                                         });
                                                     });
+
                                                 </script>
                                                 <script>
                                                     var quantity = parseInt($('#ProductDetailsForm .product-quantity input.qty').val());
@@ -503,130 +504,23 @@
                                 <div class="widget widget_links clearfix">
                                     <h4>Danh mục sản phẩm</h4>
                                     <ul class='sidebar_menu'>
+                                        @foreach($categories as $category)
                                         <li>
-                                            <a href="/collections/may-giat-nhat-noi-dia-nhat-bai">MÁY GIẶT</a>
+                                            <a href="{{route('wave.category', $category->slug)}}">{{$category->name}}</a>
                                             <i class='icon-angle-down'></i>
+                                            @foreach($subCategories as $subCategory)
+                                                @if($category->id == $subCategory->parent_id)
                                             <ul class='sidebar_submenu'>
                                                 <li>
-                                                    <a href="/collections/may-giat-nhat-bai-ban-chay-nhat">MÁY GIẶT BÁN CHẠY NHẤT</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/may-giat-toshiba-nhat-bai">MÁY GIẶT TOSHIBA</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/may-giat-panasonic-nhat-bai">MÁY GIẶT PANASONIC</a>
+                                                    <a href="{{route('wave.category', $category->slug)}}">{{$subCategory->name}}</a>
                                                 </li>
                                             </ul>
+                                                @endif
+                                            @endforeach
                                         </li>
-                                        <li>
-                                            <a href="/collections/tu-lanh-nhat-noi-dia-nhat-bai">TỦ LẠNH</a>
-                                            <i class='icon-angle-down'></i>
-                                            <ul class='sidebar_submenu'>
-                                                <li>
-                                                    <a href="/collections/tu-lanh-panasonic-noi-dia-nhat-bai">TỦ LẠNH PANASONIC</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/tu-lanh-hitachi-noi-dia-nhat-bai">TỦ LẠNH HITACHI</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/tu-lanh-toshiba-nhat-bai">TỦ LẠNH TOSHIBA</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/tu-lanh-mitsubishi-nhat-bai">TỦ LẠNH MITSUBISHI</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="/collections/ghe-massage-cao-cap">GHẾ MASSAGE</a>
-                                            <i class='icon-angle-down'></i>
-                                            <ul class='sidebar_submenu'>
-                                                <li>
-                                                    <a href="/collections/ghe-massage-family-inada">GHẾ MASSAGE FAMILY INADA</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/ghe-massage-taijutsu-dong-tri-lieu">GHẾ MASSAGE TAIJUTSU</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/ghe-massage-panasonic-nhat-bai">GHẾ MASSAGE PANASONIC</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/ghe-massage-fujikima">GHẾ MASSAGE FUJIKIMA</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="/collections/dieu-hoa-nhat-bai-noi-dia">ĐIỀU HÒA</a>
-                                            <i class='icon-angle-down'></i>
-                                            <ul class='sidebar_submenu'>
-                                                <li>
-                                                    <a href="/collections/dieu-hoa-nhat-bai-ban-chay-nhat">ĐIỀU HÒA BÁN CHẠY NHẤT</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/dieu-hoa-fujitsu-nhat-bai">ĐIỀU HÒA FUJITSU</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/dieu-hoa-panasonic-nhat-bai">ĐIỀU HÒA PANASONIC</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="/collections/may-loc-khong-khi-nhat-noi-dia">MÁY LỌC KHÔNG KHÍ</a>
-                                            <i class='icon-angle-down'></i>
-                                            <ul class='sidebar_submenu'>
-                                                <li>
-                                                    <a href="/collections/loc-khong-khi-hut-am-ban-chay-nhat">MÁY LỌC KHÔNG KHÍ  BÁN CHẠY NHẤT</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/may-loc-khong-khi-nhat-bai">MÁY LỌC KHÔNG KHÍ NHẬT BÃI</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/mang-than-hepa-may-loc-khong-khi">MÀNG THAN-HEPA MÁY LỌC KHÔNG KHÍ</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/may-loc-khong-khi-moi-chinh-hang">MÁY LỌC KHÔNG KHÍ  NEW 100% CHÍNH HÃNG</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="/collections/may-hut-am-nhat-bai">MÁY HÚT ẨM</a>
-                                            <i class='icon-angle-down'></i>
-                                            <ul class='sidebar_submenu'>
-                                                <li>
-                                                    <a href="/collections/may-hut-am-nhat-bai-noi-dia">MÁY HÚT ẨM NHẬT BÃI</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/may-hut-am-new-100-nhat-noi-dia">MÁY HÚT ẨM NEW 100% NHẬT NỘI ĐỊA</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="/collections/may-rua-bat-noi-com-dien-nhat">ĐỒ GIA DỤNG</a>
-                                            <i class='icon-angle-down'></i>
-                                            <ul class='sidebar_submenu'>
-                                                <li>
-                                                    <a href="/collections/may-rua-bat-noi-dia-nhat-bai">MÁY RỬA BÁT NHẬT NỘI ĐỊA</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/noi-com-dien-nhat-bai">NỒI CƠM ĐIỆN NHẬT BÃI</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/bep-tu-nhat-bai">BẾP TỪ NHẬT</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="/collections/may-loc-nuoc-nhat-bai">MÁY LỌC NƯỚC</a>
-                                            <i class='icon-angle-down'></i>
-                                            <ul class='sidebar_submenu'>
-                                                <li>
-                                                    <a href="/collections/may-loc-nuoc-toshiba">MÁY LỌC NƯỚC TOSHIBA</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/collections/may-loc-nuoc-panasonic">MÁY LỌC NƯỚC PANASONIC</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        @endforeach
                                     </ul>
+
                                 </div>
                                 <!-- end categories -->
                                 <!-- recent product -->
@@ -728,7 +622,8 @@
             </div>
         </section>
         <!-- BK MODAL -->
-        <div id='bk-modal'></div>
+
+        <div id="bk-modal" style="display: none;"><div id="bk-modal-payment" class="bk-modal" style="display: block;"><div class="bk-modal-content" id="bk-modal-content-style"><div id="bk-modal-pop" class="bk-modal-header"><div class="bk-container-fluid" style="box-sizing: border-box"><div class="bk-row bk-popup-header"><div class="bk-col-5 bk-col-lg-3" style="box-sizing: border-box" id="bk-logo"></div><div class="bk-col-3 bk-col-lg-6" style="box-sizing: border-box"></div><div class="bk-col-4 bk-col-lg-3 bk-text-right" style="box-sizing: border-box"><button type="button" id="bk-modal-close">×</button></div></div></div></div><div class="bk-modal-body"><iframe width="100%" height="100%" id="iframe" src="https://pg.baokim.vn/?token=Qjc0HLtC5BUH8e9ffRMjwSptwFRZqn_1653797971"></iframe></div></div></div><div id="bk-modal-notify" class="bk-modal"><div class="bk-modal-content" id="bk-modal-content-notify"><div class="bk-modal-header"><div class="bk-container-fluid"><div class="bk-row bk-popup-header"><div class="bk-col-3" id="bk-logo"></div><div class="bk-col-6"></div><div class="bk-col-3 bk-text-right"><button type="button" id="bk-modal-close">×</button></div></div></div></div><div class="bk-modal-body"><p class="text-center">Sản phẩm đã hết hàng, không thể thanh toán</p><button type="button" class="bk-modal-notify-close bk-btn-notify-close">Đóng</button></div></div></div></div>
         <!-- END BK MODAL -->
         <script>
             $(".product-thumb img").click(function(){

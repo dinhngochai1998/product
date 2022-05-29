@@ -35,9 +35,17 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(
             [
                 'product.header', 'product.all-product', 'product.search', 'product.categories', 'product.detail',
-                'product.index', 'product.header', 'product.category', 'product.news', 'product.news-detail'
+                'product.index', 'product.header', 'product.category', 'product.news', 'product.news-detail','product.footer'
             ],
             'App\Http\View\Composers\CategoriesComposer',
+
+        );
+
+        View::composer(
+            [
+                'product.header',  'product.footer',  'product.index', 'product.categories', 'product.contact'
+            ],
+            'App\Http\View\Composers\ConfigComposer',
 
         );
     }

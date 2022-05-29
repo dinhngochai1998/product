@@ -44,7 +44,7 @@
                                        ============================================= -->
                                     <div id="posts" class="small-thumbs">
                                        <!-- single article -->
-                                       @foreach($news->posts as $value)
+                                       @foreach($news as $value)
                                        <div class="entry clearfix">
                                           <div class="entry-image">
                                              <a href="" data-lightbox="image"><img class="image_fade" src="{{asset('storage/'. $value->image)}}" alt="Liệu có an toàn khi uống nước trực tiếp từ máy lọc nước hay không?"></a>
@@ -71,9 +71,7 @@
                                     <!-- #posts end -->
                                     <!-- Pagination
                                        ============================================= -->
-                                    <ul class="pager nomargin">
-                                       <li class="previous"><a href="/blogs/news?page=2">&larr; Bài viết cũ hơn</a></li>
-                                    </ul>
+                                 {!! $news->links() !!}
                                     <!-- .pager end -->
                                  </div>
                                  <!-- .postcontent end -->
