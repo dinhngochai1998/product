@@ -4,6 +4,7 @@ namespace App\Http\View\Composers;
 
 use App\Category;
 use App\Helper\CategoriesConstant;
+use App\Helper\ConfigConstant;
 use App\Product;
 use Illuminate\View\View;
 

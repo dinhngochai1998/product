@@ -23,8 +23,8 @@
                     <button class='button'>Tìm kiếm</button>
                 </form>
                 <div id="top-cart" class='top-cart-block col-md-1 nopadding'>
-                    <a href="/cart" id="top-cart-trigger"><img src='//theme.hstatic.net/1000227124/1000685523/14/cart_bg.png?v=21' ><span class='top_cart_qty'>3</span>
-                    </a>
+{{--                    <a href="/cart" id="top-cart-trigger"><img src='//theme.hstatic.net/1000227124/1000685523/14/cart_bg.png?v=21' ><span class='top_cart_qty'>3</span>--}}
+{{--                    </a>--}}
                     <div class="top-cart-content">
                         <div class="top-cart-title">
                             <h4>Giỏ hàng</h4>
@@ -93,7 +93,7 @@
                     li.children('ul').toggle('slow');
                 });
             </script>
-            <!-- #primary-menu end -->
+            <!-- #primary-menu end -->top-cart-trigger
         </div>
     </div>
 </header>

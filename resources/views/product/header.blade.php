@@ -94,15 +94,14 @@
                 <div class="tp-banner" >
                     <ul>
                         <!-- SLIDE  -->
-                        @php
-                            $slides = json_decode($config->slides_image);
 
-                        @endphp
 
-                        @foreach($slides ?? [] as $key => $slide)
+                        @foreach($slides as $slide)
                             <li data-transition="random" data-slotamount="7" data-link=""  data-title="" >
-
-                                <img  src="{{ asset('storage/'.$slide)}}">
+                                @php
+                                    $image = (new \App\Http\View\Composers\CategoriesComposer())->getImagesAttribute($slide->image);
+                                @endphp
+                                <img  src="{{asset('storage/'.$image)}}">
                                 <div class="tp-caption customin lfl ltr tp-resizeme revo-slider-caps-text uppercase"
                                      data-x="center"
                                      data-y="center"

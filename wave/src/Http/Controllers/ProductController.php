@@ -9,8 +9,10 @@ namespace Wave\Http\Controllers;
 use App\Category;
 use App\Contact;
 use App\Helper\CategoriesConstant;
+use App\Helper\ConfigConstant;
 use App\Helper\StatusConstant;
 use App\Product;
+use App\Slide;
 use Illuminate\Http\Request;
 use Wave\Post;
 
@@ -35,6 +37,8 @@ class ProductController extends \App\Http\Controllers\Controller
             ];
         }
         $news = Category::query()->with('posts')->where('name', CategoriesConstant::NEWS)->first();
+
+
 
         return view('product.index', compact('categories', 'products', 'news'));
     }

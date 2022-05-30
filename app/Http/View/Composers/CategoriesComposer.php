@@ -4,9 +4,12 @@ namespace App\Http\View\Composers;
 
 use App\Category;
 use App\Helper\CategoriesConstant;
+use App\Helper\ConfigConstant;
 use App\Helper\RateConstant;
 use App\Helper\StatusConstant;
 use App\Product;
+use App\Slide;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 
@@ -27,11 +30,16 @@ class CategoriesComposer
                                        ->limit(4)
                                        ->first();
         $featuredProducts    = Product::query()->where('rate', RateConstant::FEATURED_PRODUCTS)->limit(4)->get();
-
+        $slides = Slide::query()->get();
         $view->with(compact(
                         'promotionalProducts',
                         'userManual',
-                        'featuredProducts'
+                        'featuredProducts',
+            'slides'
                     ));
+    }
+    public function getImagesAttribute($value)
+    {
+        return Str::replace('\\', '/', $value);
     }
 }

@@ -1,3 +1,11 @@
+@php
+	$address = (new App\Helper\ConfigConstant())->getConfig('address');
+    $phoneNumber = (new App\Helper\ConfigConstant())->getConfig('phone-number');
+    $email = (new App\Helper\ConfigConstant())->getConfig('email');
+    $contact = (new App\Helper\ConfigConstant())->getConfig('lien-he');
+    $householdBusiness = (new App\Helper\ConfigConstant())->getConfig('hoi-kinh-doanh');
+    $footer = (new App\Helper\ConfigConstant())->getConfig('footer-logo');
+@endphp
 		<footer id="footer" class='dark'>
 			<div class="container">
 				<!-- Footer Widgets
@@ -5,9 +13,9 @@
 				<div class="footer-widgets-wrap clearfix footer_wrap_2">
 					<div class="prefooter_one col-sm-3 col-xs-6">
 						<div class="widget clearfix">
-							<a href='' class='footer_logo'><img class="lazyload" src="{{ (asset('storage/' .$config->image)) ?? null }}" data-src='' /></a>
+							<a href='' class='footer_logo'><img class="lazyload" src="{{ (asset('storage/' .$footer->icon)) ?? null }}" data-src='' /></a>
 							<p>
-							<p>Chúng tôi tin chất lượng - uy tín với khách hàng là dịch vụ tốt nhất.</p>
+							<p>{{$footer->value}}</p>
 							</p>
 						</div>
 					</div>
@@ -33,18 +41,18 @@
 					</div>
 					<div class="prefooter_one col-sm-3 col-xs-6">
 						<div class="widget widget_links clearfix">
-							<h4>{{$config->number_phone ?? null}}</h4>
-							<p>{{$config->description_footer ?? null}}</p>
+							<h4>LIÊN HỆ {{$phoneNumber->value ?? null}}</h4>
+							<p>{{$contact->value ?? null}}</p>
 							<address>
 								<img src='{{asset('images/icons/pre_footer_address_icon2.png')}}' />
-								<span>{{$config->address ?? null}}</span> <br>
+								<span>{{$address->value ?? null}}</span> <br>
 								<img src='{{asset('images/icons/pre_footer_phone_icon2.png')}}' />
-								<a href='tel:098 888 8642'>{{$config->number_phone ?? null}}</a> <br>
+								<a href='tel:098 888 8642'>{{$phoneNumber->value ?? null}}</a> <br>
 								<img src='{{asset('images/icons/pre_footer_email_icon2.png')}}' />
-								<a href='#'>{{$config->email ?? null}}</a>
+								<a href='#'>{{$email->value ?? null}}</a>
 							</address>
 							<div class="footer_more_info">
-								{{$config->more_info ?? null}}
+								{{$householdBusiness->value ?? null}}
 							</div>
 						</div>
 						<div class='marginbottom hidden-lg hidden-md hidden-sm'>
@@ -52,24 +60,6 @@
 					</div>
 				</div>
 				<!-- .footer-widgets-wrap end -->
-				<div class="tag_content">
-					<div class="row" style="margin:0">
-						<div class="col-sm-9 col-xs-12">
-
-							@foreach($subCategories ?? [] as $key => $subcategory)
-								@if($key <= 5)
-							<div class="seo_keyword">
-								<ul class="content-seo list-inline">
-									<li><span class="title-seo">truy cập nhanh:</span></li>
-									<li class="seo-item">
-										<a href="/collections/dieu-hoa-nhat-bai-ban-chay-nhat" target="_self">{{strtoupper($subcategory->name)}}</a>
-								</ul>
-							</div>
-								@endif
-							@endforeach
-						</div>
-					</div>
-				</div>
 
 			</div>
 			<div id="footer_tag">
@@ -177,33 +167,21 @@
 	</div>
 	<!-- #wrapper end -->
 	<div class="phone-gif">
-
-
-		<div class="fancybox" onclick="window.location='tel:098 888 8642'">
+		<div class="fancybox" onclick="window.location='tel: '.$value->phone.' ' ">
 			<div class="coccoc-alo-phone coccoc-alo-green coccoc-alo-show" id="coccoc-alo-phoneIcon" style="right: 5%; top: 10%;">
 				<div class="coccoc-alo-ph-circle">&nbsp;</div>
 				<div class="coccoc-alo-ph-circle-fill">&nbsp;</div>
 				<div class="coccoc-alo-ph-img-circle">&nbsp;</div>
 			</div>
 		</div>
+		@foreach($phoneGifs as $value)
 		<div class="clicktocall">
 			<a class="call" href="tel:098 888 8642">
-				Mr Tuấn<br />
-				<b>098 888 8642</b>
+				{{$value->name}}<br />
+				<b>{{$value->phone}}</b>
 			</a>
 		</div>
-		<div class="clicktocall">
-			<a class="call" href="tel:098 888 4642">
-				Mrs Hà<br />
-				<b>098 888 4642</b>
-			</a>
-		</div>
-		<div class="clicktocall">
-			<a class="call" href="tel:096 666 2944">
-				Bảo hành 24/7<br />
-				<b>096 666 2944</b>
-			</a>
-		</div>
+		@endforeach
 	</div>
 	<!-- Go To Top
       ============================================= -->

@@ -41,9 +41,13 @@
 						<i class='icon-reorder'></i>
 						<span>MENU</span>
 					</a>
+					@php
+						$title = (new App\Helper\ConfigConstant())->getConfig('tieu-de-page');
+
+					@endphp
 					<div class="hidden-xs fanepage_pc">
 						<span>Truy cập fanpage:</span>
-						<a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">{{strtoupper($config->name) ?? null}}</a>
+						<a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">{{strtoupper($title->value) ?? null}}</a>
 					</div>
 					<!-- Top Search
                   ============================================= -->
@@ -54,8 +58,8 @@
 							<button class='button'>Tìm kiếm</button>
 						</form>
 						<div id="top-cart" class='top-cart-block col-md-1 nopadding'>
-							<a href="/cart" id="top-cart-trigger"><img src='{{ asset('images/icons/cart_bg.png')}}' ><span class='top_cart_qty'>0</span>
-							</a>
+{{--							<a href="/cart" id="top-cart-trigger"><img src='{{ asset('images/icons/cart_bg.png')}}' ><span class='top_cart_qty'>0</span>--}}
+{{--							</a>--}}
 							<div class="top-cart-content">
 								<div class="top-cart-title">
 									<h4>Giỏ hàng</h4>
@@ -90,6 +94,12 @@
 		<!-- #header end -->
 		<!-- Content
          ============================================= -->
+		@php
+			$icon1 = (new App\Helper\ConfigConstant())->getConfig('100-san-pham-xuat-xu-nhat-ban');
+            $icon2 = (new App\Helper\ConfigConstant())->getConfig('chat-luong-tot-gia-thanh-hop-ly');
+            $icon3 = (new App\Helper\ConfigConstant())->getConfig('ho-tro-khach-hang-24-7');
+            $body = (new App\Helper\ConfigConstant())->getConfig('giadungnhat-vn-luon-tan-tam');
+		@endphp
 		<section id="content">
 			<div class="content-wrap">
 				<div class="container clearfix">
@@ -97,21 +107,21 @@
 						<div class="w-author">
 							<div class="w-author-img">
 								<a href="#" rel="author external" target="_blank">
-									<img alt="Giadungnhat.vn  luôn tận tâm" height="90" src="{{asset('images/icons/index_about_image.png')}}" width="150" />
+									<img alt="Giadungnhat.vn  luôn tận tâm" height="90" src="{{asset('storage/'.$body->icon)}}" width="150" />
 								</a>
 							</div>
-							<div class="w-author-name"><a href="#" title="Bùi Huy - Kho Hàng Nhật Bãi">{{$config->title}}</a></div>
+
+							<div class="w-author-name"><a href="#" title="Bùi Huy - Kho Hàng Nhật Bãi">{{$body->name}}</a></div>
 							<div class="w-author-bio">
-								Chúng tôi là <span style="color: #ff0000;"><strong>{{$config->author}}</strong> {{$config->description}}</span>
+								Chúng tôi là <span style="color: #ff0000;"><strong></strong> {{$body->value}}</span>
 							</div>
-							@php
-							$icons = json_decode($config->icons);
-							@endphp
+
+
 							<ul class="uu-the">
 
-								<li><span class="uu-the-icon"><img src="{{(asset('storage/' .$icons[0]))  ?? null}}" /></span><span><strong>100% Sản phẩm xuất xứ<span style="color:#ff0000">Nhật Bản</span style="color: #ff0000;"></span></li>
-								<li><span class="uu-the-icon"><img src="{{(asset('storage/' .$icons[1]))  ?? null}}" /></span><span>Chất lượng tốt - Giá thành hợp lý</span></li>
-								<li><span class="uu-the-icon"><img src="{{(asset('storage/' .$icons[2]))  ?? null}}" /></span><span>Hỗ trợ khách hàng 24/7</span></li>
+								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon1->icon)}}" /></span><span><strong>{{$icon1->value}}<span style="color:#ff0000">Nhật Bản</span style="color: #ff0000;"></span></li>
+								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon2->icon)}}" /></span><span>{{$icon2->value}}</span></li>
+								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon3->icon)}}" /></span><span>{{$icon3->value}}</span></li>
 
 							</ul>
 						</div>

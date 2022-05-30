@@ -2,12 +2,8 @@
 
 namespace App\Http\View\Composers;
 
-use App\Category;
 use App\Config;
-use App\Helper\CategoriesConstant;
-use App\Helper\RateConstant;
-use App\Helper\StatusConstant;
-use App\Product;
+use App\PhoneGif;
 use Illuminate\View\View;
 
 
@@ -22,9 +18,10 @@ class ConfigComposer
      */
     public function compose(View $view)
     {
+        $phoneGifs = PhoneGif::query()->get();
         $config = Config::query()->first();
         $view->with(compact(
-                        'config',
+                        'config','phoneGifs',
                     ));
     }
 }

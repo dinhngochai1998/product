@@ -40,7 +40,11 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Wave\\": "wave/src/"
-        }
+        },
+        "files": [
+            "app/Helper/ConfigConstant.php"
+        ]
+
     },
     "autoload-dev": {
         "psr-4": {
