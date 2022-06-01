@@ -1,5 +1,12 @@
 @extends('themes.layouts.app')
 @section('content')
+    @php
+        $address = (new App\Helper\ConfigConstant())->getConfig('address');
+        $phoneNumber = (new App\Helper\ConfigConstant())->getConfig('phone-number');
+        $email = (new App\Helper\ConfigConstant())->getConfig('email');
+        $contact = (new App\Helper\ConfigConstant())->getConfig('lien-he');
+        $title = (new App\Helper\ConfigConstant())->getConfig('tieu-de-page');
+    @endphp
 <body  class="stretched no-transition page-contact" >
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54HJ92D"
@@ -89,11 +96,11 @@
                 <div class="sidebar col_last nobottommargin">
                     <h3>phục vụ bạn là niềm hành phúc</h3>
                     <address>
-                        <strong>shop {{strtoupper($config->name) ?? null}}</strong><br>
-                        {{$config->address ?? null}}
+                        <strong>shop: {{strtoupper($title->value) ?? null}}</strong><br>
+                        {{$address->value ?? null}}
                     </address>
-                    <abbr title="Phone Number"><strong>Số điện thoại:</strong></abbr> {{$config->number_phone ?? null}}<br>
-                    <abbr title="Email Address"><strong>Email:</strong></abbr> {{$config->email ?? null}}
+                    <abbr title="Phone Number"><strong>Số điện thoại:</strong></abbr> {{$phoneNumber->value ?? null}}<br>
+                    <abbr title="Email Address"><strong>Email:</strong></abbr> {{$email->value ?? null}}
                 </div>
                 <!-- .sidebar end -->
             </div>

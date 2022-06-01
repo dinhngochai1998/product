@@ -9,11 +9,12 @@ namespace Wave\Http\Controllers;
 use App\Category;
 use App\Contact;
 use App\Helper\CategoriesConstant;
-use App\Helper\ConfigConstant;
 use App\Helper\StatusConstant;
+use App\Order;
+use App\OrderProduct;
 use App\Product;
-use App\Slide;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Wave\Post;
 
 class ProductController extends \App\Http\Controllers\Controller
@@ -39,7 +40,6 @@ class ProductController extends \App\Http\Controllers\Controller
         $news = Category::query()->with('posts')->where('name', CategoriesConstant::NEWS)->first();
 
 
-
         return view('product.index', compact('categories', 'products', 'news'));
     }
 
@@ -54,7 +54,7 @@ class ProductController extends \App\Http\Controllers\Controller
     public function news()
     {
         $categoryNews = Category::query()->where('name', CategoriesConstant::NEWS)->first();
-        $news = Post::query()->where('category_id', $categoryNews->id)->paginate(10);
+        $news         = Post::query()->where('category_id', $categoryNews->id)->paginate(10);
 
         return view('product.news', compact('news'));
     }
@@ -89,6 +89,57 @@ class ProductController extends \App\Http\Controllers\Controller
         Contact::query()->create($request->all());
 
         return view('product.contact');
+    }
+
+    public function orderProduct(Request $request)
+    {
+
+        $product = Product::query()->where('id', '=', $request['id'])->first();
+        $order   = Session::get('cart');
+        $cart    = [
+            "id"       => $product->id,
+            "name"     => $product->name,
+            "price"    => $product->price,
+            "image"    => $product->image,
+            "total"    => $product->price,
+            "quantity" => $request['quantity'],
+        ];
+        Session::put('cart', $cart);
+
+    }
+
+    public function viewOrder()
+    {
+        $getCart = [];
+
+        if (Session::get('cart')) {
+            $getCart = Session::get('cart');
+        }
+
+        return view('product.order', compact('getCart'));
+    }
+
+    public function addCart(Request $request)
+    {
+
+        $dataCart     = [
+            'name'         => $request->name,
+            'email'        => $request->email,
+            'number_phone' => $request->number_phone,
+            'note'         => $request->note,
+            'address'      => $request->address,
+        ];
+        $order        = Order::query()->create($dataCart);
+        $dataOrderProduct = [
+            'product_id' => $request['product_id'],
+            'order_id'   => $order->id,
+            'quantity'   => $request['quantity'],
+        ];
+        $orderProduct = OrderProduct::query()->create($dataOrderProduct);
+
+        $cart = Session::get('cart');
+        unset($cart);
+        return redirect()->route('wave.home');
     }
 
 }

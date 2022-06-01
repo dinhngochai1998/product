@@ -165,10 +165,8 @@
                                                     <div class="title">
                                                         <span class="icon-gift" aria-hidden="true"></span> Quà Tặng
                                                     </div>
-                                                    <p>&nbsp; &nbsp; &nbsp;- Bảo hành 12 tháng, 1 đổi 1 khi có lỗi</p>
-                                                    <p>&nbsp;&nbsp;&nbsp;&nbsp; - Free ship 15km</p>
-                                                    <p>&nbsp;&nbsp;&nbsp;&nbsp; - Tặng đổi nguồn 220v sang 100v giá 200.000</p>
-                                                    <p>
+                                                    <p>&nbsp; &nbsp; {{$product->voucher}}</p>
+
                                                 </div>
                                                 <div class="col-md-12 col-sm-12 col-xs-12 short-desc">
 
@@ -196,7 +194,7 @@
                                                         <div class='options-selection'>
                                                             <select class="form-control input-sm">
                                                                 <option data_size_code="tulanhhitachirwx74j" data_color_code="tulanhhitachirwx74j"  class="" value="tủ lạnh hitachi r wx74j" >
-                                                                    tủ lạnh hitachi r wx74j
+                                                                    {{$product->name}}
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -208,18 +206,31 @@
                                                     <div class="quantity">
                                                         widget_links           <label>Số lượng:</label>
                                                         <input type="button" value="-" class="minus">
+                                                        <input type="hidden" value="{{$product->id}}" class="id_product">
                                                         <input type="text" id='product_quantity' readonly step="1" min="1"  name="quantity" value="1" title="Qty" class="qty bk-product-qty" size="4" />
                                                         <input type="button" value="+" class="plus">
                                                     </div>
                                                     <button type="submit" id='' class="add-to-cart icon-cart button nomargin col-xs-12 col-md-6 nopadding">Đặt hàng</button>
                                                 </div>
                                                 <!-- BK BUTTON -->
-                                                <div class="bk-btn"><button class="bk-btn-paynow" style="display: inline-block;background-color: #e00 !important;color: #fff !important" type="button" onclick=""><strong>Mua ngay</strong><span>Giao tận nơi hoặc nhận tại cửa hàng</span></button><button class="bk-btn-installment" style="display: inline-block;background-color: #288ad6 !important;color: #fff !important" type="button"><strong>Trả góp qua thẻ</strong><span>Visa, Master, JCB</span></button></div>
+                                                <div class="bk-btn" id="click"><button class="bk-btn-paynow" style="display: inline-block;background-color: #e00 !important;color: #fff !important" type="button" onclick=""><strong>Mua ngay</strong><span>Giao tận nơi hoặc nhận tại cửa hàng</span></button><button class="bk-btn-installment" style="display: inline-block;background-color: #288ad6 !important;color: #fff !important" type="button"><strong>Trả góp qua thẻ</strong><span>Visa, Master, JCB</span></button></div>
                                                 <!-- END BK BUTTON -->
                                                 <script>
-                                                    $('.bk-btn').click(function() {
-                                                        $('#bk-modal').css({
-                                                            'display': 'block'
+                                                    $('.bk-btn-paynow').click(function() {
+                                                        console.log('1');
+                                                        var id = $('.id_product').val();
+                                                        var quantity = $('#product_quantity').val();
+                                                        $.ajax({
+                                                            type:'GET',
+                                                            url: 'http://127.0.0.1:8000/order/product',
+                                                            data: {
+                                                                id,
+                                                                quantity
+                                                            },
+                                                            async: true,
+                                                            success: function(data) {
+                                                                window.location.replace('http://127.0.0.1:8000/order')
+                                                            }
                                                         });
                                                     });
 
@@ -261,8 +272,8 @@
                                                     <div class="">
                                                         <div class="tagged_as">
                                                             <span><strong>Tags:</strong></span>
-                                                            <a href="/collections/all/tu-lanh-hitachi" rel="tag">
-                                                                Tủ lạnh Hitachi </a>
+                                                            <a href="#" rel="tag">
+                                                                {{$product->name}} </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -373,7 +384,7 @@
                                         <ul class="tab-nav clearfix">
                                             <li class=''><a href="#tabs-1"><span class=""> Mô tả</span></a></li>
                                             <li class='image_gallery_tab'><a href="#tabs-2"><span class=""> Hình ảnh thực tế</span></a></li>
-                                            <li class=''><a href="#tabs-3"><span class=""> Bình luận</span></a></li>
+
                                             <li class='tab-review'><a href="#tabs-4"><span class=""> Đánh giá</span></a></li>
                                         </ul>
                                         <div class="tab-container">
@@ -621,10 +632,7 @@
                 </div>
             </div>
         </section>
-        <!-- BK MODAL -->
 
-        <div id="bk-modal" style="display: none;"><div id="bk-modal-payment" class="bk-modal" style="display: block;"><div class="bk-modal-content" id="bk-modal-content-style"><div id="bk-modal-pop" class="bk-modal-header"><div class="bk-container-fluid" style="box-sizing: border-box"><div class="bk-row bk-popup-header"><div class="bk-col-5 bk-col-lg-3" style="box-sizing: border-box" id="bk-logo"></div><div class="bk-col-3 bk-col-lg-6" style="box-sizing: border-box"></div><div class="bk-col-4 bk-col-lg-3 bk-text-right" style="box-sizing: border-box"><button type="button" id="bk-modal-close">×</button></div></div></div></div><div class="bk-modal-body"><iframe width="100%" height="100%" id="iframe" src="https://pg.baokim.vn/?token=Qjc0HLtC5BUH8e9ffRMjwSptwFRZqn_1653797971"></iframe></div></div></div><div id="bk-modal-notify" class="bk-modal"><div class="bk-modal-content" id="bk-modal-content-notify"><div class="bk-modal-header"><div class="bk-container-fluid"><div class="bk-row bk-popup-header"><div class="bk-col-3" id="bk-logo"></div><div class="bk-col-6"></div><div class="bk-col-3 bk-text-right"><button type="button" id="bk-modal-close">×</button></div></div></div></div><div class="bk-modal-body"><p class="text-center">Sản phẩm đã hết hàng, không thể thanh toán</p><button type="button" class="bk-modal-notify-close bk-btn-notify-close">Đóng</button></div></div></div></div>
-        <!-- END BK MODAL -->
         <script>
             $(".product-thumb img").click(function(){
                 $(".product-thumb").removeClass('active');
@@ -772,9 +780,7 @@
             });
 
         </script>
-        <!-- BK JS -->
-        <script src="https://pc.baokim.vn/js/bk_plus_v2.popup.js"></script>
-        <!-- END BK JS -->
+
         <!-- #content end -->
     </body>
 @endsection
