@@ -10,9 +10,12 @@ use App\Category;
 use App\Contact;
 use App\Helper\CategoriesConstant;
 use App\Helper\StatusConstant;
+use App\Jobs\NewJob;
+use App\Jobs\SendMailProduct;
 use App\Order;
 use App\OrderProduct;
 use App\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Wave\Post;
@@ -121,7 +124,7 @@ class ProductController extends \App\Http\Controllers\Controller
 
     public function addCart(Request $request)
     {
-
+        $product = Product::query()->where('id', $request['product_id'])->first();
         $dataCart     = [
             'name'         => $request->name,
             'email'        => $request->email,
@@ -129,14 +132,15 @@ class ProductController extends \App\Http\Controllers\Controller
             'note'         => $request->note,
             'address'      => $request->address,
         ];
-        $order        = Order::query()->create($dataCart);
+        $order        = Order::query()->create($dataCart)->toArray();
         $dataOrderProduct = [
             'product_id' => $request['product_id'],
-            'order_id'   => $order->id,
+            'order_id'   => $order['id'],
             'quantity'   => $request['quantity'],
         ];
-        $orderProduct = OrderProduct::query()->create($dataOrderProduct);
-
+        $mergeData = array_merge($order, $dataOrderProduct);
+        OrderProduct::query()->create($dataOrderProduct);
+        dispatch(New SendMailProduct($mergeData, $product))->delay(Carbon::now()->addMinutes(20));
         $cart = Session::get('cart');
         unset($cart);
         return redirect()->route('wave.home');
