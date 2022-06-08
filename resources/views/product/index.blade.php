@@ -107,7 +107,7 @@
 						<div class="w-author">
 							<div class="w-author-img">
 								<a href="#" rel="author external" target="_blank">
-									<img alt="" height="90" src="{{asset('storage/'.$body->icon ?? null) ?? null}}" width="150" />
+									<img alt="" height="90" src="{{ isset($body->icon) ? asset('storage/'.$body->icon) : null  }}" width="150" />
 								</a>
 							</div>
 
@@ -117,9 +117,9 @@
 							</div>
 
 							<ul class="uu-the">
-								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon1->icon ?? null) ?? null}}" /></span><span><strong>{{$icon1->value ?? null}}<span style="color:#ff0000">Nhật Bản</span style="color: #ff0000;"></span></li>
-								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon2->icon ?? null) ?? null}}" /></span><span>{{$icon2->value ?? null}}</span></li>
-								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon3->icon ?? null) ?? null}}" /></span><span>{{$icon3->value ?? null}}</span></li>
+								<li><span class="uu-the-icon"><img src="{{ isset($body->icon) ? asset('storage/'. $icon1->icon ) : null }}" /></span><span><strong>{{$icon1->value ?? null}}<span style="color:#ff0000">Nhật Bản</span style="color: #ff0000;"></span></li>
+								<li><span class="uu-the-icon"><img src="{{ isset($body->icon) ? asset('storage/'. $icon2->icon ) : null }}" /></span><span>{{$icon2->value ?? null}}</span></li>
+								<li><span class="uu-the-icon"><img src="{{ isset($body->icon) ? asset('storage/'. $icon3->icon ) : null }}" /></span><span>{{$icon3->value ?? null}}</span></li>
 							</ul>
 						</div>
 					</div>
