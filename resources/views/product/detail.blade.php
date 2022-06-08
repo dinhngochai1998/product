@@ -207,6 +207,7 @@
                                                         widget_links           <label>Số lượng:</label>
                                                         <input type="button" value="-" class="minus">
                                                         <input type="hidden" value="{{$product->id}}" class="id_product">
+                                                        <input type="hidden" value="{{route('wave.order.product')}}" class="router">
                                                         <input type="text" id='product_quantity' readonly step="1" min="1"  name="quantity" value="1" title="Qty" class="qty bk-product-qty" size="4" />
                                                         <input type="button" value="+" class="plus">
                                                     </div>
@@ -219,10 +220,11 @@
                                                     $('.bk-btn-paynow').click(function() {
                                                         console.log('1');
                                                         var id = $('.id_product').val();
+                                                        var url = $('.router').val();
                                                         var quantity = $('#product_quantity').val();
                                                         $.ajax({
                                                             type:'GET',
-                                                            url: 'http://127.0.0.1:8000/order/product',
+                                                            url: url,
                                                             data: {
                                                                 id,
                                                                 quantity
