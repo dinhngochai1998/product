@@ -73,10 +73,10 @@
 			<div id="copyrights">
 				<div class="container clearfix">
 					<div class="col_half">
-						© Bản quyền thuộc về <a href="" target="_blank">Giadungnhat</a>.
+						© Bản quyền thuộc về <a href="" target="_blank">Thegioidienmay</a>.
 						<a href="http://online.gov.vn/CustomWebsiteDisplay.aspx?DocId=60878" target="_blank" rel="noopener noreferrer">
 							<noscript data-img="https://simdulich.com.vn/wp-content/uploads/2019/09/BCT-simdulich.png" data-webp="https://simdulich.com.vn/wp-content/uploads/2019/09/BCT-simdulich.png.webp" data-alt="bct-simdulich" data-title="Simdulich.com.vn Đã thông báo Bộ Công Thương" class=""><img src="https://simdulich.com.vn/wp-content/uploads/2019/09/BCT-simdulich.png" alt="bct-simdulich" title="Simdulich.com.vn Đã thông báo Bộ Công Thương"></noscript>
-							<img src="https://simdulich.com.vn/wp-content/uploads/2019/09/BCT-simdulich.png.webp" alt="bct-simdulich" title="Giadungnhat Đã thông báo Bộ Công Thương" style="width: 117px;">
+							<img src="https://simdulich.com.vn/wp-content/uploads/2019/09/BCT-simdulich.png.webp" alt="bct-simdulich" title="Thegioidienmay Đã thông báo Bộ Công Thương" style="width: 117px;">
 						</a>
 						<div class="copyright-links">
 						</div>

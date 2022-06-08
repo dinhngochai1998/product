@@ -130,7 +130,7 @@
                                           </script>
                                        </div>
                                        <div class="widget clearfix">
-                                          <h4>https://giadungnhat.vn/blogs/news</h4>
+                                          <h4>https://thegioidienmay.org</h4>
                                           <div class="tagcloud sidebar_menu" style='border: none; padding: 10px 0;'>
                                           </div>
                                        </div>

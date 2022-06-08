@@ -402,7 +402,7 @@
                                             </div>
                                             <div class="tab-content clearfix " id="tabs-3">
                                                 <div id="fb-root"></div>
-                                                <div class="fb-comments" data-href="https://giadungnhat.vn/products/tu-lanh-hitachi-r-wx74j-735l" data-numposts="5" width="100%" data-colorscheme="light"></div>
+                                                <div class="fb-comments" data-href="" data-numposts="5" width="100%" data-colorscheme="light"></div>
                                                 <!-- script comment fb -->
                                             </div>
                                             <div class="tab-content clearfix tab-review" id="tabs-4">
@@ -448,7 +448,7 @@
                                             <div id="collapseTwo" class="panel-collapse collapse in " role="tabpanel">
                                                 <div class="panel-body">
                                                     <div id="fb-root"></div>
-                                                    <div class="fb-comments" data-href="https://giadungnhat.vn/products/tu-lanh-hitachi-r-wx74j-735l" data-numposts="5" width="100%" data-colorscheme="light"></div>
+                                                    <div class="fb-comments" data-href="" data-numposts="5" width="100%" data-colorscheme="light"></div>
                                                 </div>
                                             </div>
                                         </div>

@@ -215,7 +215,7 @@
                                         function sorting(){
                                             var searchString = getStringFilter();
                                             var url_final = '/'+searchString+'&view=grid_pagination';
-                                            var shop_url = '//giadungnhat.vn';
+                                            var shop_url = '//thegioidienmay.org';
                                             console.log(shop_url);
                                             var urlState = shop_url + '/' + searchString;
                                             window.history.pushState(null,null,urlState);
@@ -243,7 +243,7 @@
                                             var page = $(this).attr('pageid');
                                             var url_final = '/'+searchString+'&view=grid_pagination&page='+page;
 
-                                            var shop_url = '//giadungnhat.vn';
+                                            var shop_url = '//thegioidienmay.org';
                                             var urlState = shop_url + '/' + searchString + '&page=' + page;
                                             window.history.pushState(null,null,urlState);
 
@@ -263,7 +263,7 @@
                                         function updateFilterToUrl(prefix,load_result_id) {
                                             var searchString = getStringFilter();
                                             var url_final = '/'+searchString+'&view=grid_pagination&page='+page;
-                                            var shop_url = '//giadungnhat.vn';
+                                            var shop_url = '//thegioidienmay.org';
                                             var urlState = shop_url + '/' + searchString + prefix;
                                             window.history.pushState(null,null,urlState);
                                             loadResultBy(url_final,$(load_result_id));

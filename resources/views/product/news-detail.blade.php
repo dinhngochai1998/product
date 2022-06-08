@@ -90,7 +90,7 @@
                                                     <script src="//assets.pinterest.com/js/pinit.js"></script>
                                                 </div>
                                                 <div class="item ">
-                                                    <a class="evernote fix_top" target="_blank" href="http://www.evernote.com/clip.action?url=https://giadungnhat.vn&title" count-layout="horizontal">Note it!</a>
+                                                    <a class="evernote fix_top" target="_blank" href="" count-layout="horizontal">Note it!</a>
                                                 </div>
                                                 <div class="item ">
                                                     <a class="tumblr-share-button" href="https://www.tumblr.com/share"></a>
@@ -245,7 +245,7 @@
                                 </script>
                             </div>
                             <div class="widget clearfix">
-                                <h4>https://giadungnhat.vn/blogs/news</h4>
+                                <h4>https://thegioidienmay.org</h4>
                                 <div class="tagcloud sidebar_menu" style='border: none; padding: 10px 0;'>
                                 </div>
                             </div>

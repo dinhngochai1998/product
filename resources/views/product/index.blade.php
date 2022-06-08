@@ -95,10 +95,10 @@
 		<!-- Content
          ============================================= -->
 		@php
-			$icon1 = (new App\Helper\ConfigConstant())->getConfig('100-san-pham-xuat-xu-nhat-ban');
-            $icon2 = (new App\Helper\ConfigConstant())->getConfig('chat-luong-tot-gia-thanh-hop-ly');
-            $icon3 = (new App\Helper\ConfigConstant())->getConfig('ho-tro-khach-hang-24-7');
-            $body = (new App\Helper\ConfigConstant())->getConfig('giadungnhat-vn-luon-tan-tam');
+			$icon1 = (new App\Helper\ConfigConstant())->getConfig('100-san-pham-xuat-xu-nhat-ban') ?? null;
+            $icon2 = (new App\Helper\ConfigConstant())->getConfig('chat-luong-tot-gia-thanh-hop-ly') ?? null;
+            $icon3 = (new App\Helper\ConfigConstant())->getConfig('ho-tro-khach-hang-24-7') ?? null;
+            $body = (new App\Helper\ConfigConstant())->getConfig('giadungnhat-vn-luon-tan-tam') ?? null;
 		@endphp
 		<section id="content">
 			<div class="content-wrap">
@@ -107,22 +107,19 @@
 						<div class="w-author">
 							<div class="w-author-img">
 								<a href="#" rel="author external" target="_blank">
-									<img alt="Giadungnhat.vn  luôn tận tâm" height="90" src="{{asset('storage/'.$body->icon)}}" width="150" />
+									<img alt="" height="90" src="{{asset('storage/'.$body->icon ?? null) ?? null}}" width="150" />
 								</a>
 							</div>
 
-							<div class="w-author-name"><a href="#" title="Bùi Huy - Kho Hàng Nhật Bãi">{{$body->name}}</a></div>
+							<div class="w-author-name"><a href="#" title="">{{$body->name ?? null}}</a></div>
 							<div class="w-author-bio">
-								Chúng tôi là <span style="color: #ff0000;"><strong></strong> {{$body->value}}</span>
+								Chúng tôi là <span style="color: #ff0000;"><strong></strong> {{$body->value ?? null}}</span>
 							</div>
 
-
 							<ul class="uu-the">
-
-								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon1->icon)}}" /></span><span><strong>{{$icon1->value}}<span style="color:#ff0000">Nhật Bản</span style="color: #ff0000;"></span></li>
-								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon2->icon)}}" /></span><span>{{$icon2->value}}</span></li>
-								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon3->icon)}}" /></span><span>{{$icon3->value}}</span></li>
-
+								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon1->icon ?? null) ?? null}}" /></span><span><strong>{{$icon1->value ?? null}}<span style="color:#ff0000">Nhật Bản</span style="color: #ff0000;"></span></li>
+								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon2->icon ?? null) ?? null}}" /></span><span>{{$icon2->value ?? null}}</span></li>
+								<li><span class="uu-the-icon"><img src="{{asset('storage/'. $icon3->icon ?? null) ?? null}}" /></span><span>{{$icon3->value ?? null}}</span></li>
 							</ul>
 						</div>
 					</div>
