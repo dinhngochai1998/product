@@ -93,9 +93,9 @@
                     <!-- Sidebar
                        ============================================= -->
                     <div class="sidebar col_last nobottommargin">
-                        <img src="{{asset('storage/'. $getCart['image'])}}" />
+                        <img src="{{isset($getCart['image']) ? asset('storage/'. $getCart['image']) : null}}" />
                         <address>
-                            <strong>Giá: {{$getCart['price'] ?? null}}</strong><br>
+                            <strong>Giá: {{number_format($getCart['price']) . 'đ' ?? null}}</strong><br>
 
                         </address>
                         <address>
