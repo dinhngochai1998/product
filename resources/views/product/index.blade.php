@@ -175,7 +175,7 @@
 										</div>
 										<div class="product-desc">
 											<div class="product-price">
-												<ins> {{$value->price . '₫' }}</ins>
+												<ins> {{ number_format($value->price) . '₫' }}</ins>
 											</div>
 											<div class="haravan-product-reviews-badge" data-id="1030675101">  </div>
 										</div>
