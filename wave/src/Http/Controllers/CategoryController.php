@@ -27,11 +27,20 @@ class CategoryController extends \App\Http\Controllers\Controller
     public function detailProduct($slug)
     {
         $product             = Product::query()->with('productImages')->where('slug', $slug)->first();
+        $product ?? abort(404);
         $promotionalProducts = Product::query()->where('rate', RateConstant::PROMOTIONAL_PRODUCTS)->get();
         $featuredProducts    = Product::query()->where('rate', RateConstant::FEATURED_PRODUCTS)->get();
         $latestProducts      = Product::query()->where('rate', RateConstant::LATEST_PRODUCTS)->get();
 
+        $seo = [
+            'title'         => $product->name ?? null,
+            'description'   => $product->seo_description ?? $product->sub_discription,
+            'image'         => url('storage/'.$product->image),
+            'type'          => 'website',
+            'keywords'    => 'thế giới diện máy, hàng điện tử, máy lạnh, điều hoà'
+        ];
+
         return view('product.detail',
-                    compact(['product', 'latestProducts', 'featuredProducts', 'promotionalProducts']));
+                    compact(['product', 'latestProducts', 'featuredProducts', 'promotionalProducts', 'seo']));
     }
 }

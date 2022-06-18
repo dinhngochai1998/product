@@ -9,23 +9,23 @@
     <meta charset="utf-8" />
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
     <title>
-        ⭐ Hàng Nhật Tuấn Hà - Tủ lạnh, máy giặt, ghế Massage chính hãng
+        {{ isset($seo) ? $seo['title'] : 'Thế giới điện máy' }}
     </title>
 
-    <meta name="description" content="⭐ Hàng Nhật Tuấn Hà chuyên bán lẻ hàng điện tử điện lạnh nội địa Nhật Bản tại số 2 ngõ 603 Lạc Long Quân , Hà Nội . Cam kết bán hàng chính hãng nội địa Nhật 100%, giá rẻ nhất thị trường." />
-
+    <meta name="description" content=" {{ isset($seo) ? $seo['description'] : '⭐ Thế giới điện máy chuyên bán lẻ hàng điện tử điện lạnh nội địa Nhật Bản tại Số 1 ngõ 214/23 Đường Nguyễn Xiển, Quận Thanh Xuân, Hà Nội. Cam kết bán hàng chính hãng nội địa Nhật 100%, giá rẻ nhất thị trường.' }}" />
+    <meta id="keywords" name="keywords" content="{{ $seo['keywords'] ?? null }}">
 
     <!-- Product meta ================================================== -->
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:image:secure_url" content="" />
-    <meta property="og:image:secure_url" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:image:alt" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
+    <meta property="og:title" content="{{ isset($seo) ? $seo['title'] : 'Thế giới điện máy' }}" />
+    <meta property="og:image" content="{{ isset($seo) ? $seo['image'] : url('/og_image.png') }}" />
+    <meta property="og:image" content="{{ isset($seo) ? $seo['image'] : url('/og_image.png') }}" />
+    <meta property="og:image:secure_url" content="{{ isset($seo) ? $seo['image'] : url('/og_image.png') }}" />
+    <meta property="og:image:secure_url" content="{{ isset($seo) ? $seo['image'] : url('/og_image.png') }}" />
+    <meta property="og:description" content="{{ isset($seo) ? $seo['description'] : '⭐ Thế giới điện máy chuyên bán lẻ hàng điện tử điện lạnh nội địa Nhật Bản tại Số 1 ngõ 214/23 Đường Nguyễn Xiển, Quận Thanh Xuân, Hà Nội. Cam kết bán hàng chính hãng nội địa Nhật 100%, giá rẻ nhất thị trường.' }}" />
+    <meta property="og:image:alt" content=""{{ isset($seo) ? $seo['image'] : url('/og_image.png') }} />
+    <meta property="og:url" content="http://thegioidienmay.org/" />
+    <meta property="og:site_name" content="thegioidienmay.org" />
 
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/opensans.css') }}">

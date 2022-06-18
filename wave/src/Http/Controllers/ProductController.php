@@ -40,17 +40,25 @@ class ProductController extends \App\Http\Controllers\Controller
                                         ->get(),
             ];
         }
+
+        $seo = [
+            'title'       => setting('site.title', 'thế giới điện máy'),
+            'description' => setting('site.description',
+                                     '⭐ Thế giới điện máy chuyên bán lẻ hàng điện tử điện lạnh nội địa Nhật Bản tại Số 1 ngõ 214/23 Đường Nguyễn Xiển, Quận Thanh Xuân, Hà Nội. Cam kết bán hàng chính hãng nội địa Nhật 100%, giá rẻ nhất thị trường.'),
+            'image'       => url('/og_image.png'),
+            'type'        => 'website',
+            'keywords'    => 'thế giới diện máy, hàng điện tử, máy lạnh, điều hoà'
+        ];
+
         $news = Category::query()->with('posts')->where('name', CategoriesConstant::NEWS)->first();
 
 
-        return view('product.index', compact('categories', 'products', 'news'));
+        return view('product.index', compact('categories', 'products', 'news', 'seo'));
     }
 
     public function allProduct()
     {
         $products = Product::query()->paginate(30);
-
-
         return view('product.all-product', compact('products'));
     }
 
@@ -67,9 +75,15 @@ class ProductController extends \App\Http\Controllers\Controller
         $newsDetail = Post::query()
                           ->where('slug', $slug)
                           ->first();
-
+        $seo = [
+            'title'         => $newsDetail->title ?? null,
+            'description'   => $newsDetail->meta_description ?? null,
+            'image'         => url('storage/'.$newsDetail->image),
+            'type'          => 'website',
+            'keywords'    => 'thế giới diện máy, hàng điện tử, máy lạnh, điều hoà'
+        ];
         return view('product.news-detail',
-                    compact('newsDetail'));
+                    compact('newsDetail', 'seo'));
     }
 
     public function search(Request $request)
@@ -124,25 +138,26 @@ class ProductController extends \App\Http\Controllers\Controller
 
     public function addCart(Request $request)
     {
-        $product = Product::query()->where('id', $request['product_id'])->first();
-        $dataCart     = [
+        $product          = Product::query()->where('id', $request['product_id'])->first();
+        $dataCart         = [
             'name'         => $request->name,
             'email'        => $request->email,
             'number_phone' => $request->number_phone,
             'note'         => $request->note,
             'address'      => $request->address,
         ];
-        $order        = Order::query()->create($dataCart)->toArray();
+        $order            = Order::query()->create($dataCart)->toArray();
         $dataOrderProduct = [
             'product_id' => $request['product_id'],
             'order_id'   => $order['id'],
             'quantity'   => $request['quantity'],
         ];
-        $mergeData = array_merge($order, $dataOrderProduct);
+        $mergeData        = array_merge($order, $dataOrderProduct);
         OrderProduct::query()->create($dataOrderProduct);
-        dispatch(New SendMailProduct($mergeData, $product))->delay(Carbon::now()->addMinutes(20));
+        dispatch(new SendMailProduct($mergeData, $product))->delay(Carbon::now()->addMinutes(20));
         $cart = Session::get('cart');
         unset($cart);
+
         return redirect()->route('wave.home');
     }
 
