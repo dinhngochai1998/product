@@ -219,17 +219,11 @@
                                 </div>
                                 <!-- end most popular -->
                                 <!-- recent view -->
-                                <div class="widget clearfix">
-                                    <h4>Sản phẩm vừa xem</h4>
-                                    <div class="widget-last-view sidebar_menu">
-                                    </div>
-                                </div>
                                 <script>
                                     var $strHTML = get_viewed_items_html('');
                                     $('.widget .widget-last-view').html($strHTML);
 
                                 </script>
-                                <!-- end recent view -->
                             </div>
                         </div>
                     </div>
@@ -250,8 +244,6 @@
                 }
             }
         </script>
-        <!-- #content end -->
-        <!-- Footer
-           ============================================= --
+
     </body>
 @endsection
