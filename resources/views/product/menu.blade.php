@@ -13,11 +13,6 @@
           ============================================= -->
             <div class="top-links">
                 <ul>
-                    <li>
-                        <a href="/">Trang chủ</a>
-                        <ul>
-                        </ul>
-                    </li>
                     <li><a href="/pages/gioi-thieu-mua-hang">Giới thiệu</a></li>
                     <li><a href="{{route('wave.news.product')}}">Tin tức</a></li>
                     <li><a href="{{route('wave.news.product')}}">Khuyến mại</a></li>

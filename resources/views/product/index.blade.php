@@ -96,7 +96,7 @@
 			$icon1 = (new App\Helper\ConfigConstant())->getConfig('100-san-pham-xuat-xu-nhat-ban') ?? null;
             $icon2 = (new App\Helper\ConfigConstant())->getConfig('chat-luong-tot-gia-thanh-hop-ly') ?? null;
             $icon3 = (new App\Helper\ConfigConstant())->getConfig('ho-tro-khach-hang-24-7') ?? null;
-            $body = (new App\Helper\ConfigConstant())->getConfig('giadungnhat-vn-luon-tan-tam') ?? null;
+            $body = (new App\Helper\ConfigConstant())->getConfig('thegioidienmay-org') ?? null;
 		@endphp
 		<section id="content">
 			<div class="content-wrap">
