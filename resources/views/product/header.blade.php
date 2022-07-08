@@ -1,10 +1,8 @@
 <div class='container slide_wrapper'>
     <div class="hidden-lg hidden-md fanpape_mobile">
-        <h2>
-            Truy cập fanpage
-        </h2>
+
         <div class="fb-page" data-href="https://www.facebook.com/shophangnhatbainoidia" data-tabs="" data-width="480" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-            <blockquote cite="https://www.facebook.com/shophangnhatbainoidia" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/shophangnhatbainoidia">https://www.facebook.com/shophangnhatbainoidia</a></blockquote>
+            <blockquote cite="https://www.facebook.com/shophangnhatbainoidia" class="fb-xfbml-parse-ignore"><a href="#"></a></blockquote>
         </div>
     </div>
     <!-- left menu -->
@@ -24,16 +22,20 @@
                                 <span class="menu_title">{{strtoupper($value->name)}}</span>
                                 <i class='icon-angle-right arrow'></i>
                             </a>
+                            @if(count($subCategories) > 0)
                             <ul class='submenu'>
                                 <div class='submenu_padding'>
+
                                     @foreach($subCategories as $subCategory)
                                         @if($value->id == $subCategory->parent_id)
                                             <li class=''><a class='sub-menu' href="{{route('wave.category', $subCategory->slug)}}"><div>
                                                         {{strtoupper($subCategory->name)}}</div></a></li>
                                         @endif
                                     @endforeach
+
                                 </div>
                             </ul>
+                            @endif
                         </li>
                     @endforeach
                 </ul>

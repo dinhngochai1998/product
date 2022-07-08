@@ -6,7 +6,6 @@
                 <li><a href="{{route('wave.home')}}">QUAY LẠI TRANG CHÍNH</a></li>
                 <li><a href="{{route('wave.news.product')}}">HƯỚNG DẪN SỬ DỤNG SẢN PHẨM</a></li>
                 <li><a href="{{route('wave.all.product')}}">TẤT CẢ SẢN PHẨM</a></li>
-                <li><a href="{{route('wave.home')}}">FANPAGE BÁN HÀNG CHÍNH</a></li>
             </ul>
         </div>
         <div class="col_half col_last fright nobottommargin top_link_wrapper">

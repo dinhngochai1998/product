@@ -43,7 +43,7 @@
             <div class="content-wrap">
                 <div class="container clearfix">
                     <div class="col_desc">
-                        <p>-Hàng Nhật Tuấn Hà&nbsp; tại số 2/603 Lạc Long Quân , Tây Hồ , Hà Nội&nbsp;là nơi phân phối lớn nhất các sản phẩm TỦ LẠNH NHẬT NỘI ĐỊA, Nhật bãi tại Hà Nội&nbsp;</p>
+                        <p>-Hàng Chuẩn Nhật : tại số 2/603 Lạc Long Quân , Tây Hồ , Hà Nội&nbsp;là nơi phân phối lớn nhất các sản phẩm TỦ LẠNH NHẬT NỘI ĐỊA, Nhật bãi tại Hà Nội&nbsp;</p>
                         <p>TỦ LẠNH NHẬT NỘI ĐỊA, Nhật&nbsp;bãi chúng tôi phân phối là dòng Toshiba , Panasonic , Sharp , Mitsu, Hitachi với công nghệ cao nhất hiện nay với giá tốt nhất</p>
                         <p><span><span dir="auto" class="style-scope yt-formatted-string">🚄 youtube hướng dẫn sp ( tìm từ khóa - Hàng nhật Tuấn Hà ):&nbsp;</span><a class="yt-simple-endpoint style-scope yt-formatted-string" spellcheck="false" href="https://www.youtube.com/channel/UCKllovasXdzf6CVnc-6PI3A" rel="nofollow" dir="auto" data-mce-href="https://www.youtube.com/channel/UCKllovasXdzf6CVnc-6PI3A">https://www.youtube.com/channel/UCKll...</a><span dir="auto" class="style-scope yt-formatted-string">​</span><span dir="auto" class="style-scope yt-formatted-string"></span></span></p>
                         <p><span><span dir="auto" class="style-scope yt-formatted-string">🏠 Web kinh nghiệm sửa lỗi và đánh giá sản phẩm :&nbsp;</span><a class="yt-simple-endpoint style-scope yt-formatted-string" spellcheck="false" href="https://www.youtube.com/redirect?event=video_description&amp;redir_token=QUFFLUhqbGRYbTNKYUdrZ2xWNHN3YzBvcmlaY2NBV2FXd3xBQ3Jtc0tsdmh4Um14bVhfWjRTeHdOcDk5N2Y1SUNxN1UxdENieC1ISUlRbEFiU0d1ejJmSHd6Wm5QSC00QUljZ1RkZmlqSEZYMjNOX0p5YmNHMWQ1Y254S3BDdXY3Nnc5Sll4UzlOalBCUXBodXhJZW1nb0hZdw&amp;q=https%3A%2F%2Fhangnhattuanha.vn%2F" rel="nofollow noopener noreferrer" target="_blank" dir="auto" data-mce-href="https://www.youtube.com/redirect?event=video_description&amp;redir_token=QUFFLUhqbGRYbTNKYUdrZ2xWNHN3YzBvcmlaY2NBV2FXd3xBQ3Jtc0tsdmh4Um14bVhfWjRTeHdOcDk5N2Y1SUNxN1UxdENieC1ISUlRbEFiU0d1ejJmSHd6Wm5QSC00QUljZ1RkZmlqSEZYMjNOX0p5YmNHMWQ1Y254S3BDdXY3Nnc5Sll4UzlOalBCUXBodXhJZW1nb0hZdw&amp;q=https%3A%2F%2Fhangnhattuanha.vn%2F">https://hangnhattuanha.vn/</a></span></p>
@@ -59,29 +59,29 @@
                      ============================================= -->
                         <div id="shop" class="product-3 clearfix">
                             <div class='col-md-8 col-md-push-4 sort-wrapper'>
-                                <div class="browse-tags row" style='margin-bottom: 20px;'>
-                                    <div class='col-md-8 col-sm-9 col-xs-6 text-right nopadding' style='padding-right: 5px!important;'>
-                                        <span style='line-height: 30px;'>Sắp xếp theo:</span>
-                                    </div>
-                                    <div class='col-md-4 col-sm-3 col-xs-6 nopadding'>
-                              <span  class="custom-dropdown custom-dropdown--white pull-right" style='width: 100%'>
-                                 <select id='sortControl' onchange="sorting()" class="sort-by custom-dropdown__select custom-dropdown__select--white form-control input-sm">
-                                    <option value="manual" sort_by='manual'>Sản phẩm nổi bật</option>
-                                    <option value="(price:product=asc)" sort_by='price-ascending'>Giá: Tăng dần</option>
-                                    <option value="(price:product=desc)" sort_by='price-descending'>Giá: Giảm dần</option>
-                                    <option value="(title:product=asc)" sort_by='title-ascending'>Tên: A-Z</option>
-                                    <option value="(title:product=desc)" sort_by='title-descending'>Tên: Z-A</option>
-                                    <option value="(updated_at:product=asc)" sort_by='created-ascending'>Cũ nhất</option>
-                                    <option value="(updated_at:product=desc)" sort_by='created-descending'>Mới nhất</option>
-                                    <option value="(sold_quantity:product=desc)" sort_by='best-selling'>Bán chạy nhất</option>
-                                 </select>
-                              </span>
-                                    </div>
-                                </div>
+{{--                                <div class="browse-tags row" style='margin-bottom: 20px;'>--}}
+{{--                                    <div class='col-md-8 col-sm-9 col-xs-6 text-right nopadding' style='padding-right: 5px!important;'>--}}
+{{--                                        <span style='line-height: 30px;'>Sắp xếp theo:</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class='col-md-4 col-sm-3 col-xs-6 nopadding'>--}}
+{{--                              <span  class="custom-dropdown custom-dropdown--white pull-right" style='width: 100%'>--}}
+{{--                                 <select id='sortControl' onchange="sorting()" class="sort-by custom-dropdown__select custom-dropdown__select--white form-control input-sm">--}}
+{{--                                    <option value="manual" sort_by='manual'>Sản phẩm nổi bật</option>--}}
+{{--                                    <option value="(price:product=asc)" sort_by='price-ascending'>Giá: Tăng dần</option>--}}
+{{--                                    <option value="(price:product=desc)" sort_by='price-descending'>Giá: Giảm dần</option>--}}
+{{--                                    <option value="(title:product=asc)" sort_by='title-ascending'>Tên: A-Z</option>--}}
+{{--                                    <option value="(title:product=desc)" sort_by='title-descending'>Tên: Z-A</option>--}}
+{{--                                    <option value="(updated_at:product=asc)" sort_by='created-ascending'>Cũ nhất</option>--}}
+{{--                                    <option value="(updated_at:product=desc)" sort_by='created-descending'>Mới nhất</option>--}}
+{{--                                    <option value="(sold_quantity:product=desc)" sort_by='best-selling'>Bán chạy nhất</option>--}}
+{{--                                 </select>--}}
+{{--                              </span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                             <div id='grid_pagination'>
                                 <div class='grid'>
-                                    <div class='product_wrapper'>
+                                    <div class='product_wrapper' style="max-height: 300px;">
                                         @foreach($products as $product)
                                         <div class='col-sm-3 col-xs-6 nopadding product_single'>
                                             <div class="product pr-item clearfix">
@@ -99,7 +99,7 @@
                                                 </div>
                                                 <div class="product-desc">
                                                     <div class="product-price">
-                                                        <ins>{{$product->price . 'đ' ?? null}}</ins>
+                                                        <ins>{{ number_format($product->price) . 'đ' ?? null}}</ins>
                                                     </div>
                                                     <div class="haravan-product-reviews-badge" data-id="1017770762">  </div>
                                                 </div>
@@ -424,9 +424,9 @@
 
                                 </script>
                                 <!-- end recent view -->
-                                <div class="widget clearfix">
-                                    <a href='https://www.facebook.com/shophangnhatbainoidia'><img src="//theme.hstatic.net/1000227124/1000685523/14/left_sidebar_banner.png?v=21" style='height:auto; width: 100%;'/></a>
-                                </div>
+{{--                                <div class="widget clearfix">--}}
+{{--                                    <a href='https://www.facebook.com/shophangnhatbainoidia'><img src="//theme.hstatic.net/1000227124/1000685523/14/left_sidebar_banner.png?v=21" style='height:auto; width: 100%;'/></a>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>

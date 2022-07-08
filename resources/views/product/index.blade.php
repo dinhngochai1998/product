@@ -46,8 +46,7 @@
 
 					@endphp
 					<div class="hidden-xs fanepage_pc">
-						<span>Truy cập fanpage:</span>
-						<a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">{{strtoupper($title->value) ?? null}}</a>
+						<a target="_blank" href="#">{{strtoupper($title->value) ?? null}}</a>
 					</div>
 					<!-- Top Search
                   ============================================= -->
@@ -73,7 +72,6 @@
 								</div>
 							</div>
 						</div>
-						<a class='top_hotline col-sm-3 hidden-sm hidden-xs nopadding' href='tel:098 888 8642'><img src='{{asset('images/icons/top_hotline.png')}}' /></a>
 					</div>
 					<!-- #top-search end -->
 					<!-- top link trigger --->

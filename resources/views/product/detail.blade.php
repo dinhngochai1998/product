@@ -29,10 +29,6 @@
                 width: 49%;
                 margin-right: 6px;
             }
-            .bk-btn .bk-btn-installment {
-                width: 49%;
-                margin-right: 0px;
-            }
             @media only screen and (max-width: 320px) {
                 .bk-btn .bk-btn-paynow {
                     width: 100%;
@@ -152,7 +148,6 @@
                                                         <li>
                                                             <div class="haravan-product-reviews-badge" data-id="1017770762">  </div>
                                                         </li>
-                                                        <li><a href="#tabs-3" id="scroll_review" ><i class="icon-pencil" aria-hidden="true"></i> Viết đánh giá</a></li>
                                                     </ul>
                                                 </div>
                                                 <!-- Product Single - Price
@@ -188,23 +183,11 @@
                                                     </select>
                                                 </div>
                                                 <!-- variants -->
-                                                <div class="product-page-options ">
-                                                    <div class="sizePicker" id = 'option-0'>
-                                                        <label class="control-label options-title">Tiêu đề:</label>
-                                                        <div class='options-selection'>
-                                                            <select class="form-control input-sm">
-                                                                <option data_size_code="tulanhhitachirwx74j" data_color_code="tulanhhitachirwx74j"  class="" value="tủ lạnh hitachi r wx74j" >
-                                                                    {{$product->name}}
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <!-- end variant -->
                                                 <!-- <form class="cart nobottommargin clearfix" method="post" enctype='multipart/form-data'>-->
                                                 <div class=" col-xs-12 product-quantity clearfix noleftpadding">
                                                     <div class="quantity">
-                                                        widget_links           <label>Số lượng:</label>
+                                                        <label>Số lượng:</label>
                                                         <input type="button" value="-" class="minus">
                                                         <input type="hidden" value="{{$product->id}}" class="id_product">
                                                         <input type="hidden" value="{{route('wave.order.product')}}" class="router">
@@ -212,10 +195,9 @@
                                                         <input type="text" id='product_quantity' readonly step="1" min="1"  name="quantity" value="1" title="Qty" class="qty bk-product-qty" size="4" />
                                                         <input type="button" value="+" class="plus">
                                                     </div>
-                                                    <button type="submit" id='' class="add-to-cart icon-cart button nomargin col-xs-12 col-md-6 nopadding">Đặt hàng</button>
                                                 </div>
                                                 <!-- BK BUTTON -->
-                                                <div class="bk-btn" id="click"><button class="bk-btn-paynow" style="display: inline-block;background-color: #e00 !important;color: #fff !important" type="button" onclick=""><strong>Mua ngay</strong><span>Giao tận nơi hoặc nhận tại cửa hàng</span></button><button class="bk-btn-installment" style="display: inline-block;background-color: #288ad6 !important;color: #fff !important" type="button"><strong>Trả góp qua thẻ</strong><span>Visa, Master, JCB</span></button></div>
+                                                <div class="bk-btn" id="click"><button class="bk-btn-paynow" style="display: inline-block;background-color: #e00 !important;color: #fff !important" type="button" onclick=""><strong>Mua ngay</strong><span>Giao tận nơi hoặc nhận tại cửa hàng</span></button></div>
                                                 <!-- END BK BUTTON -->
                                                 <script>
                                                     $('.bk-btn-paynow').click(function() {
@@ -272,15 +254,6 @@
                                                 <div class="line"></div>
                                                 <!-- Product Single - Meta
                                                    ============================================= -->
-                                                <div class="product-meta">
-                                                    <div class="">
-                                                        <div class="tagged_as">
-                                                            <span><strong>Tags:</strong></span>
-                                                            <a href="#" rel="tag">
-                                                                {{$product->name}} </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <!-- Product Single - Meta End -->
                                                 <!-- Product Single - Share
                                                    ============================================= -->
@@ -627,9 +600,6 @@
 
                                 </script>
                                 <!-- end recent view -->
-                                <div class="widget clearfix">
-                                    <a href='https://www.facebook.com/shophangnhatbainoidia'><img src="//theme.hstatic.net/1000227124/1000685523/14/left_sidebar_banner.png?v=21" style='height:auto; width: 100%;'/></a>
-                                </div>
                             </div>
                         </div>
                     </div>

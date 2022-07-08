@@ -11,8 +11,7 @@
                 <span>MENU</span>
             </a>
             <div class="hidden-xs fanepage_pc">
-                <span>Truy cập fanpage:</span>
-                <a target="_blank" href="https://www.facebook.com/shophangnhatbainoidia">{{strtoupper($config->name) ?? null}}</a>
+                <a target="_blank" href="#">{{strtoupper($config->name) ?? null}}</a>
             </div>
             <!-- Top Search
                ============================================= -->
@@ -80,7 +79,6 @@
                         </div>
                     </div>
                 </div>
-                <a class='top_hotline col-sm-3 hidden-sm hidden-xs nopadding' href='tel:098 888 8642'><img src='//theme.hstatic.net/1000227124/1000685523/14/top_hotline.png?v=21' /></a>
             </div>
             <!-- #top-search end -->
             <!-- top link trigger --->
@@ -117,12 +115,13 @@
             <div class="panel-body">
                 @foreach($categories as $category)
                     <ul class='nav nav-pills nav-stacked'>
-                        <li class=' menu'>
+                        <li class='menu'>
                             <a class='menu' href="{{route('wave.category', $category->slug)}}">
                                 <img src='' data-toggle="tooltip" data-placement="right" title="MÁY GIẶT"/>
                                 <span class="menu_title">{{strtoupper($category->name)}}</span>
                                 <i class='icon-angle-right arrow'></i>
                             </a>
+                            @if(count($subCategories) > 0)
                             @foreach($subCategories as $subCategory)
                                 @if($category->id == $subCategory->parent_id)
                                     <ul class='submenu'>
@@ -136,6 +135,7 @@
                                     </ul>
                                 @endif
                             @endforeach
+                            @endif
                         </li>
                     </ul>
                 @endforeach
