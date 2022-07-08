@@ -230,9 +230,6 @@
 
                                 </script>
                                 <!-- end recent view -->
-                                <div class="widget clearfix">
-                                    <a href='https://www.facebook.com/shophangnhatbainoidia'><img src="//theme.hstatic.net/1000227124/1000685523/14/left_sidebar_banner.png?v=21" style='height:auto; width: 100%;'/></a>
-                                </div>
                             </div>
                         </div>
                     </div>

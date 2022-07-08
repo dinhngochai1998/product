@@ -178,7 +178,7 @@
 		<div class="clicktocall">
 			<a class="call" href="tel:098 888 8642">
 				{{$value->name}}<br />
-				<b>{{$value->phone}}</b>
+				<b>0{{$value->phone}}</b>
 			</a>
 		</div>
 		@endforeach
