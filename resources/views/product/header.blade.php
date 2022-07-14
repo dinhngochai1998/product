@@ -1,9 +1,9 @@
 <div class='container slide_wrapper'>
     <div class="hidden-lg hidden-md fanpape_mobile">
 
-        <div class="fb-page" data-href="https://www.facebook.com/shophangnhatbainoidia" data-tabs="" data-width="480" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-            <blockquote cite="https://www.facebook.com/shophangnhatbainoidia" class="fb-xfbml-parse-ignore"><a href="#"></a></blockquote>
-        </div>
+{{--        <div class="fb-page" data-href="https://www.facebook.com/shophangnhatbainoidia" data-tabs="" data-width="480" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">--}}
+{{--            <blockquote cite="https://www.facebook.com/shophangnhatbainoidia" class="fb-xfbml-parse-ignore"><a href="#"></a></blockquote>--}}
+{{--        </div>--}}
     </div>
     <!-- left menu -->
     <div class="panel-group left_menu" id='left_menu'>
